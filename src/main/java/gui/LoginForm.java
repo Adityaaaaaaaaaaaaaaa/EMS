@@ -110,7 +110,6 @@ public class LoginForm extends JFrame {
         return user;
     }
 
-
     public static void main(String[] args) {
         LoginForm loginForm = new LoginForm();
         User user = LoginForm.user;
