@@ -1,6 +1,11 @@
 package gui;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -26,11 +31,6 @@ public class LoginForm extends JFrame {
                 // Perform login
                 String email = txtEmail.getText().trim();
                 String password = new String(txtPassword.getPassword()).trim();
-
-                // Print login attempt details
-                System.out.println("Attempting login with:");
-                System.out.println("Email: " + email);
-                System.out.println("Password: " + password);
 
                 // Authenticate user and retrieve additional details
                 user = authenticateUser(email, password);
@@ -59,18 +59,9 @@ public class LoginForm extends JFrame {
     private User authenticateUser(String email, String password) {
         user = null;
 
-        // Database connection details
-        String url = "jdbc:mysql://127.0.0.1:3306/swingui"; // Update to your database name
-        String dbUsername = "root"; // Update to your MySQL username
-        String dbPassword = ""; // Update to your MySQL password
-
         try {
-            // Load the MySQL JDBC driver (optional since JDBC 4.0)
-            Class.forName("com.mysql.jdbc.Driver"); // Update to the correct driver class
-            System.out.println("MySQL JDBC Driver Registered!");
-
-            // Establish the connection
-            Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword);
+            // Get a connection from the Db_Connect class
+            Connection connection = Db_Connect.getConnection();
             System.out.println("Connected to the database successfully!");
 
             // SQL query to check for matching credentials
@@ -88,18 +79,19 @@ public class LoginForm extends JFrame {
                 user.address = resultSet.getString("address");
                 user.email = email;
                 user.password = password;
-                System.out.println("Login successful for Email: " + email);
+
                 System.out.println("Name: " + user.name);
+                System.out.println("Email: " + email);
                 System.out.println("Phone: " + user.phone);
                 System.out.println("Address: " + user.address);
             } else {
                 System.out.println("No matching user found.");
             }
 
-            // Close the connection
+            // Close the resources
             resultSet.close();
             statement.close();
-            connection.close();
+            Db_Connect.close(connection); // Close the connection using the Db_Connect class
         } catch (SQLException ex) {
             ex.printStackTrace();
             System.out.println("Database connection failed: " + ex.getMessage());
@@ -110,17 +102,9 @@ public class LoginForm extends JFrame {
         return user;
     }
 
+
     public static void main(String[] args) {
         LoginForm loginForm = new LoginForm();
         User user = LoginForm.user;
-        if (user != null ){
-            System.out.println("Login successful!");
-            System.out.println(user.email);
-            System.out.println(user.password);
-            System.out.println(user.phone);
-            System.out.println(user.name);
-        } else {
-            System.out.println("Login failed!");
-        }
     }
 }
