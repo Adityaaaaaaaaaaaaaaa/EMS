@@ -25,6 +25,7 @@ public class Db_Connect {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("idk what f*cked up");
         }
     }
 }
