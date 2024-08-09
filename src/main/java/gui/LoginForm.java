@@ -60,7 +60,6 @@ public class LoginForm extends JFrame {
                 dispose(); // Dispose of the JFrame and free up resources
             }
         });
-
         setVisible(true);
     }
 
