@@ -1,6 +1,7 @@
 package gui;
 
 import db.Db_Connect;
+import utility.Utility;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,9 +17,6 @@ public class LoginForm extends JFrame {
     private JButton btnCancel;
     private JPanel mainPane;
 
-    private static final int WINDOW_WIDTH = 400;
-    private static final int WINDOW_HEIGHT = 300;
-
     private static final Logger LOGGER = Logger.getLogger(LoginForm.class.getName());
 
     public static User user;
@@ -27,7 +25,8 @@ public class LoginForm extends JFrame {
         setTitle("Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensure the application terminates when the window is closed
         setContentPane(mainPane);
-        setSize(WINDOW_WIDTH, WINDOW_HEIGHT); // Set consistent window size
+        Utility.setWindowSize(this);
+        //setSize(WINDOW_WIDTH, WINDOW_HEIGHT); // Set consistent window size
         setLocationRelativeTo(null); // Center the window
 
         // Action listener for the Login button
@@ -43,7 +42,7 @@ public class LoginForm extends JFrame {
                 if (user != null) {
                     // Open the main screen
                     Screen1 screen1 = new Screen1();
-                    screen1.setSize(WINDOW_WIDTH, WINDOW_HEIGHT); // Set the size to match other screens
+                    Utility.setWindowSize(screen1);
                     dispose(); // Dispose of the login form
                 } else {
                     JOptionPane.showMessageDialog(LoginForm.this, "Invalid email or password",
