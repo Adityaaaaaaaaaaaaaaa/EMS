@@ -54,5 +54,15 @@ public class ScreenManager {
             default:
                 return null; // Handle unknown screens
         }
+
+        /* Enhanced switch case loop
+        return switch (name) {
+            case "LoginForm" -> new LoginForm(mainFrame);
+            case "Screen1" -> new Screen1(mainFrame);
+            case "Screen2" -> new Screen2(mainFrame);
+            case "Screen3" -> new Screen3(mainFrame);
+            // Add more cases as needed
+            default -> null; // Handle unknown screens
+        };*/
     }
 }
