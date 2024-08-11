@@ -6,8 +6,6 @@ import utility.Utility;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +20,7 @@ public class LoginForm extends JPanel {
     private static final Logger LOGGER = Logger.getLogger(LoginForm.class.getName());
 
     public static User user;
-    private Main mainFrame; // Declare the mainFrame variable
+    private Main mainFrame;
 
     public LoginForm(Main mainFrame) {
         this.mainFrame = mainFrame;
@@ -30,29 +28,20 @@ public class LoginForm extends JPanel {
         setLayout(new BorderLayout());
         add(mainPane);
 
-        btnLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String email = txtEmail.getText().trim();
-                String password = new String(txtPassword.getPassword()).trim();
-
-                // Authenticate user and retrieve additional details
-                User user = authenticateUser(email, password);
-                if (user != null) {
-                    mainFrame.showPanel("Screen1"); // Show Screen1
-                } else {
-                    JOptionPane.showMessageDialog(LoginForm.this, "Invalid email or password",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                }
+        // Action listeners
+        btnLogin.addActionListener(e -> {
+            String email = txtEmail.getText().trim();
+            String password = new String(txtPassword.getPassword()).trim();
+            User user = authenticateUser(email, password);
+            if (user != null) {
+                mainFrame.getScreenManager().showPanel("Screen1");
+            } else {
+                JOptionPane.showMessageDialog(LoginForm.this, "Invalid email or password",
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
-        btnCancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        btnCancel.addActionListener(e -> System.exit(0));
     }
 
     private User authenticateUser(String email, String password) {

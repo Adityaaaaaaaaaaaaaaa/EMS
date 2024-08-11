@@ -7,21 +7,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Screen1 extends JPanel { // Extending JPanel instead of JFrame
+public class Screen1 extends JPanel {
     private JButton button1;
     private JPanel screen1;
 
-    private Main mainFrame; // Declare the mainFrame variable
+    private Main mainFrame;
 
     public Screen1(Main mainFrame) {
-        this.mainFrame = mainFrame; // Assign the passed Main instance to the mainFrame variable
+        this.mainFrame = mainFrame;
         setLayout(new BorderLayout());
         add(screen1);
 
+        // Action listener for the button
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainFrame.showPanel("Screen2"); // Show Screen2
+                mainFrame.getScreenManager().showPanel("Screen2"); // Show Screen2
             }
         });
     }

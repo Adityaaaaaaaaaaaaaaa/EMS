@@ -16,17 +16,18 @@ public class Screen2 extends JPanel {
     private JButton button2;
     private JPanel screen2;
 
-    private Main mainFrame; // Declare the mainFrame variable
+    private Main mainFrame;
 
     public Screen2(Main mainFrame) {
-        this.mainFrame = mainFrame; // Assign the passed Main instance to the mainFrame variable
+        this.mainFrame = mainFrame;
         setLayout(new BorderLayout());
         add(screen2);
 
+        // Action listener for the button
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainFrame.showPanel("Screen1"); // Show Screen2
+                mainFrame.getScreenManager().showPanel("Screen1"); // Show Screen2
             }
         });
     }
