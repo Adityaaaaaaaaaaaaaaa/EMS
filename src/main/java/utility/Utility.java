@@ -10,9 +10,4 @@ public class Utility {
         frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         frame.setLocationRelativeTo(null); // Center the window
     }
-
-    /*public static void setWindowSize(JDialog dialog) {
-        dialog.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        dialog.setLocationRelativeTo(null); // Center the window
-    }*/
 }

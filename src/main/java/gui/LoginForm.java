@@ -1,16 +1,18 @@
 package gui;
 
+import app.Main;
 import db.Db_Connect;
 import utility.Utility;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LoginForm extends JFrame {
+public class LoginForm extends JPanel {
     private JTextField txtEmail;
     private JPasswordField txtPassword;
     private JButton btnLogin;
@@ -20,30 +22,24 @@ public class LoginForm extends JFrame {
     private static final Logger LOGGER = Logger.getLogger(LoginForm.class.getName());
 
     public static User user;
+    private Main mainFrame; // Declare the mainFrame variable
 
-    public LoginForm() {
-        setTitle("Login");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensure the application terminates when the window is closed
-        setContentPane(mainPane);
-        Utility.setWindowSize(this);
-        //setSize(WINDOW_WIDTH, WINDOW_HEIGHT); // Set consistent window size
-        setLocationRelativeTo(null); // Center the window
+    public LoginForm(Main mainFrame) {
+        this.mainFrame = mainFrame;
+        Utility.setWindowSize(mainFrame);
+        setLayout(new BorderLayout());
+        add(mainPane);
 
-        // Action listener for the Login button
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Perform login
                 String email = txtEmail.getText().trim();
                 String password = new String(txtPassword.getPassword()).trim();
 
                 // Authenticate user and retrieve additional details
-                user = authenticateUser(email, password);
+                User user = authenticateUser(email, password);
                 if (user != null) {
-                    // Open the main screen
-                    Screen1 screen1 = new Screen1();
-                    Utility.setWindowSize(screen1);
-                    dispose(); // Dispose of the login form
+                    mainFrame.showPanel("Screen1"); // Show Screen1
                 } else {
                     JOptionPane.showMessageDialog(LoginForm.this, "Invalid email or password",
                             "Error", JOptionPane.ERROR_MESSAGE);
@@ -51,15 +47,12 @@ public class LoginForm extends JFrame {
             }
         });
 
-        // Action listener for the Cancel button
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Close the application
-                dispose(); // Dispose of the JFrame and free up resources
+                System.exit(0);
             }
         });
-        setVisible(true);
     }
 
     private User authenticateUser(String email, String password) {
@@ -100,9 +93,5 @@ public class LoginForm extends JFrame {
             LOGGER.log(Level.SEVERE, "MySQL JDBC Driver not found: " + ex.getMessage(), ex);
         }
         return user;
-    }
-
-    public static void main(String[] args) {
-        new LoginForm();
     }
 }

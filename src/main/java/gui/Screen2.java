@@ -1,12 +1,13 @@
 package gui;
 
-import utility.Utility;
+import app.Main;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Screen2 extends JFrame {
+public class Screen2 extends JPanel {
     private JCheckBox checkBox1;
     private JRadioButton radioButton1;
     private JComboBox comboBox1;
@@ -15,23 +16,19 @@ public class Screen2 extends JFrame {
     private JButton button2;
     private JPanel screen2;
 
-    public Screen2() {
-        setTitle("Screen 2");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Utility.setWindowSize(this); // Set window size using the utility
-        setContentPane(screen2);
-        pack();
-        setLocationRelativeTo(null); // Center the window
+    private Main mainFrame; // Declare the mainFrame variable
+
+    public Screen2(Main mainFrame) {
+        this.mainFrame = mainFrame; // Assign the passed Main instance to the mainFrame variable
+        setLayout(new BorderLayout());
+        add(screen2);
 
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Screen1 screen1 = new Screen1(); // Create Screen1 instance
-                Utility.setWindowSize(screen1); // Set window size for Screen1
-                dispose();
+                mainFrame.showPanel("Screen1"); // Show Screen2
             }
         });
-
-        setVisible(true);
     }
 }
+
