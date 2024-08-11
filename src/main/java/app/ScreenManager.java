@@ -3,6 +3,7 @@ package app;
 import gui.LoginForm;
 import gui.Screen1;
 import gui.Screen2;
+import gui.Screen3;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,6 +48,8 @@ public class ScreenManager {
                 return new Screen1(mainFrame);
             case "Screen2":
                 return new Screen2(mainFrame);
+            case "Screen3":
+                return new Screen3(mainFrame);
             // Add more cases as needed
             default:
                 return null; // Handle unknown screens

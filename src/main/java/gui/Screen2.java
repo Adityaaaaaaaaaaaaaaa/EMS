@@ -15,6 +15,7 @@ public class Screen2 extends JPanel {
     private JList list1;
     private JButton button2;
     private JPanel screen2;
+    private JButton button3;
 
     private Main mainFrame;
 
@@ -28,6 +29,13 @@ public class Screen2 extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainFrame.getScreenManager().showPanel("Screen1"); // Show Screen2
+            }
+        });
+
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainFrame.getScreenManager().showPanel("Screen3");
             }
         });
     }
