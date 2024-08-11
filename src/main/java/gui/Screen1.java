@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 public class Screen1 extends JPanel {
     private JButton button1;
     private JPanel screen1;
+    private JButton logoutButton;
 
     private Main mainFrame;
 
@@ -23,6 +24,12 @@ public class Screen1 extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainFrame.getScreenManager().showPanel("Screen2"); // Show Screen2
+            }
+        });
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainFrame.getScreenManager().showPanel("LoginForm");
             }
         });
     }

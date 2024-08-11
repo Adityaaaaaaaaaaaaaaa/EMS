@@ -25,6 +25,10 @@ public class ScreenManager {
         this.mainFrame.setContentPane(mainPanel);
     }
 
+    public JPanel getScreen(String name) {
+        return screens.get(name);
+    }
+
     public void registerScreen(String name, JPanel panel) {
         screens.put(name, panel);
         mainPanel.add(panel, name);

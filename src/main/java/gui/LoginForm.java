@@ -34,6 +34,7 @@ public class LoginForm extends JPanel {
             String password = new String(txtPassword.getPassword()).trim();
             User user = authenticateUser(email, password);
             if (user != null) {
+                clearFields();
                 mainFrame.getScreenManager().showPanel("Screen1");
             } else {
                 JOptionPane.showMessageDialog(LoginForm.this, "Invalid email or password",
@@ -82,5 +83,10 @@ public class LoginForm extends JPanel {
             LOGGER.log(Level.SEVERE, "MySQL JDBC Driver not found: " + ex.getMessage(), ex);
         }
         return user;
+    }
+
+    public void clearFields() {
+        txtEmail.setText("");
+        txtPassword.setText("");
     }
 }
