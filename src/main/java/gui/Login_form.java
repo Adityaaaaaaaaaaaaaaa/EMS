@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class Login_form extends JPanel {
     private static final Logger LOGGER = Logger.getLogger(Login_form.class.getName());
 
-    private JPanel mainPanel;
+    private JPanel Login_Panel;
     private JTextField user_id;
     private JPasswordField pwd;
     private JButton btnLogin;
@@ -35,7 +35,7 @@ public class Login_form extends JPanel {
         this.mainFrame = mainFrame;
         Utility.setWindowSize(mainFrame);
         setLayout(new BorderLayout());
-        add(mainPanel);
+        add(Login_Panel);
 
         // Clear error message when user starts typing in the fields
         addFieldListeners();
