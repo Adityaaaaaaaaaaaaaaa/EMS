@@ -24,14 +24,19 @@ public class Screen1 extends JPanel {
         String role = (Session.currentUser != null) ? Session.currentUser.getRole() : "Unknown";
 
         // Example of showing/hiding components based on user role
-        if (role.equals("Admin")) {
-            // Show admin-specific components
-        } else if (role.equals("User")) {
-            // Show user-specific components
-        } else if (role.equals("Organizer")) {
-            // Show organizer-specific components
-        } else {
-            // Handle unknown or not logged-in case
+        switch (role) {
+            case "Admin" -> {
+                // Show admin-specific components
+            }
+            case "User" -> {
+                // Show user-specific components
+            }
+            case "Organizer" -> {
+                // Show organizer-specific components
+            }
+            default -> {
+                // Handle unknown or not logged-in case
+            }
         }
 
         // Action listener for the button

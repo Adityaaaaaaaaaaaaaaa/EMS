@@ -2,7 +2,7 @@ package session;
 
 import app.Main;
 import gui.Login_form;
-import gui.Screen1; // Adjust import path if necessary
+import gui.Screen1;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,14 +49,11 @@ public class ScreenManager {
     }
 
     private JPanel createScreen(String name) {
-        switch (name) {
-            case "Login_form":
-                return new Login_form(mainFrame);
-            case "Screen1":
-                return new Screen1(mainFrame);
+        return switch (name) {
+            case "Login_form" -> new Login_form(mainFrame);
+            case "Screen1" -> new Screen1(mainFrame);
             // Add more cases as needed
-            default:
-                return null; // Handle unknown screens
-        }
+            default -> null; // Handle unknown screens
+        };
     }
 }

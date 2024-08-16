@@ -7,6 +7,8 @@ import session.User;
 import utility.Utility;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,6 +37,9 @@ public class Login_form extends JPanel {
         setLayout(new BorderLayout());
         add(mainPanel);
 
+        // Clear error message when user starts typing in the fields
+        addFieldListeners();
+
         // Action listeners
         btnLogin.addActionListener(new ActionListener() {
             @Override
@@ -42,26 +47,52 @@ public class Login_form extends JPanel {
                 String userID = user_id.getText().trim();
                 String password = new String(pwd.getPassword()).trim();
 
-                // Print entered credentials
-                System.out.println("Entered Username: " + userID);
-                System.out.println("Entered Password: " + password);
+                // Validate input
+                if (userID.isEmpty() || password.isEmpty()) {
+                    errorMsg.setText("Please enter both Username and Password.");
+                    return;
+                }
 
                 User user = authenticateUser(userID, password);
                 if (user != null) {
                     Session.currentUser = user;
-
-                    // Print retrieved user role
-                    System.out.println("Logged in as: " + user.getRole());
-
                     clearFields();
                     mainFrame.getScreenManager().showPanel("Screen1");
                 } else {
-                    errorMsg.setText("Invalid User ID or Password");
+                    errorMsg.setText("Invalid Username or Password. Please try again.");
                 }
             }
         });
 
         btnRegister.addActionListener(e -> System.exit(0));
+    }
+
+    // Method to add listeners to clear the error message when typing
+    private void addFieldListeners() {
+        DocumentListener clearErrorListener = new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                clearErrorMessage();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                clearErrorMessage();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                clearErrorMessage();
+            }
+        };
+
+        user_id.getDocument().addDocumentListener(clearErrorListener);
+        pwd.getDocument().addDocumentListener(clearErrorListener);
+    }
+
+    // Clear error message
+    private void clearErrorMessage() {
+        errorMsg.setText("");
     }
 
     private User authenticateUser(String userID, String password) {
@@ -77,11 +108,20 @@ public class Login_form extends JPanel {
                 if (resultSet.next()) {
                     String role = resultSet.getString("role");
                     user = new User(userID, role);
+                } else {
+                    errorMsg.setText("Username or Password is incorrect.");
                 }
             }
 
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex) {
+            errorMsg.setText("Database connection failed. Please try again later.");
             LOGGER.log(Level.SEVERE, "Database error during authentication: " + ex.getMessage(), ex);
+        } catch (ClassNotFoundException ex) {
+            errorMsg.setText("Internal error. Please contact support.");
+            LOGGER.log(Level.SEVERE, "JDBC Driver not found: " + ex.getMessage(), ex);
+        } catch (Exception ex) {
+            errorMsg.setText("Unexpected error occurred. Please try again.");
+            LOGGER.log(Level.SEVERE, "Unexpected error during authentication: " + ex.getMessage(), ex);
         }
 
         return user;
