@@ -64,7 +64,8 @@ public class Login_form extends JPanel {
             }
         });
 
-        btnRegister.addActionListener(e -> System.exit(0));
+        //btnRegister.addActionListener(e -> System.exit(0));
+        btnRegister.addActionListener(e -> mainFrame.getScreenManager().showPanel("Register_form"));
     }
 
     // Method to add listeners to clear the error message when typing
