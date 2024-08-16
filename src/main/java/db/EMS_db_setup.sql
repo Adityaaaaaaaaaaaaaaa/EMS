@@ -72,30 +72,30 @@ CREATE TABLE Payments
 -- Insert test data into Users table
 -- 5 Admins
 INSERT INTO Users (username, email, password, role, name, address, phone)
-VALUES ('A-Adi', 'adi@admin.com', 'adi1234', 'Admin', 'Adityaaaaaa', 'Port-louis', '1234567890'),
-       ('A-Aqsaa', 'aqsaa@admin.com', 'aqsaa1234', 'Admin', 'Aqsaa', 'Triolet', '1234567891'),
-       ('A-Aliya', 'aliya@admin.com', 'aliya1234', 'Admin', 'Aliya', 'Triolet', '1234567892'),
-       ('A-Janvi', 'janvi@admin.com', 'janvi1234', 'Admin', 'Janvi', 'Mar D\'albert', '1234567893');
+VALUES ('Adi', 'adi@admin.com', 'adi1234', 'Admin', 'Adityaaaaaa', 'Port-louis', '1234567890'),
+       ('Aqsaa', 'aqsaa@admin.com', 'aqsaa1234', 'Admin', 'Aqsaa', 'Triolet', '1234567891'),
+       ('Aliya', 'aliya@admin.com', 'aliya1234', 'Admin', 'Aliya', 'Triolet', '1234567892'),
+       ('Janvi', 'janvi@admin.com', 'janvi1234', 'Admin', 'Janvi', 'Mar D\'albert', '1234567893');
 
 -- 3 Users
 INSERT INTO Users (username, email, password, role, name, address, phone)
-VALUES ('U-John01', 'john@gmail.com', 'john2024', 'User', 'John Doe', '12, Netflix Avenue, Colombia Pictures', '5673 3673'),
-       ('U-Bob75', 'bob@gmail.com', 'bob12345', 'User', 'Bob The Builder', 'Construction st, Helicopter', '5783 3783'),
-       ('U-Tom2024', 'tom@gmail.com', 'jerry2001', 'User', 'Tom and Jerry', 'Tom Mansion, idk where', '5783 3723');
+VALUES ('John01', 'john@gmail.com', 'john2024', 'User', 'John Doe', '12, Netflix Avenue, Colombia Pictures', '5673 3673'),
+       ('Bob75', 'bob@gmail.com', 'bob12345', 'User', 'Bob The Builder', 'Construction st, Helicopter', '5783 3783'),
+       ('Tom2024', 'tom@gmail.com', 'jerry2001', 'User', 'Tom and Jerry', 'Tom Mansion, idk where', '5783 3723');
 
 -- 10 Organizers
 -- Insert test data into Users table (Organizers with more realistic details)
 INSERT INTO Users (username, email, password, role, name, address, phone)
-VALUES ('O-eventmaster', 'contact@eventmaster.com', 'master1234', 'Organizer', 'Event Master', '123, Main Street, Cityville', '5678 9101'),
-       ('O-plannerpros', 'info@plannerpros.com', 'planpros567', 'Organizer', 'Planner Pros', '45, Organizer Blvd, Plannertown', '5678 9102'),
-       ('O-partycentral', 'hello@partycentral.com', 'partytime987', 'Organizer', 'Party Central', '789, Fun Street, Festivity City', '5678 9103'),
-       ('O-celebrationhub', 'admin@celebrationhub.com', 'celebrate2024', 'Organizer', 'Celebration Hub', '67, Joy Avenue, Happyville', '5678 9104'),
-       ('O-eventsquared', 'team@eventsquared.com', 'square9876', 'Organizer', 'Event Squared', '90, Corporate Plaza, Busytown', '5678 9105'),
-       ('O-stellarparties', 'book@stellarparties.com', 'stellars123', 'Organizer', 'Stellar Parties', '12, Galaxy Lane, Starcity', '5678 9106'),
-       ('O-grandgala', 'support@grandgala.com', 'grandgal123', 'Organizer', 'Grand Gala', '88, Luxurious Blvd, Poshville', '5678 9107'),
-       ('O-eventcrafters', 'services@eventcrafters.com', 'craft12345', 'Organizer', 'Event Crafters', '22, Artisan Rd, Craftsville', '5678 9108'),
-       ('O-epicvenues', 'venues@epicvenues.com', 'epic7890', 'Organizer', 'Epic Venues', '11, Venue St, Arenatown', '5678 9109'),
-       ('O-festivityplus', 'contact@festivityplus.com', 'festplus678', 'Organizer', 'Festivity Plus', '55, Festival Ave, Celebratown', '5678 9110');
+VALUES ('eventmaster', 'contact@eventmaster.com', 'master1234', 'Organizer', 'Event Master', '123, Main Street, Cityville', '5678 9101'),
+       ('plannerpros', 'info@plannerpros.com', 'planpros567', 'Organizer', 'Planner Pros', '45, Organizer Blvd, Plannertown', '5678 9102'),
+       ('partycentral', 'hello@partycentral.com', 'partytime987', 'Organizer', 'Party Central', '789, Fun Street, Festivity City', '5678 9103'),
+       ('celebrationhub', 'admin@celebrationhub.com', 'celebrate2024', 'Organizer', 'Celebration Hub', '67, Joy Avenue, Happyville', '5678 9104'),
+       ('eventsquared', 'team@eventsquared.com', 'square9876', 'Organizer', 'Event Squared', '90, Corporate Plaza, Busytown', '5678 9105'),
+       ('stellarparties', 'book@stellarparties.com', 'stellars123', 'Organizer', 'Stellar Parties', '12, Galaxy Lane, Starcity', '5678 9106'),
+       ('grandgala', 'support@grandgala.com', 'grandgal123', 'Organizer', 'Grand Gala', '88, Luxurious Blvd, Poshville', '5678 9107'),
+       ('eventcrafters', 'services@eventcrafters.com', 'craft12345', 'Organizer', 'Event Crafters', '22, Artisan Rd, Craftsville', '5678 9108'),
+       ('epicvenues', 'venues@epicvenues.com', 'epic7890', 'Organizer', 'Epic Venues', '11, Venue St, Arenatown', '5678 9109'),
+       ('festivityplus', 'contact@festivityplus.com', 'festplus678', 'Organizer', 'Festivity Plus', '55, Festival Ave, Celebratown', '5678 9110');
 
 -- Insert test data into Locations table
 -- Some locations that might be used by multiple organizers or specific ones
