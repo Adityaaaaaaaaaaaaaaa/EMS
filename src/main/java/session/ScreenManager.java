@@ -2,7 +2,7 @@ package session;
 
 import app.Main;
 import gui.Login_form;
-import xxxgui.Screen1;
+import gui.Screen1; // Adjust import path if necessary
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +22,11 @@ public class ScreenManager {
         this.screens = new HashMap<>();
 
         this.mainFrame.setContentPane(mainPanel);
+
+        // Register screens
+        registerScreen("Login_form", new Login_form(mainFrame));
+        registerScreen("Screen1", new Screen1(mainFrame));
+        // Add more screens as needed
     }
 
     public JPanel getScreen(String name) {

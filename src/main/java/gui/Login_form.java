@@ -41,9 +41,18 @@ public class Login_form extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String userID = user_id.getText().trim();
                 String password = new String(pwd.getPassword()).trim();
+
+                // Print entered credentials
+                System.out.println("Entered Username: " + userID);
+                System.out.println("Entered Password: " + password);
+
                 User user = authenticateUser(userID, password);
                 if (user != null) {
                     Session.currentUser = user;
+
+                    // Print retrieved user role
+                    System.out.println("Logged in as: " + user.getRole());
+
                     clearFields();
                     mainFrame.getScreenManager().showPanel("Screen1");
                 } else {
@@ -59,14 +68,14 @@ public class Login_form extends JPanel {
         User user = null;
 
         try (Connection connection = Db_Connect.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM Users WHERE user_id = ? AND password = ?")) {
+             PreparedStatement statement = connection.prepareStatement("SELECT role FROM Users WHERE username = ? AND password = ?")) {
 
             statement.setString(1, userID);
             statement.setString(2, password);
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    String role = determineRole(userID);
+                    String role = resultSet.getString("role");
                     user = new User(userID, role);
                 }
             }
@@ -76,17 +85,6 @@ public class Login_form extends JPanel {
         }
 
         return user;
-    }
-
-    private String determineRole(String userID) {
-        if (userID.startsWith("A")) {
-            return "Admin";
-        } else if (userID.startsWith("U")) {
-            return "User";
-        } else if (userID.startsWith("O")) {
-            return "Organizer";
-        }
-        return "Unknown";
     }
 
     private void clearFields() {
