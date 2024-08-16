@@ -1,9 +1,8 @@
-package app;
+package session;
 
-import gui.LoginForm;
-import gui.Screen1;
-import gui.Screen2;
-import gui.Screen3;
+import app.Main;
+import gui.Login_form;
+import xxxgui.Screen1;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,27 +45,13 @@ public class ScreenManager {
 
     private JPanel createScreen(String name) {
         switch (name) {
-            case "LoginForm":
-                return new LoginForm(mainFrame);
+            case "Login_form":
+                return new Login_form(mainFrame);
             case "Screen1":
                 return new Screen1(mainFrame);
-            case "Screen2":
-                return new Screen2(mainFrame);
-            case "Screen3":
-                return new Screen3(mainFrame);
             // Add more cases as needed
             default:
                 return null; // Handle unknown screens
         }
-
-        /* Enhanced switch case loop
-        return switch (name) {
-            case "LoginForm" -> new LoginForm(mainFrame);
-            case "Screen1" -> new Screen1(mainFrame);
-            case "Screen2" -> new Screen2(mainFrame);
-            case "Screen3" -> new Screen3(mainFrame);
-            // Add more cases as needed
-            default -> null; // Handle unknown screens
-        };*/
     }
 }

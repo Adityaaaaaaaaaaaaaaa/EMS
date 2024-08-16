@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Db_Connect {
     // Database connection details
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/swingui";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/Event_Management_System";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
 

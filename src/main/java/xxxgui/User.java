@@ -1,4 +1,4 @@
-package gui;
+package xxxgui;
 
 class User {
      String email;

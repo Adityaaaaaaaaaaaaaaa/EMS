@@ -1,5 +1,6 @@
 package app;
 
+import session.ScreenManager;
 import utility.Utility;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ public class Main extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-        screenManager.showPanel("LoginForm"); // Start with the login form
+        screenManager.showPanel("Login_form"); // Default screen to show
     }
 
     public ScreenManager getScreenManager() {
