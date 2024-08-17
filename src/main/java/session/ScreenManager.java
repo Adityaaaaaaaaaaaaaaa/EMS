@@ -2,6 +2,7 @@ package session;
 
 import app.Main;
 import gui.Login_form;
+import gui.Register_form;
 import gui.Screen1;
 
 import javax.swing.*;
@@ -25,7 +26,8 @@ public class ScreenManager {
 
         // Register screens
         registerScreen("Login_form", new Login_form(mainFrame));
-        registerScreen("Screen1", new Screen1(mainFrame));
+        registerScreen("Screen1", new Screen1(mainFrame)); //test do not delete yet
+        registerScreen("Register_form", new Register_form(mainFrame));
         // Add more screens as needed
     }
 
@@ -52,6 +54,7 @@ public class ScreenManager {
         return switch (name) {
             case "Login_form" -> new Login_form(mainFrame);
             case "Screen1" -> new Screen1(mainFrame);
+            case "Register_form" -> new Register_form(mainFrame);
             // Add more cases as needed
             default -> null; // Handle unknown screens
         };
