@@ -33,6 +33,9 @@ public class Login_form extends JPanel {
         setLayout(new BorderLayout());
         add(Login_Panel);
 
+        // Clear any previous session
+        Session.currentUser = null;
+
         // Clear error message when user starts typing in the fields
         Utility.addFieldListeners(errorMsg, user_id, pwd);
 
@@ -47,11 +50,29 @@ public class Login_form extends JPanel {
                 return;
             }
 
+            // Authenticate user
             User user = authenticateUser(userID, password);
             if (user != null) {
+                // Assign session after successful authentication
                 Session.currentUser = user;
+
+                // Logging session details immediately
+                System.out.println("\nUser Authenticated:");
+                System.out.println("ID: " + user.getId());
+                System.out.println("Role: " + user.getRole());
+
+                // Check session assignment
+                if (Session.currentUser != null) {
+                    System.out.println("login Session Set for: " + Session.currentUser.getId());
+                } else {
+                    System.out.println("Failed to set session.");
+                }
+
+                // Clear form and proceed
                 Utility.clearForm(new JTextField[]{user_id}, pwd, null, errorMsg);
                 mainFrame.getScreenManager().showPanel("Screen1");
+                mainFrame.revalidate();
+                mainFrame.repaint();
             } else {
                 errorMsg.setText("Invalid Username or Password. Please try again.");
             }
@@ -72,7 +93,7 @@ public class Login_form extends JPanel {
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     String role = resultSet.getString("role");
-                    user = new User(userID, role);
+                    user = new User(userID, role);  // Create User object with retrieved role
                 } else {
                     errorMsg.setText("Username or Password is incorrect.");
                 }

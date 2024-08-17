@@ -2,6 +2,8 @@ package gui;
 
 import app.Main;
 import db.Db_Connect;
+import session.Session;
+import session.User;
 import utility.Utility;
 
 import javax.swing.*;
@@ -94,7 +96,24 @@ public class Register_form extends JPanel {
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
+                // Create a new User object and set it in the Session
+                Session.currentUser = new User(regUserName.getText().trim(), role);
+
+                // Print or log the details of the registered user and the session
+                System.out.println("\nUser Registered:");
+                System.out.println("ID: " + regUserName.getText().trim());
+                System.out.println("Role: " + role);
+                System.out.println("\nCurrent Session User:");
+                System.out.println("ID: " + Session.currentUser.getId());
+                System.out.println("Role: " + Session.currentUser.getRole());
+
+                //mainFrame.getScreenManager().showPanel("Screen1");
+
+                // Switch to Screen1 and refresh the UI
                 mainFrame.getScreenManager().showPanel("Screen1");
+                mainFrame.revalidate();
+                mainFrame.repaint();
+
             } else {
                 JOptionPane.showMessageDialog(this, "Registration failed!", "Error", JOptionPane.INFORMATION_MESSAGE);
                 errorMsg.setText("Registration failed. Please try again.");
