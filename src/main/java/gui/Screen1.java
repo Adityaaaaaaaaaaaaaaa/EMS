@@ -10,6 +10,8 @@ public class Screen1 extends JPanel {
     private JButton button1;
     private JPanel screen1;
     private JButton logoutButton;
+    private JButton btnOrgPf;
+    private JButton btnUsrPf;
 
     private Main mainFrame;
 
@@ -26,21 +28,21 @@ public class Screen1 extends JPanel {
             System.out.println("No user in session.");
         }
 
-        // Example of showing/hiding components based on user role
+        // do not remove
         String role = Session.currentUser != null ? Session.currentUser.getRole() : "";
         switch (role) {
-            case "Admin":
+            case "Admin" -> {
                 // Show admin-specific components
-                break;
-            case "User":
+            }
+            case "User" -> {
                 // Show user-specific components
-                break;
-            case "Organizer":
+            }
+            case "Organizer" -> {
                 // Show organizer-specific components
-                break;
-            default:
+            }
+            default -> {
                 // Handle unknown or not logged-in case
-                break;
+            }
         }
 
         // Action listener for navigating to Screen2
@@ -59,5 +61,9 @@ public class Screen1 extends JPanel {
             mainFrame.repaint();
             System.out.println("Session after pressing logout: " + Session.currentUser);
         });
+
+        btnOrgPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("Organizer_profile"));
+
+        btnUsrPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("User_profile"));
     }
 }
