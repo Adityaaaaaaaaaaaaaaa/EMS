@@ -1,8 +1,12 @@
 package gui;
 
-import javax.swing.*;
+import app.Main;
+import utility.Utility;
 
-public class User_profile {
+import javax.swing.*;
+import java.awt.*;
+
+public class User_profile extends JPanel {
     private JPanel mainJpanel;
     private JPanel menuBar;
     private JLabel menuBarspace;
@@ -17,4 +21,15 @@ public class User_profile {
     private JButton updateBtn;
     private JButton cancelBtn;
     private JPanel buttons;
+
+    private Main mainFrame;
+
+    public User_profile(Main mainFrame) {
+        this.mainFrame = mainFrame;
+        Utility.setWindowSize(mainFrame);
+        setLayout(new BorderLayout());
+        add(mainJpanel);
+
+    }
+
 }
