@@ -3,29 +3,31 @@ package db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Db_Connect {
-    // Database connection details
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/swingui";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/Event_Management_System";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
 
-    // Method to establish and return a database connection
+    private static final Logger LOGGER = Logger.getLogger(Db_Connect.class.getName());
+
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         // Load the MySQL JDBC driver
         Class.forName("com.mysql.jdbc.Driver");
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
 
-    // Method to close the connection, statement, and result set
     public static void close(Connection connection) {
-        try {
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
+        if (connection != null) {
+            try {
+                if (!connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                LOGGER.log(Level.SEVERE, "Failed to close the database connection: " + e.getMessage(), e);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("idk what f*cked up");
         }
     }
 }

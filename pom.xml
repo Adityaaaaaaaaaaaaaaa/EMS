@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.fx</groupId>
-    <artifactId>SwingMySqlLogin</artifactId>
+    <artifactId>Event_Management_System</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
