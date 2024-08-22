@@ -19,4 +19,11 @@ public class Organizer_profile extends JPanel {
         add(main_panel);
     }
 
+    private JTextField OrgName;
+    private JTextField OrgUname;
+    private JTextField OrgEmail;
+    private JTextField OrgPwd;
+    private JTextField OrgAdd;
+    private JTextField textField1;
+    private JLabel OrgPhoneNum;
 }
