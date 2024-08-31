@@ -101,7 +101,8 @@ public class Organizer_profile extends JPanel {
                 // Make fields non-editable initially
                 enableEditing(false);
             } else {
-                JOptionPane.showMessageDialog(this, "User not found!", "Error", JOptionPane.INFORMATION_MESSAGE);
+                // this keeps poping up
+                // JOptionPane.showMessageDialog(this, "User not found!", "Error", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
