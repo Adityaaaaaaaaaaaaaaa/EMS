@@ -31,7 +31,7 @@ public class Organizer_profile extends JPanel {
     private static final Logger LOGGER = Logger.getLogger(Organizer_profile.class.getName());
 
     private Main mainFrame;
-    private final String username = "Aliya";
+    private final String username = "Aliyah";
     private boolean isEditing = false; // Track whether the user is editing the profile
 
     public Organizer_profile(Main mainFrame) {
