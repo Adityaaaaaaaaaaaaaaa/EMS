@@ -68,5 +68,7 @@ public class Screen1 extends JPanel {
         btnUsrPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("User_profile"));
 
         ReverseEvent.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
+
+        System.out.println("Bla bla ");
     }
 }

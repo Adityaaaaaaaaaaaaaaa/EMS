@@ -51,6 +51,7 @@ public class ScreenManager {
         cardLayout.show(mainPanel, name);
     }
 
+
     private JPanel createScreen(String name) {
         return switch (name) {
             case "Login_form" -> new Login_form(mainFrame);
@@ -60,7 +61,9 @@ public class ScreenManager {
             case "User_profile" -> new User_profile(mainFrame);
             case "EventReservation" -> new EventReservation(mainFrame);
             // Add more cases as needed
-            default -> null; // Handle unknown screens
+            default -> null;
+
+            // Handle unknown screens
         };
     }
 }

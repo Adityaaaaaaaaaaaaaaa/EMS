@@ -21,5 +21,7 @@ public class EventReservation extends JPanel{
      Utility.setWindowSize(mainFrame);
      setLayout(new BorderLayout());
      add(panel);
+
+     System.out.println("Bla bla ");
  }
 }
