@@ -23,7 +23,6 @@ public class Organizer_profile extends JPanel {
     private JTextField OrgEmail;
     private JTextField OrgAdd;
     private JTextField OrgPhoneNum;
-    private JButton updateProfileButton;
     private JButton btnUpdate;
     private JButton btnDelete;
     private JButton btnCancel;
