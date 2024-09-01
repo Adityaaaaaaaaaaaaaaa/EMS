@@ -22,6 +22,6 @@ public class EventReservation extends JPanel{
      setLayout(new BorderLayout());
      add(panel);
 
-     System.out.println("Bla bla ");
+     System.out.println("Bla bla 2");
  }
 }
