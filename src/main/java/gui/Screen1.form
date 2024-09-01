@@ -47,7 +47,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="66051" class="javax.swing.JLabel">
+          <component id="66051" class="javax.swing.JLabel" binding="testHere">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -75,9 +75,9 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="6538b" class="javax.swing.JButton" binding="button1" default-binding="true">
+          <component id="6538b" class="javax.swing.JButton" binding="doNotClickButton">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="do not click"/>
@@ -99,12 +99,12 @@
               <text value="user profile"/>
             </properties>
           </component>
-          <component id="990db" class="javax.swing.JButton" binding="ReverseEvent">
+          <component id="2cc49" class="javax.swing.JButton" binding="btnPayment">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Button"/>
+              <text value="Janvi Payment form"/>
             </properties>
           </component>
         </children>
