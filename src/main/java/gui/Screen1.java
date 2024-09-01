@@ -7,19 +7,24 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Screen1 extends JPanel {
-    private JButton button1;
+    private JButton doNotClickButton;
     private JPanel screen1;
     private JButton logoutButton;
     private JButton btnOrgPf;
     private JButton btnUsrPf;
-    private JButton ReverseEvent;
+    private JLabel testHere;
+    private JButton btnPayment;
 
     private Main mainFrame;
+
+    private static final String DEFAULT_TEXT = "Welcome to the Event Management System"; // Default text for the label
 
     public Screen1(Main mainFrame) {
         this.mainFrame = mainFrame;
         setLayout(new BorderLayout());
         add(screen1);
+
+        testHere.setText(DEFAULT_TEXT);
 
         if (Session.currentUser != null) {
             System.out.println("Session Status:");
@@ -29,25 +34,38 @@ public class Screen1 extends JPanel {
             System.out.println("No user in session.");
         }
 
-        // do not remove
-        String role = Session.currentUser != null ? Session.currentUser.getRole() : "";
-        switch (role) {
-            case "Admin" -> {
-                // Show admin-specific components
-            }
-            case "User" -> {
-                // Show user-specific components
-            }
-            case "Organizer" -> {
-                // Show organizer-specific components
-            }
-            default -> {
-                // Handle unknown or not logged-in case
-            }
-        }
-
         // Action listener for navigating to Screen2
-        button1.addActionListener(e -> mainFrame.getScreenManager().showPanel("Screen2"));
+        doNotClickButton.addActionListener(e -> {
+            //mainFrame.getScreenManager().showPanel("Screen2");
+            // do not remove
+            String role = Session.currentUser != null ? Session.currentUser.getRole() : "";
+            assert Session.currentUser != null;
+            String name = Session.currentUser.getName();
+
+            switch (role) {
+                case "Admin" -> {
+                    // Show admin-specific components
+                    System.out.println("Admin is currently logged in");
+                    testHere.setText(String.format("Admin %s is currently logged innnnnnnnnnn", name));
+                }
+                case "User" -> {
+                    // Show user-specific components
+                    System.out.println("User is currently logged in");
+                    testHere.setText(String.format("User %s is currently logged innnnnnnnnnn", name));
+                }
+                case "Organizer" -> {
+                    // Show organizer-specific components
+                    System.out.println("Organizer is currently logged in");
+                    testHere.setText(String.format("Organiser %s is currently logged innnnnnnnnnn", name));
+                }
+                default -> {
+                    // Handle unknown or not logged-in case
+                    System.out.println("Who are you ???? How did you reach here???");
+                }
+            }
+
+
+        });
 
         // Action listener for logging out
         logoutButton.addActionListener(e -> {
@@ -55,6 +73,7 @@ public class Screen1 extends JPanel {
                 System.out.println("before pressing Log out user: " + Session.currentUser.getId());
             }
             Session.currentUser = null; // Clear the session
+            testHere.setText(DEFAULT_TEXT);
             mainFrame.getScreenManager().showPanel("Login_form"); // Show login screen
 
             // Revalidate and repaint to ensure components are updated
@@ -67,6 +86,6 @@ public class Screen1 extends JPanel {
 
         btnUsrPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("User_profile"));
 
-        ReverseEvent.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
+        btnPayment.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
     }
 }
