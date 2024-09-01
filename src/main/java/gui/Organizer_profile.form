@@ -141,7 +141,7 @@
               <foreground color="-16777216"/>
             </properties>
           </component>
-          <component id="22224" class="javax.swing.JLabel" binding="OrgPhoneNum">
+          <component id="22224" class="javax.swing.JLabel">
             <constraints>
               <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -151,7 +151,7 @@
               <text value="Phone Number"/>
             </properties>
           </component>
-          <component id="a00bc" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="a00bc" class="javax.swing.JTextField" binding="OrgPhoneNum">
             <constraints>
               <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
