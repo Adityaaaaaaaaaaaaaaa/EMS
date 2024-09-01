@@ -24,20 +24,28 @@ public class Screen1 extends JPanel {
         setLayout(new BorderLayout());
         add(screen1);
 
+        // Set the default text
         testHere.setText(DEFAULT_TEXT);
 
+        // Check if there is a current user session and update the label
         if (Session.currentUser != null) {
-            System.out.println("Session Status:");
-            System.out.println("ID: " + Session.currentUser.getId());
-            System.out.println("Role: " + Session.currentUser.getRole());
+            String role = Session.currentUser.getRole();
+            String name = Session.currentUser.getName();
+
+            // Update the label based on the user's role and name
+            switch (role) {
+                case "Admin" -> testHere.setText(String.format("Admin %s is currently logged in", name));
+                case "User" -> testHere.setText(String.format("User %s is currently logged in", name));
+                case "Organizer" -> testHere.setText(String.format("Organizer %s is currently logged in", name));
+                default -> testHere.setText(DEFAULT_TEXT);
+            }
         } else {
             System.out.println("No user in session.");
+            testHere.setText(DEFAULT_TEXT);
         }
 
         // Action listener for navigating to Screen2
         doNotClickButton.addActionListener(e -> {
-            //mainFrame.getScreenManager().showPanel("Screen2");
-            // do not remove
             String role = Session.currentUser != null ? Session.currentUser.getRole() : "";
             assert Session.currentUser != null;
             String name = Session.currentUser.getName();
@@ -63,8 +71,6 @@ public class Screen1 extends JPanel {
                     System.out.println("Who are you ???? How did you reach here???");
                 }
             }
-
-
         });
 
         // Action listener for logging out

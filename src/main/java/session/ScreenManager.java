@@ -22,14 +22,11 @@ public class ScreenManager {
 
         this.mainFrame.setContentPane(mainPanel);
 
-        // Register screens
+        // Register initial screens
         registerScreen("Login_form", new Login_form(mainFrame));
-        registerScreen("Screen1", new Screen1(mainFrame)); //test do not delete yet
+        registerScreen("Screen1", new Screen1(mainFrame));
         registerScreen("Register_form", new Register_form(mainFrame));
-        registerScreen("Organizer_profile", new Organizer_profile(mainFrame));
-        registerScreen("User_profile", new User_profile(mainFrame));
-        registerScreen("EventReservation", new EventReservation(mainFrame));
-        // Add more screens as needed
+        // Other screens will be created lazily
     }
 
     public JPanel getScreen(String name) {
@@ -42,25 +39,57 @@ public class ScreenManager {
     }
 
     public void showPanel(String name) {
+        // Validate session before showing certain panels
+        if ((name.equals("Organizer_profile") || name.equals("User_profile")) && Session.currentUser == null) {
+            JOptionPane.showMessageDialog(mainFrame, "Please log in to access this feature.", "Session Error", JOptionPane.ERROR_MESSAGE);
+            name = "Login_form"; // Redirect to login form
+        }
+
+        // Create screen lazily if it doesn't exist
         if (!screens.containsKey(name)) {
-            JPanel panel = createScreen(name); // Create screen lazily
+            JPanel panel = createScreen(name);
             if (panel != null) {
                 registerScreen(name, panel);
+            } else {
+                return; // Prevents showing an invalid or uninitialized panel
             }
         }
         cardLayout.show(mainPanel, name);
     }
 
     private JPanel createScreen(String name) {
-        return switch (name) {
-            case "Login_form" -> new Login_form(mainFrame);
-            case "Screen1" -> new Screen1(mainFrame);
-            case "Register_form" -> new Register_form(mainFrame);
-            case "Organizer_profile" -> new Organizer_profile(mainFrame);
-            case "User_profile" -> new User_profile(mainFrame);
-            case "EventReservation" -> new EventReservation(mainFrame);
-            // Add more cases as needed
-            default -> null; // Handle unknown screens
-        };
+        switch (name) {
+            case "Organizer_profile" -> {
+                if (Session.currentUser != null) {
+                    return new Organizer_profile(mainFrame);
+                } else {
+                    JOptionPane.showMessageDialog(mainFrame, "Please log in first.");
+                    return null;
+                }
+            }
+            case "User_profile" -> {
+                if (Session.currentUser != null) {
+                    return new User_profile(mainFrame);
+                } else {
+                    JOptionPane.showMessageDialog(mainFrame, "Please log in first.");
+                    return null;
+                }
+            }
+            case "EventReservation" -> {
+                return new EventReservation(mainFrame);
+            }
+            case "Login_form" -> {
+                return new Login_form(mainFrame);
+            }
+            case "Screen1" -> {
+                return new Screen1(mainFrame);
+            }
+            case "Register_form" -> {
+                return new Register_form(mainFrame);
+            }
+            default -> {
+                return null; // Handle unknown screens
+            }
+        }
     }
 }

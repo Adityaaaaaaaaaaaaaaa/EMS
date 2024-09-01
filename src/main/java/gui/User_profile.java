@@ -2,6 +2,7 @@ package gui;
 
 import app.Main;
 import db.Db_Connect;
+import session.Session;
 import utility.Utility;
 
 import javax.swing.*;
@@ -44,8 +45,18 @@ public class User_profile extends JPanel {
         setLayout(new BorderLayout());
         add(mainJpanel);
 
+        // Defer session checks until after initialization
+        SwingUtilities.invokeLater(() -> {
+            if (Session.currentUser != null) {
+                fetchAndDisplayUserData(Session.currentUser.getId());
+            } else {
+                //JOptionPane.showMessageDialog(this, "No userX in session. Please log in again.", "Error", JOptionPane.ERROR_MESSAGE);
+                mainFrame.getScreenManager().showPanel("Login_form");
+            }
+        });
+
         // Fetch user data and populate fields
-        fetchAndDisplayUserData(username);
+        //fetchAndDisplayUserData(username);
 
         // Action listeners
         btnBack.addActionListener(e -> {
