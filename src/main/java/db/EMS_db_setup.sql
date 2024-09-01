@@ -74,7 +74,7 @@ CREATE TABLE Payments
 INSERT INTO Users (username, email, password, role, name, address, phone)
 VALUES ('Adi', 'adi@admin.com', 'adi1234', 'Admin', 'Adityaaaaaa', 'Port-louis', '1234567890'),
        ('Aqsaa', 'aqsaa@admin.com', 'aqsaa1234', 'Admin', 'Aqsaa', 'Triolet', '1234567891'),
-       ('Aliyah', 'aliyah@admin.com', 'aliyah1234', 'Admin', 'Aliyah', 'Triolet', '1234567892'),
+       ('Aliya', 'aliya@admin.com', 'aliya1234', 'Admin', 'Aliya', 'Triolet', '1234567892'),
        ('Janvi', 'janvi@admin.com', 'janvi1234', 'Admin', 'Janvi', 'Mar D\'albert', '1234567893');
 
 -- 3 Users
