@@ -12,6 +12,7 @@ public class Screen1 extends JPanel {
     private JButton logoutButton;
     private JButton btnOrgPf;
     private JButton btnUsrPf;
+    private JButton ReverseEvent;
 
     private Main mainFrame;
 
@@ -65,5 +66,7 @@ public class Screen1 extends JPanel {
         btnOrgPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("Organizer_profile"));
 
         btnUsrPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("User_profile"));
+
+        ReverseEvent.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
     }
 }
