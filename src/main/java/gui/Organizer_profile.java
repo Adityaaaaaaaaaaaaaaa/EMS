@@ -31,7 +31,7 @@ public class Organizer_profile extends JPanel {
     private static final Logger LOGGER = Logger.getLogger(Organizer_profile.class.getName());
 
     private Main mainFrame;
-    private final String username = "Aliya";
+    private final String username = "Aliyah";
     private boolean isEditing = false; // Track whether the user is editing the profile
 
     public Organizer_profile(Main mainFrame) {
@@ -101,7 +101,8 @@ public class Organizer_profile extends JPanel {
                 // Make fields non-editable initially
                 enableEditing(false);
             } else {
-                JOptionPane.showMessageDialog(this, "User not found!", "Error", JOptionPane.INFORMATION_MESSAGE);
+                // this keeps poping up
+                // JOptionPane.showMessageDialog(this, "User not found!", "Error", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (SQLException | ClassNotFoundException ex) {

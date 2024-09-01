@@ -28,6 +28,7 @@ public class ScreenManager {
         registerScreen("Register_form", new Register_form(mainFrame));
         registerScreen("Organizer_profile", new Organizer_profile(mainFrame));
         registerScreen("User_profile", new User_profile(mainFrame));
+        registerScreen("EventReservation", new EventReservation(mainFrame));
         // Add more screens as needed
     }
 
@@ -57,6 +58,7 @@ public class ScreenManager {
             case "Register_form" -> new Register_form(mainFrame);
             case "Organizer_profile" -> new Organizer_profile(mainFrame);
             case "User_profile" -> new User_profile(mainFrame);
+            case "EventReservation" -> new EventReservation(mainFrame);
             // Add more cases as needed
             default -> null; // Handle unknown screens
         };
