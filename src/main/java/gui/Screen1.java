@@ -13,6 +13,7 @@ public class Screen1 extends JPanel {
     private JButton btnOrgPf;
     private JButton btnUsrPf;
     private JLabel testHere;
+    private JButton btnPayment;
 
     private Main mainFrame;
 
@@ -84,5 +85,7 @@ public class Screen1 extends JPanel {
         btnOrgPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("Organizer_profile"));
 
         btnUsrPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("User_profile"));
+
+        btnPayment.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
     }
 }
