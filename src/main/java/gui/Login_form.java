@@ -81,7 +81,7 @@ public class Login_form extends JPanel {
         btnRegister.addActionListener(e -> mainFrame.getScreenManager().showPanel("Register_form"));
     }
 
-    private User authenticateUser(String userID, String password) {
+    /*private User authenticateUser(String userID, String password) {
         User user = null;
 
         try (Connection connection = Db_Connect.getConnection();
@@ -111,5 +111,46 @@ public class Login_form extends JPanel {
         }
 
         return user;
+    }*/
+
+    private User authenticateUser(String userID, String password) {
+        User user = null;
+
+        try (Connection connection = Db_Connect.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "SELECT username, role, name, email, phone FROM Users WHERE username = ? AND password = ?")) {
+
+            statement.setString(1, userID);
+            statement.setString(2, password);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    // Fetch user data from the database
+                    String id = resultSet.getString("username");
+                    String role = resultSet.getString("role");
+                    String name = resultSet.getString("name");
+                    String email = resultSet.getString("email");
+                    String phone = resultSet.getString("phone");
+
+                    // Create a User object with the fetched data
+                    user = new User(id, role, name, email, phone);
+                } else {
+                    errorMsg.setText("Username or Password is incorrect.");
+                }
+            }
+
+        } catch (SQLException ex) {
+            errorMsg.setText("Database connection failed. Please try again later.");
+            LOGGER.log(Level.SEVERE, "Database error during authentication: " + ex.getMessage(), ex);
+        } catch (ClassNotFoundException ex) {
+            errorMsg.setText("Internal error. Please contact support.");
+            LOGGER.log(Level.SEVERE, "JDBC Driver not found: " + ex.getMessage(), ex);
+        } catch (Exception ex) {
+            errorMsg.setText("Unexpected error occurred. Please try again.");
+            LOGGER.log(Level.SEVERE, "Unexpected error during authentication: " + ex.getMessage(), ex);
+        }
+
+        return user;
     }
+
 }
