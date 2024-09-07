@@ -80,185 +80,6 @@ public class Register_form extends JPanel {
         return true;
     }
 
-    /*private void registerUser() {
-        String role = roleUser.isSelected() ? "User" : "Organizer";
-
-        try (Connection connection = Db_Connect.getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO Users (name, email, username, address, phone, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
-
-            statement.setString(1, regName.getText().trim());
-            statement.setString(2, regEmail.getText().trim());
-            statement.setString(3, regUserName.getText().trim());
-            statement.setString(4, regAddress.getText().trim());
-            statement.setString(5, regPhone.getText().trim());
-            statement.setString(6, new String(regPwd.getPassword()).trim());
-            statement.setString(7, role);
-
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                // Create a new User object and set it in the Session
-                Session.currentUser = new User(regUserName.getText().trim(), role);
-
-                // Print or log the details of the registered user and the session
-                System.out.println("\nUser Registered:");
-                System.out.println("ID: " + regUserName.getText().trim());
-                System.out.println("Role: " + role);
-                System.out.println("\nCurrent Session User:");
-                System.out.println("ID: " + Session.currentUser.getId());
-                System.out.println("Role: " + Session.currentUser.getRole());
-
-                //mainFrame.getScreenManager().showPanel("Screen1");
-
-                // Switch to Screen1 and refresh the UI
-                mainFrame.getScreenManager().showPanel("Screen1");
-                mainFrame.revalidate();
-                mainFrame.repaint();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Registration failed!", "Error", JOptionPane.INFORMATION_MESSAGE);
-                errorMsg.setText("Registration failed. Please try again.");
-            }
-
-        } catch (SQLException ex) {
-            errorMsg.setText("Database error. Please try again later.");
-            LOGGER.log(Level.SEVERE, "Database error during registration: " + ex.getMessage(), ex);
-        } catch (ClassNotFoundException ex) {
-            errorMsg.setText("Internal error. Please contact support.");
-            LOGGER.log(Level.SEVERE, "JDBC Driver not found: " + ex.getMessage(), ex);
-        } catch (Exception ex) {
-            errorMsg.setText("Unexpected error occurred. Please try again.");
-            LOGGER.log(Level.SEVERE, "Unexpected error during registration: " + ex.getMessage(), ex);
-        }
-    }*/
-
-    /*private void registerUser() {
-        String role = roleUser.isSelected() ? "User" : "Organizer";
-
-        try (Connection connection = Db_Connect.getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO Users (name, email, username, address, phone, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
-
-            String name = regName.getText().trim();
-            String email = regEmail.getText().trim();
-            String username = regUserName.getText().trim();
-            String address = regAddress.getText().trim();
-            String phone = regPhone.getText().trim();
-            String password = new String(regPwd.getPassword()).trim();
-
-            statement.setString(1, name);
-            statement.setString(2, email);
-            statement.setString(3, username);
-            statement.setString(4, address);
-            statement.setString(5, phone);
-            statement.setString(6, password);
-            statement.setString(7, role);
-
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                // Create a new User object with all the registered user's details
-                Session.currentUser = new User(username, role, name, email, phone);
-
-                // Print or log the details of the registered user and the session
-                System.out.println("\nUser Registered:");
-                System.out.println("ID: " + username);
-                System.out.println("Role: " + role);
-                System.out.println("Name: " + name);
-                System.out.println("Email: " + email);
-                System.out.println("Phone: " + phone);
-                System.out.println("\nCurrent Session User:");
-                System.out.println("ID: " + Session.currentUser.getId());
-                System.out.println("Role: " + Session.currentUser.getRole());
-                System.out.println("Name: " + Session.currentUser.getName());
-                System.out.println("Email: " + Session.currentUser.getEmail());
-                System.out.println("Phone: " + Session.currentUser.getPhone());
-
-                // Switch to Screen1 and refresh the UI
-                mainFrame.getScreenManager().showPanel("Screen1");
-                mainFrame.revalidate();
-                mainFrame.repaint();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Registration failed!", "Error", JOptionPane.INFORMATION_MESSAGE);
-                errorMsg.setText("Registration failed. Please try again.");
-            }
-
-        } catch (SQLException ex) {
-            errorMsg.setText("Database error. Please try again later.");
-            LOGGER.log(Level.SEVERE, "Database error during registration: " + ex.getMessage(), ex);
-        } catch (ClassNotFoundException ex) {
-            errorMsg.setText("Internal error. Please contact support.");
-            LOGGER.log(Level.SEVERE, "JDBC Driver not found: " + ex.getMessage(), ex);
-        } catch (Exception ex) {
-            errorMsg.setText("Unexpected error occurred. Please try again.");
-            LOGGER.log(Level.SEVERE, "Unexpected error during registration: " + ex.getMessage(), ex);
-        }
-    }*/
-
-    /*private void registerUser() {
-        String role = roleUser.isSelected() ? "User" : "Organizer";
-
-        try (Connection connection = Db_Connect.getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO Users (name, email, username, address, phone, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
-
-            String name = regName.getText().trim();
-            String email = regEmail.getText().trim();
-            String username = regUserName.getText().trim();
-            String address = regAddress.getText().trim();
-            String phone = regPhone.getText().trim();
-            String password = new String(regPwd.getPassword()).trim();
-
-            // Set parameters for the prepared statement
-            statement.setString(1, name);
-            statement.setString(2, email);
-            statement.setString(3, username);
-            statement.setString(4, address);
-            statement.setString(5, phone);
-            statement.setString(6, password);
-            statement.setString(7, role);
-
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                // Session creation: Create a User object and store it in the session
-                Session.currentUser = new User(username, role, name, email, phone);
-
-                // Logging the details to verify session creation
-                System.out.println("\nUser Registered:");
-                System.out.println("ID: " + username);
-                System.out.println("Role: " + role);
-                System.out.println("Name: " + name);
-                System.out.println("Email: " + email);
-                System.out.println("Phone: " + phone);
-                System.out.println("\nCurrent Session User:");
-                System.out.println("ID: " + Session.currentUser.getId());
-                System.out.println("Role: " + Session.currentUser.getRole());
-                System.out.println("Name: " + Session.currentUser.getName());
-                System.out.println("Email: " + Session.currentUser.getEmail());
-                System.out.println("Phone: " + Session.currentUser.getPhone());
-
-                // Redirect to Screen1 after successful registration
-                mainFrame.getScreenManager().showPanel("Screen1");
-                mainFrame.revalidate();
-                mainFrame.repaint();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Registration failed!", "Error", JOptionPane.INFORMATION_MESSAGE);
-                errorMsg.setText("Registration failed. Please try again.");
-            }
-
-        } catch (SQLException ex) {
-            errorMsg.setText("Database error. Please try again later.");
-            LOGGER.log(Level.SEVERE, "Database error during registration: " + ex.getMessage(), ex);
-        } catch (ClassNotFoundException ex) {
-            errorMsg.setText("Internal error. Please contact support.");
-            LOGGER.log(Level.SEVERE, "JDBC Driver not found: " + ex.getMessage(), ex);
-        } catch (Exception ex) {
-            errorMsg.setText("Unexpected error occurred. Please try again.");
-            LOGGER.log(Level.SEVERE, "Unexpected error during registration: " + ex.getMessage(), ex);
-        }
-    }*/
-
     private void registerUser() {
         String role = roleUser.isSelected() ? "User" : "Organizer";
 
@@ -268,9 +89,7 @@ public class Register_form extends JPanel {
         try {
             // Establish a connection
             connection = Db_Connect.getConnection();
-
-            // Disable auto-commit for manual transaction control
-            connection.setAutoCommit(false);
+            connection.setAutoCommit(false);  // Disable auto-commit for manual transaction control
 
             // Prepare the SQL statement
             statement = connection.prepareStatement(
@@ -292,9 +111,7 @@ public class Register_form extends JPanel {
             statement.setString(6, password);
             statement.setString(7, role);
 
-            // Execute the update and get the number of affected rows
             int rowsInserted = statement.executeUpdate();
-
             if (rowsInserted > 0) {
                 // Commit the transaction after successful insertion
                 connection.commit();
@@ -302,13 +119,17 @@ public class Register_form extends JPanel {
                 // Create a User object for the session
                 Session.currentUser = new User(username, role, name, email, phone);
 
-                // Log details to ensure session was set correctly
-                System.out.println("\nUser Registered and Session Set:");
-                System.out.println("ID: " + username);
-                System.out.println("Role: " + role);
-                System.out.println("Name: " + name);
-                System.out.println("Email: " + email);
-                System.out.println("Phone: " + phone);
+                // Fetch data for the profiles after registration, like in login flow
+                User_profile userProfile = mainFrame.getScreenManager().getUserProfile();
+                Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();
+
+                if (userProfile != null) {
+                    userProfile.fetchAndDisplayUserData(Session.currentUser.getId());  // Fetch new data for user profile
+                }
+
+                if (organizerProfile != null) {
+                    organizerProfile.fetchAndDisplayUserData(Session.currentUser.getId());  // Fetch new data for organizer profile
+                }
 
                 // Redirect to Screen1
                 mainFrame.getScreenManager().showPanel("Screen1");
@@ -316,16 +137,14 @@ public class Register_form extends JPanel {
                 mainFrame.repaint();
 
             } else {
-                // Rollback in case of failure
-                connection.rollback();
+                connection.rollback();  // Rollback in case of failure
                 JOptionPane.showMessageDialog(this, "Registration failed!", "Error", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (SQLException ex) {
-            // Handle SQL exceptions and rollback in case of an error
             if (connection != null) {
                 try {
-                    connection.rollback();
+                    connection.rollback();  // Rollback in case of error
                 } catch (SQLException rollbackEx) {
                     LOGGER.log(Level.SEVERE, "Failed to rollback transaction", rollbackEx);
                 }
@@ -355,6 +174,7 @@ public class Register_form extends JPanel {
             }
         }
     }
+
 
 
 

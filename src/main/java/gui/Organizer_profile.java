@@ -29,7 +29,7 @@ public class Organizer_profile extends JPanel {
     private static final Logger LOGGER = Logger.getLogger(Organizer_profile.class.getName());
 
     private Main mainFrame;
-    private boolean isEditing = false; // Track whether the user is editing the profile
+    private boolean isEditing = false;
 
     public Organizer_profile(Main mainFrame) {
         this.mainFrame = mainFrame;
@@ -38,11 +38,10 @@ public class Organizer_profile extends JPanel {
         add(main_panel);
 
         SwingUtilities.invokeLater(() -> {
-            // Temporarily hard-code a username to test if data fetching works
-            String testUsername = Session.currentUser.getId(); // Replace with a known username in your database
+            String currentUser = Session.currentUser.getId();
 
-            System.out.println("Attempting to fetch data for username: " + testUsername);
-            fetchAndDisplayUserData(testUsername);
+            System.out.println("Attempting to fetch data for username: " + currentUser);
+            fetchAndDisplayUserData(currentUser);
         });
 
         // Action listener for the Cancel button
@@ -77,7 +76,7 @@ public class Organizer_profile extends JPanel {
         OrgPhoneNum.setEditable(enable);
     }
 
-    // Method to fetch and display user data
+    // Method to fetch and display user data original function
     void fetchAndDisplayUserData(String username) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -116,78 +115,39 @@ public class Organizer_profile extends JPanel {
         }
     }
 
-    // Method to update the user's profile in the database
-    /*private boolean updateOrganizerProfile() {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-
-        try {
-            conn = Db_Connect.getConnection();
-            conn.setAutoCommit(false);
-
-            String sql = "UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE username = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, OrgName.getText().trim());
-            stmt.setString(2, OrgEmail.getText().trim());
-            stmt.setString(3, OrgAdd.getText().trim());
-            stmt.setString(4, OrgPhoneNum.getText().trim());
-            stmt.setString(5, OrgUname.getText().trim());
-
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                conn.commit();
-                JOptionPane.showMessageDialog(this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                return true;
-            } else {
-                conn.rollback();
-                JOptionPane.showMessageDialog(this, "Profile update failed!", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-
-        } catch (SQLException | ClassNotFoundException ex) {
-            LOGGER.log(Level.SEVERE, "Database error while updating user data: " + ex.getMessage(), ex);
-            JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
-            try {
-                if (conn != null) {
-                    conn.rollback();
-                }
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, "Rollback failed: " + e.getMessage(), e);
-            }
-            return false;
-        } finally {
-            try {
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, "Error closing database resources: " + e.getMessage(), e);
-            }
-        }
-    }*/
-
-    // Method to update the user's profile in the database
     private boolean updateOrganizerProfile() {
         Connection conn = null;
         PreparedStatement stmt = null;
 
         try {
             conn = Db_Connect.getConnection();
-            //conn.setAutoCommit(false); // Disable auto-commit if you want manual transaction control
 
             String sql = "UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE username = ?";
             stmt = conn.prepareStatement(sql);
+
+            // Logging values for debugging
+            System.out.println("Updating user: " + OrgUname.getText().trim());
+            System.out.println("New Name: " + OrgName.getText().trim());
+            System.out.println("New Email: " + OrgEmail.getText().trim());
+            System.out.println("New Address: " + OrgAdd.getText().trim());
+            System.out.println("New Phone: " + OrgPhoneNum.getText().trim());
+
+            // Set the values in the PreparedStatement
             stmt.setString(1, OrgName.getText().trim());
             stmt.setString(2, OrgEmail.getText().trim());
             stmt.setString(3, OrgAdd.getText().trim());
             stmt.setString(4, OrgPhoneNum.getText().trim());
-            stmt.setString(5, OrgUname.getText().trim());
+            stmt.setString(5, OrgUname.getText().trim()); // Username should be correct
 
             int rowsUpdated = stmt.executeUpdate();
+
+            // Check if rows were updated and log the result
             if (rowsUpdated > 0) {
-                // No need to manually commit when autoCommit is true
+                System.out.println("Rows updated: " + rowsUpdated);
                 JOptionPane.showMessageDialog(this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
+                System.out.println("No rows updated");
                 JOptionPane.showMessageDialog(this, "Profile update failed!", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
@@ -205,7 +165,6 @@ public class Organizer_profile extends JPanel {
             }
         }
     }
-
 
     // Method to clear all fields in the profile
     public void clearFields() {

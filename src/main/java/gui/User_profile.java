@@ -36,8 +36,8 @@ public class User_profile extends JPanel {
     private static final Logger LOGGER = Logger.getLogger(User_profile.class.getName());
 
     private Main mainFrame;
-    private final String username = "grandgala";
-    private boolean isEditing = false; // Track whether the user is editing the profile
+    //private final String username = "grandgala";
+    private boolean isEditing = false;
 
     public User_profile(Main mainFrame) {
         this.mainFrame = mainFrame;
@@ -48,24 +48,20 @@ public class User_profile extends JPanel {
         // Defer session checks until after initialization
         SwingUtilities.invokeLater(() -> {
             if (Session.currentUser != null) {
-                fetchAndDisplayUserData(Session.currentUser.getId());
+                String username = Session.currentUser.getId();
+                //fetchAndDisplayUserData(Session.currentUser.getId());
+                fetchAndDisplayUserData(username);
             } else {
-                //JOptionPane.showMessageDialog(this, "No userX in session. Please log in again.", "Error", JOptionPane.ERROR_MESSAGE);
                 mainFrame.getScreenManager().showPanel("Login_form");
             }
         });
 
-        // Fetch user data and populate fields
-        //fetchAndDisplayUserData(username);
-
-        // Action listeners
         btnBack.addActionListener(e -> {
             mainFrame.getScreenManager().showPanel("Screen1");
             mainFrame.revalidate();
             mainFrame.repaint();
         });
 
-        // Enable editing and change button text on click
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,52 +82,11 @@ public class User_profile extends JPanel {
 
     private void enableEditing(boolean enable) {
         nameField.setEditable(enable);
-        usernameField.setEditable(false); // Username should typically remain non-editable
+        usernameField.setEditable(false);
         emailField.setEditable(enable);
         addressField.setEditable(enable);
         phoneNumberField.setEditable(enable);
     }
-
-    /*private boolean updateUserProfile() {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-
-        try {
-            conn = Db_Connect.getConnection();
-            //conn.setAutoCommit(false); // Disable auto-commit
-
-            String sql = "UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE username = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, nameField.getText().trim());
-            stmt.setString(2, emailField.getText().trim());
-            stmt.setString(3, addressField.getText().trim());
-            stmt.setString(4, phoneNumberField.getText().trim());
-            stmt.setString(5, username); // Using the username as the identifier
-
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                conn.commit(); // Commit the transaction
-                JOptionPane.showMessageDialog(this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                return true;
-            } else {
-                conn.rollback(); // Rollback in case of failure
-                JOptionPane.showMessageDialog(this, "Profile update failed!", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-
-        } catch (SQLException | ClassNotFoundException ex) {
-            LOGGER.log(Level.SEVERE, "Database error while updating user data: " + ex.getMessage(), ex);
-            JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
-            try {
-                if (conn != null) {
-                    conn.rollback(); // Rollback on error
-                }
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, "Rollback failed: " + e.getMessage(), e);
-            }
-            return false;
-        }
-    }*/
 
     private boolean updateUserProfile() {
         Connection conn = null;
@@ -139,7 +94,6 @@ public class User_profile extends JPanel {
 
         try {
             conn = Db_Connect.getConnection();
-            //conn.setAutoCommit(false); // Disable auto-commit if you want manual transaction control
 
             String sql = "UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE username = ?";
             stmt = conn.prepareStatement(sql);
@@ -147,7 +101,14 @@ public class User_profile extends JPanel {
             stmt.setString(2, emailField.getText().trim());
             stmt.setString(3, addressField.getText().trim());
             stmt.setString(4, phoneNumberField.getText().trim());
-            stmt.setString(5, username); // Using the username as the identifier
+            stmt.setString(5, usernameField.getText().trim());
+            /*username);*/
+
+            System.out.println("Updating user: " + usernameField.getText().trim());
+            System.out.println("New Name: " + nameField.getText().trim());
+            System.out.println("New Email: " + emailField.getText().trim());
+            System.out.println("New Address: " + addressField.getText().trim());
+            System.out.println("New Phone: " + phoneNumberField.getText().trim());
 
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {
@@ -173,7 +134,6 @@ public class User_profile extends JPanel {
             }
         }
     }
-
 
     void fetchAndDisplayUserData(String username) {
         Connection conn = null;
@@ -206,7 +166,6 @@ public class User_profile extends JPanel {
         }
     }
 
-    // Method to clear all fields in the profile
     public void clearFields() {
         nameField.setText("");
         usernameField.setText("");
