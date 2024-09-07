@@ -25,7 +25,6 @@ public class Organizer_profile extends JPanel {
     private JButton btnUpdate;
     private JButton btnDelete;
     private JButton btnCancel;
-    private JLabel phoneNumber;
 
     private static final Logger LOGGER = Logger.getLogger(Organizer_profile.class.getName());
 

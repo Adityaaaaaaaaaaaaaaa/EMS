@@ -53,17 +53,17 @@ public class Screen1 extends JPanel {
             switch (role) {
                 case "Admin" -> {
                     // Show admin-specific components
-                    System.out.println("Admin is currently logged in");
+                    System.out.printf("Admin is currently logged in %s", name);
                     testHere.setText(String.format("Admin %s is currently logged innnnnnnnnnn", name));
                 }
                 case "User" -> {
                     // Show user-specific components
-                    System.out.println("User is currently logged in");
+                    System.out.printf("User is currently logged in  %s", name);
                     testHere.setText(String.format("User %s is currently logged innnnnnnnnnn", name));
                 }
                 case "Organizer" -> {
                     // Show organizer-specific components
-                    System.out.println("Organizer is currently logged in");
+                    System.out.printf("Organizer is currently logged in %s", name);
                     testHere.setText(String.format("Organiser %s is currently logged innnnnnnnnnn", name));
                 }
                 default -> {

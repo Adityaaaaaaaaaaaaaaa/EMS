@@ -54,6 +54,7 @@ public class Register_form extends JPanel {
         btnRegister.addActionListener(e -> {
             if (validateInput()) {
                 registerUser();
+                Utility.clearForm(new JTextField[]{regName, regEmail, regUserName, regAddress, regPhone}, regPwd, roleUser, errorMsg);
             }
         });
 
@@ -194,7 +195,7 @@ public class Register_form extends JPanel {
         }
     }*/
 
-    private void registerUser() {
+    /*private void registerUser() {
         String role = roleUser.isSelected() ? "User" : "Organizer";
 
         try (Connection connection = Db_Connect.getConnection();
@@ -256,7 +257,105 @@ public class Register_form extends JPanel {
             errorMsg.setText("Unexpected error occurred. Please try again.");
             LOGGER.log(Level.SEVERE, "Unexpected error during registration: " + ex.getMessage(), ex);
         }
+    }*/
+
+    private void registerUser() {
+        String role = roleUser.isSelected() ? "User" : "Organizer";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            // Establish a connection
+            connection = Db_Connect.getConnection();
+
+            // Disable auto-commit for manual transaction control
+            connection.setAutoCommit(false);
+
+            // Prepare the SQL statement
+            statement = connection.prepareStatement(
+                    "INSERT INTO Users (name, email, username, address, phone, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+            String name = regName.getText().trim();
+            String email = regEmail.getText().trim();
+            String username = regUserName.getText().trim();
+            String address = regAddress.getText().trim();
+            String phone = regPhone.getText().trim();
+            String password = new String(regPwd.getPassword()).trim();
+
+            // Set parameters for the prepared statement
+            statement.setString(1, name);
+            statement.setString(2, email);
+            statement.setString(3, username);
+            statement.setString(4, address);
+            statement.setString(5, phone);
+            statement.setString(6, password);
+            statement.setString(7, role);
+
+            // Execute the update and get the number of affected rows
+            int rowsInserted = statement.executeUpdate();
+
+            if (rowsInserted > 0) {
+                // Commit the transaction after successful insertion
+                connection.commit();
+
+                // Create a User object for the session
+                Session.currentUser = new User(username, role, name, email, phone);
+
+                // Log details to ensure session was set correctly
+                System.out.println("\nUser Registered and Session Set:");
+                System.out.println("ID: " + username);
+                System.out.println("Role: " + role);
+                System.out.println("Name: " + name);
+                System.out.println("Email: " + email);
+                System.out.println("Phone: " + phone);
+
+                // Redirect to Screen1
+                mainFrame.getScreenManager().showPanel("Screen1");
+                mainFrame.revalidate();
+                mainFrame.repaint();
+
+            } else {
+                // Rollback in case of failure
+                connection.rollback();
+                JOptionPane.showMessageDialog(this, "Registration failed!", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (SQLException ex) {
+            // Handle SQL exceptions and rollback in case of an error
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    LOGGER.log(Level.SEVERE, "Failed to rollback transaction", rollbackEx);
+                }
+            }
+            errorMsg.setText("Database error. Please try again later.");
+            LOGGER.log(Level.SEVERE, "Database error during registration: " + ex.getMessage(), ex);
+
+        } catch (ClassNotFoundException ex) {
+            errorMsg.setText("Internal error. Please contact support.");
+            LOGGER.log(Level.SEVERE, "JDBC Driver not found: " + ex.getMessage(), ex);
+
+        } finally {
+            // Ensure resources are properly closed
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    LOGGER.log(Level.SEVERE, "Failed to close statement", ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    LOGGER.log(Level.SEVERE, "Failed to close connection", ex);
+                }
+            }
+        }
     }
+
 
 
 }
