@@ -79,7 +79,7 @@ public class Organizer_profile extends JPanel {
     }
 
     // Method to fetch and display user data
-    private void fetchAndDisplayUserData(String username) {
+    void fetchAndDisplayUserData(String username) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -118,7 +118,7 @@ public class Organizer_profile extends JPanel {
     }
 
     // Method to update the user's profile in the database
-    private boolean updateOrganizerProfile() {
+    /*private boolean updateOrganizerProfile() {
         Connection conn = null;
         PreparedStatement stmt = null;
 
@@ -164,5 +164,57 @@ public class Organizer_profile extends JPanel {
                 LOGGER.log(Level.SEVERE, "Error closing database resources: " + e.getMessage(), e);
             }
         }
+    }*/
+
+    // Method to update the user's profile in the database
+    private boolean updateOrganizerProfile() {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        try {
+            conn = Db_Connect.getConnection();
+            //conn.setAutoCommit(false); // Disable auto-commit if you want manual transaction control
+
+            String sql = "UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE username = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, OrgName.getText().trim());
+            stmt.setString(2, OrgEmail.getText().trim());
+            stmt.setString(3, OrgAdd.getText().trim());
+            stmt.setString(4, OrgPhoneNum.getText().trim());
+            stmt.setString(5, OrgUname.getText().trim());
+
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                // No need to manually commit when autoCommit is true
+                JOptionPane.showMessageDialog(this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Profile update failed!", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            LOGGER.log(Level.SEVERE, "Database error while updating user data: " + ex.getMessage(), ex);
+            JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                LOGGER.log(Level.SEVERE, "Error closing database resources: " + e.getMessage(), e);
+            }
+        }
     }
+
+
+    // Method to clear all fields in the profile
+    public void clearFields() {
+        OrgName.setText("");
+        OrgUname.setText("");
+        OrgEmail.setText("");
+        OrgAdd.setText("");
+        OrgPhoneNum.setText("");
+    }
+
 }

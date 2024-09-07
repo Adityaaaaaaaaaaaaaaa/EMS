@@ -92,13 +92,13 @@ public class User_profile extends JPanel {
         phoneNumberField.setEditable(enable);
     }
 
-    private boolean updateUserProfile() {
+    /*private boolean updateUserProfile() {
         Connection conn = null;
         PreparedStatement stmt = null;
 
         try {
             conn = Db_Connect.getConnection();
-            conn.setAutoCommit(false); // Disable auto-commit
+            //conn.setAutoCommit(false); // Disable auto-commit
 
             String sql = "UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE username = ?";
             stmt = conn.prepareStatement(sql);
@@ -131,9 +131,51 @@ public class User_profile extends JPanel {
             }
             return false;
         }
+    }*/
+
+    private boolean updateUserProfile() {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        try {
+            conn = Db_Connect.getConnection();
+            //conn.setAutoCommit(false); // Disable auto-commit if you want manual transaction control
+
+            String sql = "UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE username = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, nameField.getText().trim());
+            stmt.setString(2, emailField.getText().trim());
+            stmt.setString(3, addressField.getText().trim());
+            stmt.setString(4, phoneNumberField.getText().trim());
+            stmt.setString(5, username); // Using the username as the identifier
+
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                // No need to manually commit when autoCommit is true
+                JOptionPane.showMessageDialog(this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                // No need to rollback, just handle it as an error
+                JOptionPane.showMessageDialog(this, "Profile update failed!", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            LOGGER.log(Level.SEVERE, "Database error while updating user data: " + ex.getMessage(), ex);
+            JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                LOGGER.log(Level.SEVERE, "Error closing database resources: " + e.getMessage(), e);
+            }
+        }
     }
 
-    private void fetchAndDisplayUserData(String username) {
+
+    void fetchAndDisplayUserData(String username) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -163,4 +205,14 @@ public class User_profile extends JPanel {
             JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    // Method to clear all fields in the profile
+    public void clearFields() {
+        nameField.setText("");
+        usernameField.setText("");
+        emailField.setText("");
+        addressField.setText("");
+        phoneNumberField.setText("");
+    }
+
 }

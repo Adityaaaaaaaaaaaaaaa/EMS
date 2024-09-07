@@ -10,13 +10,12 @@ CREATE TABLE Users
 (
     user_id     INT AUTO_INCREMENT PRIMARY KEY,
     username    VARCHAR(50) UNIQUE                  NOT NULL,
-    email       VARCHAR(100) UNIQUE                 NOT NULL,
+    email       VARCHAR(100)                        NOT NULL,
     password    VARCHAR(255)                        NOT NULL,
     role        ENUM ('User', 'Organizer', 'Admin') NOT NULL,
     name        VARCHAR(100),
     address     VARCHAR(255),
-    phone       VARCHAR(15),
-    profile_pic VARCHAR(255)
+    phone       VARCHAR(15)
 );
 
 -- Create Locations table

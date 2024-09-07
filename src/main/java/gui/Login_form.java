@@ -68,6 +68,18 @@ public class Login_form extends JPanel {
                     System.out.println("Failed to set session.");
                 }
 
+                // After login, fetch and display user data in profiles
+                User_profile userProfile = mainFrame.getScreenManager().getUserProfile();
+                Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();
+
+                if (userProfile != null) {
+                    userProfile.fetchAndDisplayUserData(Session.currentUser.getId()); // Fetch new data for user profile
+                }
+
+                if (organizerProfile != null) {
+                    organizerProfile.fetchAndDisplayUserData(Session.currentUser.getId()); // Fetch new data for organizer profile
+                }
+
                 // Clear form and proceed
                 Utility.clearForm(new JTextField[]{user_id}, pwd, null, errorMsg);
                 mainFrame.getScreenManager().showPanel("Screen1");

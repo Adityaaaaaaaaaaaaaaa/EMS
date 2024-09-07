@@ -60,4 +60,11 @@ public class Utility {
             errorMsg.setText("");
         }
     }
+
+    public static void clearTextFields(JTextField... textFields) {
+        for (JTextField field : textFields) {
+            field.setText("");
+        }
+    }
+
 }

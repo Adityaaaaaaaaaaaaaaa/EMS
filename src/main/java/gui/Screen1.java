@@ -74,7 +74,7 @@ public class Screen1 extends JPanel {
         });
 
         // Action listener for logging out
-        logoutButton.addActionListener(e -> {
+        /*logoutButton.addActionListener(e -> {
             if (Session.currentUser != null) {
                 System.out.println("before pressing Log out user: " + Session.currentUser.getId());
             }
@@ -86,7 +86,37 @@ public class Screen1 extends JPanel {
             mainFrame.revalidate();
             mainFrame.repaint();
             System.out.println("Session after pressing logout: " + Session.currentUser);
+        });*/
+
+        // Action listener for logging out
+        logoutButton.addActionListener(e -> {
+            if (Session.currentUser != null) {
+                System.out.println("before pressing Log out user: " + Session.currentUser.getId());
+            }
+            // Clear session data and reset profile fields
+            Session.currentUser = null;
+
+            User_profile userProfile = mainFrame.getScreenManager().getUserProfile();
+            Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();
+
+            if (userProfile != null) {
+                userProfile.clearFields();
+            }
+
+            if (organizerProfile != null) {
+                organizerProfile.clearFields();
+            }
+
+
+            testHere.setText(DEFAULT_TEXT); // Reset label text
+            mainFrame.getScreenManager().showPanel("Login_form"); // Show login screen
+
+            // Revalidate and repaint to ensure components are updated
+            mainFrame.revalidate();
+            mainFrame.repaint();
+            System.out.println("Session after pressing logout: " + Session.currentUser);
         });
+
 
         btnOrgPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("Organizer_profile"));
 

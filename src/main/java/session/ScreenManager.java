@@ -29,6 +29,15 @@ public class ScreenManager {
         // Other screens will be created lazily
     }
 
+    public User_profile getUserProfile() {
+        return (User_profile) screens.get("User_profile");
+    }
+
+    public Organizer_profile getOrganizerProfile() {
+        return (Organizer_profile) screens.get("Organizer_profile");
+    }
+
+
     public JPanel getScreen(String name) {
         return screens.get(name);
     }
