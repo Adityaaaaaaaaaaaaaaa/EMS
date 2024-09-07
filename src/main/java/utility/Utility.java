@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
-import javax.swing.JRadioButton;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -20,16 +19,12 @@ public class Utility {
     // Clear form fields and reset to default state
     public static void clearForm(JTextField[] textFields,
                                  JPasswordField passwordField,
-                                 JRadioButton defaultRadioButton,
                                  JLabel errorMsg) {
         for (JTextField field : textFields) {
             field.setText("");
         }
         if (passwordField != null) {
             passwordField.setText("");
-        }
-        if (defaultRadioButton != null) {
-            defaultRadioButton.setSelected(true);
         }
         if (errorMsg != null) {
             errorMsg.setText("");

@@ -11,8 +11,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import java.awt.BorderLayout;
 import java.sql.Connection;
@@ -32,8 +30,6 @@ public class Register_form extends JPanel {
     private JButton btnBack;
     private JButton btnRegister;
     private JLabel errorMsg;
-    private JRadioButton roleUser;
-    private JRadioButton roleOrganiser;
 
     private static final Logger LOGGER = Logger.getLogger(Register_form.class.getName());
 
@@ -45,14 +41,6 @@ public class Register_form extends JPanel {
         setLayout(new BorderLayout());
         add(Register_Panel);
 
-        // Group role radio buttons
-        ButtonGroup roleGroup = new ButtonGroup();
-        roleGroup.add(roleUser);
-        roleGroup.add(roleOrganiser);
-
-        // Set default selected radio button
-        roleUser.setSelected(true);
-
         // Clear error message when user starts typing in the fields
         Utility.addFieldListeners(errorMsg, regName, regEmail, regUserName, regAddress, regPhone, regPwd);
 
@@ -60,13 +48,13 @@ public class Register_form extends JPanel {
         btnRegister.addActionListener(e -> {
             if (validateInput()) {
                 registerUser();
-                Utility.clearForm(new JTextField[]{regName, regEmail, regUserName, regAddress, regPhone}, regPwd, roleUser, errorMsg);
+                Utility.clearForm(new JTextField[]{regName, regEmail, regUserName, regAddress, regPhone}, regPwd, errorMsg);
             }
         });
 
         btnBack.addActionListener(e -> {
             mainFrame.getScreenManager().showPanel("Login_form");
-            Utility.clearForm(new JTextField[]{regName, regEmail, regUserName, regAddress, regPhone}, regPwd, roleUser, errorMsg);
+            Utility.clearForm(new JTextField[]{regName, regEmail, regUserName, regAddress, regPhone}, regPwd, errorMsg);
         });
     }
 
@@ -77,17 +65,11 @@ public class Register_form extends JPanel {
             errorMsg.setText("All fields are required.");
             return false;
         }
-
-        if (!roleUser.isSelected() && !roleOrganiser.isSelected()) {
-            errorMsg.setText("Please select a role.");
-            return false;
-        }
-
         return true;
     }
 
     private void registerUser() {
-        String role = roleUser.isSelected() ? "User" : "Organizer";
+        String role = "User";
 
         Connection connection = null;
         PreparedStatement statement = null;
