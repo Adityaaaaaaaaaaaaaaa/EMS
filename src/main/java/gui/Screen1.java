@@ -3,8 +3,10 @@ package gui;
 import app.Main;
 import session.Session;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
 
 public class Screen1 extends JPanel {
     private JButton doNotClickButton;
@@ -74,21 +76,6 @@ public class Screen1 extends JPanel {
         });
 
         // Action listener for logging out
-        /*logoutButton.addActionListener(e -> {
-            if (Session.currentUser != null) {
-                System.out.println("before pressing Log out user: " + Session.currentUser.getId());
-            }
-            Session.currentUser = null; // Clear the session
-            testHere.setText(DEFAULT_TEXT);
-            mainFrame.getScreenManager().showPanel("Login_form"); // Show login screen
-
-            // Revalidate and repaint to ensure components are updated
-            mainFrame.revalidate();
-            mainFrame.repaint();
-            System.out.println("Session after pressing logout: " + Session.currentUser);
-        });*/
-
-        // Action listener for logging out
         logoutButton.addActionListener(e -> {
             if (Session.currentUser != null) {
                 System.out.println("before pressing Log out user: " + Session.currentUser.getId());
@@ -109,7 +96,7 @@ public class Screen1 extends JPanel {
 
 
             testHere.setText(DEFAULT_TEXT); // Reset label text
-            mainFrame.getScreenManager().showPanel("Login_form"); // Show login screen
+            mainFrame.getScreenManager().showPanel("Login_form");
 
             // Revalidate and repaint to ensure components are updated
             mainFrame.revalidate();

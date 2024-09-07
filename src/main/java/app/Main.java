@@ -14,7 +14,6 @@ public class Main extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-        // Defer showing the panel until after the GUI is fully initialized
         SwingUtilities.invokeLater(() -> screenManager.showPanel("Login_form"));
     }
 

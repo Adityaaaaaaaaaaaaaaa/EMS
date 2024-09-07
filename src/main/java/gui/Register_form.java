@@ -6,8 +6,15 @@ import session.Session;
 import session.User;
 import utility.Utility;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -27,7 +34,6 @@ public class Register_form extends JPanel {
     private JLabel errorMsg;
     private JRadioButton roleUser;
     private JRadioButton roleOrganiser;
-    private ButtonGroup roleGroup;
 
     private static final Logger LOGGER = Logger.getLogger(Register_form.class.getName());
 
@@ -40,7 +46,7 @@ public class Register_form extends JPanel {
         add(Register_Panel);
 
         // Group role radio buttons
-        roleGroup = new ButtonGroup();
+        ButtonGroup roleGroup = new ButtonGroup();
         roleGroup.add(roleUser);
         roleGroup.add(roleOrganiser);
 
