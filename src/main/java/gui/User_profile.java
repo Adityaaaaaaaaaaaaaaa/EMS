@@ -70,7 +70,7 @@ public class User_profile extends JPanel implements MenuInterface {
 
         // Create a menu bar and initialize it with the menu items and listeners
         menuBar = new JMenuBar();
-        initializeMenu(menuBar, mainFrame);  // Initialize menu using the interface method
+        initializeMenu(menuBar, mainFrame, mainJpanel.getBackground(), mainJpanel.getForeground());
 
         // Add the menu bar to the panel
         add(menuBar, BorderLayout.NORTH);

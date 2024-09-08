@@ -86,7 +86,7 @@ public class Login_form extends JPanel {
 
                 // Clear form and proceed
                 Utility.clearForm(new JTextField[]{user_id}, pwd, errorMsg);
-                mainFrame.getScreenManager().showPanel("Screen1");
+                mainFrame.getScreenManager().showPanel("Home");
                 mainFrame.revalidate();
                 mainFrame.repaint();
             } else {
