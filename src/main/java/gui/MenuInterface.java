@@ -3,8 +3,10 @@ package gui;
 import app.Main;
 import session.Session;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.Color;
 
 public interface MenuInterface {
 

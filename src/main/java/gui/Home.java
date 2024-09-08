@@ -4,7 +4,8 @@ package gui;
 import app.Main;
 import utility.Utility;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JMenuBar;
 import java.awt.BorderLayout;
 
 public class Home extends JPanel implements MenuInterface{

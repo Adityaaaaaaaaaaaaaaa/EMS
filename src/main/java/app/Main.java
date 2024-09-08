@@ -3,10 +3,11 @@ package app;
 import session.ScreenManager;
 import utility.Utility;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class Main extends JFrame {
-    private ScreenManager screenManager;
+    private final ScreenManager screenManager;
 
     public Main() {
         screenManager = new ScreenManager(this);
