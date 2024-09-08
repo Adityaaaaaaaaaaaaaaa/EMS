@@ -8,9 +8,10 @@ import utility.Utility;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JMenuBar;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.JOptionPane;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,10 +22,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class User_profile extends JPanel {
+public class User_profile extends JPanel implements MenuInterface {
     private JPanel mainJpanel;
-    private JPanel menuBar;
-    private JLabel menuBarspace;
     private JPanel userProfile;
     private JLabel userDetails;
     private JPanel details;
@@ -37,6 +36,8 @@ public class User_profile extends JPanel {
     private JButton btnDelete;
     private JPanel buttons;
     private JButton btnBack;
+    private JMenuBar menuBar;
+
 
     private static final Logger LOGGER = Logger.getLogger(User_profile.class.getName());
 
@@ -48,7 +49,7 @@ public class User_profile extends JPanel {
         this.mainFrame = mainFrame;
         Utility.setWindowSize(mainFrame);
         setLayout(new BorderLayout());
-        add(mainJpanel);
+        add(mainJpanel, BorderLayout.CENTER);
 
         // Defer session checks until after initialization
         SwingUtilities.invokeLater(() -> {
@@ -66,6 +67,13 @@ public class User_profile extends JPanel {
             mainFrame.revalidate();
             mainFrame.repaint();
         });
+
+        // Create a menu bar and initialize it with the menu items and listeners
+        menuBar = new JMenuBar();
+        initializeMenu(menuBar, mainFrame);  // Initialize menu using the interface method
+
+        // Add the menu bar to the panel
+        add(menuBar, BorderLayout.NORTH);
 
         btnUpdate.addActionListener(new ActionListener() {
             @Override

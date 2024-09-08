@@ -96,6 +96,9 @@ public class ScreenManager {
             case "Register_form" -> {
                 return new Register_form(mainFrame);
             }
+            case "Home" -> {
+                return new Home(mainFrame);
+            }
             default -> {
                 return null; // Handle unknown screens
             }

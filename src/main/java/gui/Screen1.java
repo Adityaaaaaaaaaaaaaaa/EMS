@@ -6,9 +6,10 @@ import session.Session;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import java.awt.BorderLayout;
 
-public class Screen1 extends JPanel {
+public class Screen1 extends JPanel implements MenuInterface {
     private JButton doNotClickButton;
     private JPanel screen1;
     private JButton logoutButton;
@@ -16,6 +17,8 @@ public class Screen1 extends JPanel {
     private JButton btnUsrPf;
     private JLabel testHere;
     private JButton btnPayment;
+    private JMenuBar menuBar;
+
 
     private Main mainFrame;
 
@@ -24,7 +27,8 @@ public class Screen1 extends JPanel {
     public Screen1(Main mainFrame) {
         this.mainFrame = mainFrame;
         setLayout(new BorderLayout());
-        add(screen1);
+        add(screen1, BorderLayout.CENTER);
+
 
         // Set default label text
         testHere.setText(DEFAULT_TEXT);
@@ -32,6 +36,13 @@ public class Screen1 extends JPanel {
         // Hide profile buttons initially
         btnUsrPf.setVisible(false);
         btnOrgPf.setVisible(false);
+
+        // Create a menu bar and initialize it with the menu items and listeners
+        menuBar = new JMenuBar();
+        initializeMenu(menuBar, mainFrame);  // Initialize menu using the interface method
+
+        // Add the menu bar to the panel
+        add(menuBar, BorderLayout.NORTH);
 
         // Action listener for "doNotClickButton" to navigate based on role
         doNotClickButton.addActionListener(e -> navigateBasedOnRole());

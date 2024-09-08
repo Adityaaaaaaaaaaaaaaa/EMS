@@ -8,8 +8,9 @@ import utility.Utility;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
+import javax.swing.JMenuBar;
 import javax.swing.SwingUtilities;
+import javax.swing.JOptionPane;
 import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,9 +19,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Organizer_profile extends JPanel {
+public class Organizer_profile extends JPanel implements MenuInterface {
     private JPanel main_panel;
-    private JPanel Menu;
     private JTextField OrgName;
     private JTextField OrgUname;
     private JTextField OrgEmail;
@@ -29,6 +29,7 @@ public class Organizer_profile extends JPanel {
     private JButton btnUpdate;
     private JButton btnDelete;
     private JButton btnCancel;
+    private JMenuBar menuBar;
 
     private static final Logger LOGGER = Logger.getLogger(Organizer_profile.class.getName());
 
@@ -39,7 +40,7 @@ public class Organizer_profile extends JPanel {
         this.mainFrame = mainFrame;
         Utility.setWindowSize(mainFrame);
         setLayout(new BorderLayout());
-        add(main_panel);
+        add(main_panel, BorderLayout.CENTER);
 
         SwingUtilities.invokeLater(() -> {
             String currentUser = Session.currentUser.getId();
@@ -47,6 +48,13 @@ public class Organizer_profile extends JPanel {
             System.out.println("Attempting to fetch data for username: " + currentUser);
             fetchAndDisplayUserData(currentUser);
         });
+
+        // Create a menu bar and initialize it with the menu items and listeners
+        menuBar = new JMenuBar();
+        initializeMenu(menuBar, mainFrame);  // Initialize menu using the interface method
+
+        // Add the menu bar to the panel
+        add(menuBar, BorderLayout.NORTH);
 
         // Action listener for the Cancel button
         btnCancel.addActionListener(e -> {
