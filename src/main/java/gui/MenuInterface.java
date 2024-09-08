@@ -3,8 +3,9 @@ package gui;
 import app.Main;
 import session.Session;
 
-import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import java.awt.Color;
 
@@ -65,9 +66,31 @@ public interface MenuInterface {
         evtLocation.addActionListener(e -> mainFrame.getScreenManager().showPanel("xxx"));
         evtBooking.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
         evtRrsv.addActionListener(e -> mainFrame.getScreenManager().showPanel("xxx"));
-        profile.addActionListener(e -> mainFrame.getScreenManager().showPanel("User_profile"));
+        profile.addActionListener(e -> handleProfileAccess(mainFrame));
         logout.addActionListener(e -> handleLogout(mainFrame));
         screen1.addActionListener(e -> mainFrame.getScreenManager().showPanel("Screen1"));
+    }
+
+    // Method to handle profile access
+    private void handleProfileAccess(Main mainFrame) {
+        if (Session.currentUser != null) {
+            String role = Session.currentUser.getRole();
+
+            switch (role) {
+                case "User" -> mainFrame.getScreenManager().showPanel("User_profile");
+                case "Organizer" -> mainFrame.getScreenManager().showPanel("Organizer_profile");
+                default -> {
+                    JOptionPane.showMessageDialog(mainFrame, "Invalid role. Please log in again.", "Role Error", JOptionPane.ERROR_MESSAGE);
+                    mainFrame.getScreenManager().showPanel("Login_form");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(mainFrame, "Please log in to access your profile.", "Session Error", JOptionPane.ERROR_MESSAGE);
+            mainFrame.getScreenManager().showPanel("Login_form");
+        }
+
+        mainFrame.revalidate();
+        mainFrame.repaint();
     }
 
     // Method to handle logout
