@@ -26,89 +26,81 @@ public class Screen1 extends JPanel {
         setLayout(new BorderLayout());
         add(screen1);
 
-        // Set the default text
+        // Set default label text
         testHere.setText(DEFAULT_TEXT);
 
-        // Check if there is a current user session and update the label
+        // Hide profile buttons initially
+        btnUsrPf.setVisible(false);
+        btnOrgPf.setVisible(false);
+
+        // Action listener for "doNotClickButton" to navigate based on role
+        doNotClickButton.addActionListener(e -> navigateBasedOnRole());
+
+        // Action listener for logging out
+        logoutButton.addActionListener(e -> handleLogout());
+
+        // Action listener for payment button
+        btnPayment.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
+    }
+
+    // Method to handle navigation based on role when "doNotClickButton" is clicked
+    private void navigateBasedOnRole() {
         if (Session.currentUser != null) {
             String role = Session.currentUser.getRole();
             String name = Session.currentUser.getName();
 
-            // Update the label based on the user's role and name
+            System.out.println("Navigating based on role - Role: " + role + ", Name: " + name);
+
             switch (role) {
-                case "Admin" -> testHere.setText(String.format("Admin %s is currently logged in", name));
-                case "User" -> testHere.setText(String.format("User %s is currently logged in", name));
-                case "Organizer" -> testHere.setText(String.format("Organizer %s is currently logged in", name));
-                default -> testHere.setText(DEFAULT_TEXT);
+                case "User" -> {
+                    testHere.setText(String.format("User %s is currently logged in", name));
+                    mainFrame.getScreenManager().showPanel("User_profile");
+                }
+                case "Organizer" -> {
+                    testHere.setText(String.format("Organizer %s is currently logged in", name));
+                    mainFrame.getScreenManager().showPanel("Organizer_profile");
+                }
+                default -> {
+                    testHere.setText(DEFAULT_TEXT);
+                    System.out.println("No valid role found.");
+                }
             }
         } else {
-            System.out.println("No user in session.");
+            System.out.println("No user session found.");
             testHere.setText(DEFAULT_TEXT);
         }
 
-        // Action listener for navigating to Screen2
-        doNotClickButton.addActionListener(e -> {
-            String role = Session.currentUser != null ? Session.currentUser.getRole() : "";
-            assert Session.currentUser != null;
-            String name = Session.currentUser.getName();
+        // Force UI refresh to reflect any changes
+        this.revalidate();
+        this.repaint();
+    }
 
-            switch (role) {
-                case "Admin" -> {
-                    // Show admin-specific components
-                    System.out.printf("Admin is currently logged in %s", name);
-                    testHere.setText(String.format("Admin %s is currently logged innnnnnnnnnn", name));
-                }
-                case "User" -> {
-                    // Show user-specific components
-                    System.out.printf("User is currently logged in  %s", name);
-                    testHere.setText(String.format("User %s is currently logged innnnnnnnnnn", name));
-                }
-                case "Organizer" -> {
-                    // Show organizer-specific components
-                    System.out.printf("Organizer is currently logged in %s", name);
-                    testHere.setText(String.format("Organiser %s is currently logged innnnnnnnnnn", name));
-                }
-                default -> {
-                    // Handle unknown or not logged-in case
-                    System.out.println("Who are you ???? How did you reach here???");
-                }
-            }
-        });
+    // Method to handle logout
+    private void handleLogout() {
+        if (Session.currentUser != null) {
+            System.out.println("Logging out user: " + Session.currentUser.getId());
+        }
 
-        // Action listener for logging out
-        logoutButton.addActionListener(e -> {
-            if (Session.currentUser != null) {
-                System.out.println("before pressing Log out user: " + Session.currentUser.getId());
-            }
-            // Clear session data and reset profile fields
-            Session.currentUser = null;
+        // Clear session and reset profile fields
+        Session.currentUser = null;
 
-            User_profile userProfile = mainFrame.getScreenManager().getUserProfile();
-            Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();
+        User_profile userProfile = mainFrame.getScreenManager().getUserProfile();
+        Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();
 
-            if (userProfile != null) {
-                userProfile.clearFields();
-            }
+        if (userProfile != null) {
+            userProfile.clearFields();
+        }
 
-            if (organizerProfile != null) {
-                organizerProfile.clearFields();
-            }
+        if (organizerProfile != null) {
+            organizerProfile.clearFields();
+        }
 
+        testHere.setText(DEFAULT_TEXT); // Reset label text
+        mainFrame.getScreenManager().showPanel("Login_form");
 
-            testHere.setText(DEFAULT_TEXT); // Reset label text
-            mainFrame.getScreenManager().showPanel("Login_form");
-
-            // Revalidate and repaint to ensure components are updated
-            mainFrame.revalidate();
-            mainFrame.repaint();
-            System.out.println("Session after pressing logout: " + Session.currentUser);
-        });
-
-
-        btnOrgPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("Organizer_profile"));
-
-        btnUsrPf.addActionListener(e -> mainFrame.getScreenManager().showPanel("User_profile"));
-
-        btnPayment.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
+        // Revalidate and repaint to ensure UI is updated
+        mainFrame.revalidate();
+        mainFrame.repaint();
+        System.out.println("Session after pressing logout: " + Session.currentUser);
     }
 }
