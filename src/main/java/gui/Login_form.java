@@ -6,8 +6,12 @@ import session.Session;
 import session.User;
 import utility.Utility;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,9 +72,21 @@ public class Login_form extends JPanel {
                     System.out.println("Failed to set session.");
                 }
 
+                // After login, fetch and display user data in profiles
+                User_profile userProfile = mainFrame.getScreenManager().getUserProfile();
+                Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();
+
+                if (userProfile != null) {
+                    userProfile.fetchAndDisplayUserData(Session.currentUser.getId()); // Fetch new data for user profile
+                }
+
+                if (organizerProfile != null) {
+                    organizerProfile.fetchAndDisplayUserData(Session.currentUser.getId()); // Fetch new data for organizer profile
+                }
+
                 // Clear form and proceed
-                Utility.clearForm(new JTextField[]{user_id}, pwd, null, errorMsg);
-                mainFrame.getScreenManager().showPanel("Screen1");
+                Utility.clearForm(new JTextField[]{user_id}, pwd, errorMsg);
+                mainFrame.getScreenManager().showPanel("Home");
                 mainFrame.revalidate();
                 mainFrame.repaint();
             } else {
@@ -80,38 +96,6 @@ public class Login_form extends JPanel {
 
         btnRegister.addActionListener(e -> mainFrame.getScreenManager().showPanel("Register_form"));
     }
-
-    /*private User authenticateUser(String userID, String password) {
-        User user = null;
-
-        try (Connection connection = Db_Connect.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT role FROM Users WHERE username = ? AND password = ?")) {
-
-            statement.setString(1, userID);
-            statement.setString(2, password);
-
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    String role = resultSet.getString("role");
-                    user = new User(userID, role);  // Create User object with retrieved role
-                } else {
-                    errorMsg.setText("Username or Password is incorrect.");
-                }
-            }
-
-        } catch (SQLException ex) {
-            errorMsg.setText("Database connection failed. Please try again later.");
-            LOGGER.log(Level.SEVERE, "Database error during authentication: " + ex.getMessage(), ex);
-        } catch (ClassNotFoundException ex) {
-            errorMsg.setText("Internal error. Please contact support.");
-            LOGGER.log(Level.SEVERE, "JDBC Driver not found: " + ex.getMessage(), ex);
-        } catch (Exception ex) {
-            errorMsg.setText("Unexpected error occurred. Please try again.");
-            LOGGER.log(Level.SEVERE, "Unexpected error during authentication: " + ex.getMessage(), ex);
-        }
-
-        return user;
-    }*/
 
     private User authenticateUser(String userID, String password) {
         User user = null;

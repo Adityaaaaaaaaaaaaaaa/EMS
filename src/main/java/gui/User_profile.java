@@ -2,11 +2,20 @@ package gui;
 
 import app.Main;
 import db.Db_Connect;
+import session.Session;
 import utility.Utility;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JMenuBar;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
+import javax.swing.JOptionPane;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
@@ -26,7 +35,7 @@ import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
-public class User_profile extends JPanel {
+public class User_profile extends JPanel implements MenuInterface {
     private JPanel mainJpanel;
     private JPanel menuBar;
     private JPanel userProfile;
@@ -40,12 +49,18 @@ public class User_profile extends JPanel {
     private JButton btnUpdate;
     private JButton btnDelete;
     private JButton btnCancel;
+    private JPanel buttons;
+    private JButton btnBack;
+    private JMenuBar menuBar;
+
 
     private static final Logger LOGGER = Logger.getLogger(User_profile.class.getName());
 
     private Main mainFrame;
-    private final String username = "stellarparties";
+    //private final String username = "stellarparties";
     private boolean isEditing = false; // Track whether the user is editing the profile
+    //private final String username = "grandgala";
+    private boolean isEditing = false;
 
     private BufferedImage backgroundImage;
 
@@ -62,6 +77,7 @@ public class User_profile extends JPanel {
 
         // Set layout and make the panel transparent
         setLayout(new BorderLayout());
+        add(mainJpanel, BorderLayout.CENTER);
         setOpaque(false);  // Make this JPanel transparent so the background image is visible
 
         details.setBackground(new Color(0, 0, 0, 150));  // Semi-transparent black background
@@ -92,17 +108,30 @@ public class User_profile extends JPanel {
         // Add the main JPanel containing your user profile components
         add(mainJpanel);
 
-        // Fetch user data and populate fields
-        fetchAndDisplayUserData(username);
+        // Defer session checks until after initialization
+        SwingUtilities.invokeLater(() -> {
+            if (Session.currentUser != null) {
+                String username = Session.currentUser.getId();
+                //fetchAndDisplayUserData(Session.currentUser.getId());
+                fetchAndDisplayUserData(username);
+            } else {
+                mainFrame.getScreenManager().showPanel("Login_form");
+            }
+        });
 
-        // Action listeners
-        btnCancel.addActionListener(e -> {
+        btnBack.addActionListener(e -> {
             mainFrame.getScreenManager().showPanel("Screen1");
             mainFrame.revalidate();
             mainFrame.repaint();
         });
 
-        // Enable editing and change button text on click
+        // Create a menu bar and initialize it with the menu items and listeners
+        menuBar = new JMenuBar();
+        initializeMenu(menuBar, mainFrame, mainJpanel.getBackground(), mainJpanel.getForeground());
+
+        // Add the menu bar to the panel
+        add(menuBar, BorderLayout.NORTH);
+
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -158,7 +187,7 @@ public class User_profile extends JPanel {
 
     private void enableEditing(boolean enable) {
         nameField.setEditable(enable);
-        usernameField.setEditable(false); // Username should typically remain non-editable
+        usernameField.setEditable(false);
         emailField.setEditable(enable);
         addressField.setEditable(enable);
         phoneNumberField.setEditable(enable);
@@ -170,7 +199,6 @@ public class User_profile extends JPanel {
 
         try {
             conn = Db_Connect.getConnection();
-            conn.setAutoCommit(false); // Disable auto-commit
 
             String sql = "UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE username = ?";
             stmt = conn.prepareStatement(sql);
@@ -178,15 +206,22 @@ public class User_profile extends JPanel {
             stmt.setString(2, emailField.getText().trim());
             stmt.setString(3, addressField.getText().trim());
             stmt.setString(4, phoneNumberField.getText().trim());
-            stmt.setString(5, username); // Using the username as the identifier
+            stmt.setString(5, usernameField.getText().trim());
+            /*username);*/
+
+            System.out.println("Updating user: " + usernameField.getText().trim());
+            System.out.println("New Name: " + nameField.getText().trim());
+            System.out.println("New Email: " + emailField.getText().trim());
+            System.out.println("New Address: " + addressField.getText().trim());
+            System.out.println("New Phone: " + phoneNumberField.getText().trim());
 
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {
-                conn.commit(); // Commit the transaction
+                // No need to manually commit when autoCommit is true
                 JOptionPane.showMessageDialog(this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
-                conn.rollback(); // Rollback in case of failure
+                // No need to rollback, just handle it as an error
                 JOptionPane.showMessageDialog(this, "Profile update failed!", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
@@ -194,18 +229,18 @@ public class User_profile extends JPanel {
         } catch (SQLException | ClassNotFoundException ex) {
             LOGGER.log(Level.SEVERE, "Database error while updating user data: " + ex.getMessage(), ex);
             JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
-            try {
-                if (conn != null) {
-                    conn.rollback(); // Rollback on error
-                }
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, "Rollback failed: " + e.getMessage(), e);
-            }
             return false;
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                LOGGER.log(Level.SEVERE, "Error closing database resources: " + e.getMessage(), e);
+            }
         }
     }
 
-    private void fetchAndDisplayUserData(String username) {
+    void fetchAndDisplayUserData(String username) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -235,6 +270,15 @@ public class User_profile extends JPanel {
             JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    public void clearFields() {
+        nameField.setText("");
+        usernameField.setText("");
+        emailField.setText("");
+        addressField.setText("");
+        phoneNumberField.setText("");
+    }
+
 
     // Optional delete profile method
     private void deleteUserProfile(String username) {
