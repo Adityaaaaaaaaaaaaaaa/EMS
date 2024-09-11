@@ -62,7 +62,7 @@ public interface MenuInterface {
 
         // Add action listeners for each menu item
         home.addActionListener(e -> mainFrame.getScreenManager().showPanel("Home"));
-        evtDetail.addActionListener(e -> mainFrame.getScreenManager().showPanel("xxx"));
+        evtDetail.addActionListener(e -> mainFrame.getScreenManager().showPanel("Events_Details"));
         evtLocation.addActionListener(e -> mainFrame.getScreenManager().showPanel("xxx"));
         evtBooking.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
         evtRrsv.addActionListener(e -> mainFrame.getScreenManager().showPanel("xxx"));
