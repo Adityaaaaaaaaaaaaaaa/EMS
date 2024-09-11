@@ -30,14 +30,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 public class User_profile extends JPanel implements MenuInterface {
     private JPanel mainJpanel;
-    private JPanel menuBar;
     private JPanel userProfile;
     private JPanel details;
     private JTextField nameField;
@@ -49,18 +47,14 @@ public class User_profile extends JPanel implements MenuInterface {
     private JButton btnUpdate;
     private JButton btnDelete;
     private JButton btnCancel;
-    private JPanel buttons;
-    private JButton btnBack;
     private JMenuBar menuBar;
 
 
     private static final Logger LOGGER = Logger.getLogger(User_profile.class.getName());
 
     private Main mainFrame;
-    //private final String username = "stellarparties";
+
     private boolean isEditing = false; // Track whether the user is editing the profile
-    //private final String username = "grandgala";
-    private boolean isEditing = false;
 
     private BufferedImage backgroundImage;
 
@@ -119,7 +113,7 @@ public class User_profile extends JPanel implements MenuInterface {
             }
         });
 
-        btnBack.addActionListener(e -> {
+        btnCancel.addActionListener(e -> {
             mainFrame.getScreenManager().showPanel("Screen1");
             mainFrame.revalidate();
             mainFrame.repaint();
@@ -153,7 +147,7 @@ public class User_profile extends JPanel implements MenuInterface {
         btnDelete.addActionListener(e -> {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete your profile?", "Delete Profile", JOptionPane.YES_NO_OPTION);
             if (confirmation == JOptionPane.YES_OPTION) {
-                deleteUserProfile(username);
+                //deleteUserProfile(username);
             }
         });
     }
