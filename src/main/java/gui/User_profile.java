@@ -6,22 +6,20 @@ import session.Session;
 import utility.Utility;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.JOptionPane;
+import javax.swing.JComponent;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
-import java.awt.image.ConvolveOp;
-import java.awt.image.Kernel;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -30,13 +28,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.border.AbstractBorder;
-import java.awt.*;
-import java.awt.geom.RoundRectangle2D;
 
 public class User_profile extends JPanel implements MenuInterface {
     private JPanel mainJpanel;
-    private JPanel userProfile;
     private JPanel details;
     private JTextField nameField;
     private JTextField usernameField;
@@ -201,7 +195,6 @@ public class User_profile extends JPanel implements MenuInterface {
             stmt.setString(3, addressField.getText().trim());
             stmt.setString(4, phoneNumberField.getText().trim());
             stmt.setString(5, usernameField.getText().trim());
-            /*username);*/
 
             System.out.println("Updating user: " + usernameField.getText().trim());
             System.out.println("New Name: " + nameField.getText().trim());

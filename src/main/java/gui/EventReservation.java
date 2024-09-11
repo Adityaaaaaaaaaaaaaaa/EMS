@@ -41,48 +41,42 @@ public class EventReservation extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedEvent = eventCombo.getSelectedItem().toString();
-                if (selectedEvent.equals("Wedding")) {
-                    try {
-                        int size = Integer.parseInt(sizeField.getText());
-                        int pricePerPerson = 1000;
-                        int totalPrice = pricePerPerson * size;
-                        priceField.setText(String.valueOf(totalPrice));
-                    } catch (NumberFormatException ex) {
-                        //JOptionPane.showMessageDialog(mainFrame, "Please enter a valid number for size then choose event.");
-                    }
-                } else if (selectedEvent.equals("Engagement")) {
-                    try {
-                        int sizeOfEvent = Integer.parseInt(sizeField.getText());
-                        int pricePerPerson = 1000;
-                        int totalPrice = pricePerPerson * sizeOfEvent;
-                        priceField.setText(String.valueOf(totalPrice));
-                    }catch (NumberFormatException ex) {
-                        //JOptionPane.showMessageDialog(mainFrame, "Please enter a valid number for size then choose event.");
-                    }
-                } else if (selectedEvent.equals("Conference")) {
-                    try {
-                        int sizeOfEvent = Integer.parseInt(sizeField.getText());
-                        int pricePerPerson = 600;
-                        int totalPrice = pricePerPerson * sizeOfEvent;
-                        priceField.setText(String.valueOf(totalPrice));
-                    }catch (NumberFormatException ex) {
-                        //JOptionPane.showMessageDialog(mainFrame, "Please enter a valid number for size then choose event.");
-                    }
-                } else if (selectedEvent.equals("Birthday Party")) {
-                    try {
-                        int sizeOfEvent = Integer.parseInt(sizeField.getText());
-                        int pricePerPerson = 800;
-                        int totalPrice = pricePerPerson * sizeOfEvent;
-                        priceField.setText(String.valueOf(totalPrice));
-                    }catch (NumberFormatException ex) {
-                        //JOptionPane.showMessageDialog(mainFrame, "Please enter a valid number for size then choose event.");
-                    }
-                } else {
-                  //clear form
-                    priceField.setText("");
-                }
+				switch (selectedEvent) {
+					case "Wedding", "Engagement" -> {
+						try {
+							int size = Integer.parseInt(sizeField.getText());
+							int pricePerPerson = 1000;
+							int totalPrice = pricePerPerson * size;
+							priceField.setText(String.valueOf(totalPrice));
+						} catch (NumberFormatException ex) {
+							//JOptionPane.showMessageDialog(mainFrame, "Please enter a valid number for size then choose event.");
+						}
+					}
+					case "Conference" -> {
+						try {
+							int sizeOfEvent = Integer.parseInt(sizeField.getText());
+							int pricePerPerson = 600;
+							int totalPrice = pricePerPerson * sizeOfEvent;
+							priceField.setText(String.valueOf(totalPrice));
+						} catch (NumberFormatException ex) {
+							//JOptionPane.showMessageDialog(mainFrame, "Please enter a valid number for size then choose event.");
+						}
+					}
+					case "Birthday Party" -> {
+						try {
+							int sizeOfEvent = Integer.parseInt(sizeField.getText());
+							int pricePerPerson = 800;
+							int totalPrice = pricePerPerson * sizeOfEvent;
+							priceField.setText(String.valueOf(totalPrice));
+						} catch (NumberFormatException ex) {
+							//JOptionPane.showMessageDialog(mainFrame, "Please enter a valid number for size then choose event.");
+						}
+					}
+					default -> priceField.setText("");
+				}
             }
         });
+        
         Submitbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -113,7 +107,7 @@ public class EventReservation extends JPanel {
 
     private void insertValuesIntoDatabase(String name, String event, String date, String size, String price, String paymentMthd) {
 
-        String insertIntoTable = "INSERT INTO eventreservation (Name, Event, reservationDate, EventSize, Price, payment_method) VALUES (?, ?, ?, ?, ?, ?)";
+        String insertIntoTable = "INSERT INTO Booking (Name, Event, reservationDate, EventSize, Price, payment_method) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Db_Connect.getConnection();
              PreparedStatement statement = conn.prepareStatement(insertIntoTable)) {
