@@ -29,6 +29,15 @@ CREATE TABLE Booking (
     payment_method VARCHAR(100) NOT NULL
 );
 
+-- Create Location table
+CREATE TABLE Location (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(150) NOT NULL,
+    Description VARCHAR(250) NOT NULL,
+    Address VARCHAR(200) NOT NULL,
+    Attendees VARCHAR(100) NOT NULL
+);
+
 -- Insert test data into Users table
 -- 4 Organisers
 INSERT INTO Users (username, email, password, role, name, address, phone)
@@ -52,4 +61,11 @@ VALUES ('John01', 'john@gmail.com', 'john2024', 'User', 'John Doe', '12, Netflix
        ('eventcrafters', 'services@eventcrafters.com', 'craft12345', 'User', 'Event Crafters', '22, Artisan Rd, Craftsville', '5678 9108'),
        ('epicvenues', 'venues@epicvenues.com', 'epic7890', 'User', 'Epic Venues', '11, Venue St, Arenatown', '5678 9109'),
        ('festivityplus', 'contact@festivityplus.com', 'festplus678', 'User', 'Festivity Plus', '55, Festival Ave, Celebratown', '5678 9110');
+
+-- Locations
+INSERT INTO Location (Name, Description, Address, Attendees)
+VALUES
+('Le Chateau Wedding and Birthday Hall (Indoor)', 'A luxurious indoor venue for weddings and birthdays, featuring a grand hall, elegant decor, customizable seating, and modern lighting. Ideal for both intimate and large events with dedicated staff.', 'Chateau Mon Desir, Balaclava, Mauritius', '500'),
+('Pamplemousses Event Garden (Outdoor)', 'A scenic outdoor venue in the Pamplemousses Botanical Garden, ideal for weddings and birthday parties. With ample guest space and a picturesque setting among tropical plants, it offers a natural, open-air environment for any celebration.', 'Pamplemousses Botanical Garden, Pamplemousses, Mauritius', '400'),
+('Caudan Conference Centre (Indoor)', 'A modern conference hall at Caudan Arts Centre, Port Louis. Perfect for corporate events with seating for 500, advanced AV systems, and a stage for presentations. Support staff and catering available.', 'Caudan Arts Centre, Port Louis, Mauritius', '200');
 

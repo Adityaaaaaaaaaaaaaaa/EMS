@@ -4,13 +4,16 @@ package gui;
 import app.Main;
 import utility.Utility;
 
-import javax.swing.JPanel;
-import javax.swing.JMenuBar;
+import javax.swing.*;
 import java.awt.BorderLayout;
 
 public class Home extends JPanel implements MenuInterface{
 
     private JPanel homePanel;
+    private JPanel aboutus;
+    private JPanel left;
+    private JPanel right;
+    private JPanel bottom;
     private JMenuBar menuBar;
 
     private Main mainFrame;

@@ -66,6 +66,7 @@ public class User_profile extends JPanel implements MenuInterface {
         // Set layout and make the panel transparent
         setLayout(new BorderLayout());
         add(mainJpanel, BorderLayout.CENTER);
+
         setOpaque(false);  // Make this JPanel transparent so the background image is visible
 
         details.setBackground(new Color(0, 0, 0, 150));  // Semi-transparent black background
