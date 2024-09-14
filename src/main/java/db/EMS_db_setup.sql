@@ -18,15 +18,17 @@ CREATE TABLE Users
     phone       VARCHAR(15)
 );
 
--- Create Bookings table
+-- Create Bookings table with improved naming conventions
 CREATE TABLE Booking (
     id INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
     Event VARCHAR(100) NOT NULL,
-    reservationDate DATE NOT NULL,
-    EventSize INT NOT NULL,
-    Price DECIMAL(10, 2) NOT NULL,
-    payment_method VARCHAR(100) NOT NULL
+    NumGuest INT NOT NULL,
+    Location VARCHAR(100) NOT NULL ,
+    ReservationDate DATE NOT NULL,
+    AdditionalInfo VARCHAR(255),
+    PaymentMethod VARCHAR(100) NOT NULL,
+    Price INT NOT NULL
 );
 
 -- Insert test data into Users table
@@ -53,3 +55,10 @@ VALUES ('John01', 'john@gmail.com', 'john2024', 'User', 'John Doe', '12, Netflix
        ('epicvenues', 'venues@epicvenues.com', 'epic7890', 'User', 'Epic Venues', '11, Venue St, Arenatown', '5678 9109'),
        ('festivityplus', 'contact@festivityplus.com', 'festplus678', 'User', 'Festivity Plus', '55, Festival Ave, Celebratown', '5678 9110');
 
+-- Insert 5 sample bookings
+INSERT INTO Booking (Name, Event, NumGuest, Location, ReservationDate, AdditionalInfo, PaymentMethod, Price)
+VALUES  ('John Doe', 'Wedding', 150, 'Beach Resort', '2024-09-20', 'Vegan Menu Required', 'Credit Card', 120000.50),
+        ('Alice Smith', 'Conference', 75, 'City Hall', '2024-10-01', 'Projector Needed', 'Direct Debit', 56000.00),
+        ('Bob Johnson', 'Birthday Party', 50, 'Private Villa', '2024-09-30', 'Surprise Cake', 'My.t Money', 35000.00),
+        ('Samantha Lee', 'Engagement', 100, 'Hotel Ballroom', '2024-11-15', 'Special Decoration Required', 'MCB Juice', 90000.75),
+        ('Michael Brown', 'Conference', 200, 'Convention Center', '2024-12-05', 'Extra Audio Equipment', 'Credit Card', 145000.00);

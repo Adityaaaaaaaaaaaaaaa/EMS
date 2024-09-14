@@ -1,12 +1,18 @@
 package gui;
 
 import app.Main;
+import db.Db_Connect;
 import utility.MenuInterface;
 import utility.EventPriceCalculator;
 import utility.Utility;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EventReservation extends JPanel implements MenuInterface {
 	private JPanel bookingPanel;
@@ -26,6 +32,8 @@ public class EventReservation extends JPanel implements MenuInterface {
 
 	private Main mainFrame;
 	private final EventPriceCalculator priceCalculator; // Create an instance of the calculator
+
+	private static final Logger LOGGER = Logger.getLogger(EventReservation.class.getName()); // Create a logger
 
 	public EventReservation(Main mainFrame) {
 		this.mainFrame = mainFrame;
@@ -87,7 +95,7 @@ public class EventReservation extends JPanel implements MenuInterface {
 		numGuestDisplay.setText("10"); // Reset guest display
 	}
 
-	// Method to handle payment (for now, just show a message)
+	// Method to handle payment and insert the data into the database
 	private void handlePay() {
 		// Validate that a proper event type has been selected
 		if (EventType.getSelectedIndex() == 0) {  // "Choose Event Type" is the first option
@@ -113,16 +121,48 @@ public class EventReservation extends JPanel implements MenuInterface {
 			return;
 		}
 
+		// Insert reservation into the database
+		insertReservationIntoDB();
+
 		// Display confirmation
 		JOptionPane.showMessageDialog(this, "Congrats! We will get in touch soon.");
-		System.out.println("Client Name: " + clientName.getText());
-		System.out.println("Event Type: " + EventType.getSelectedItem());
-		System.out.println("Number of Guests: " + numGuests.getValue());
-		System.out.println("Event Location: " + EventLocation.getSelectedItem());
-		System.out.println("Event Date: " + EventDate.getText());
-		System.out.println("Additional Info: " + Additional.getText());
-		System.out.println("Total Price: " + totalPrice.getText());
-		System.out.println("Payment Method: " + PaymentMethod.getSelectedItem());
 		mainFrame.getScreenManager().showPanel("Home");
 	}
+
+	// Method to insert the event reservation into the database
+	private void insertReservationIntoDB() {
+		String client = clientName.getText();
+		String eventType = (String) EventType.getSelectedItem();
+		int guests = numGuests.getValue();
+		String location = (String) EventLocation.getSelectedItem();
+		String eventDate = EventDate.getText();
+		String additional = Additional.getText();
+		String paymentMethod = (String) PaymentMethod.getSelectedItem();
+		String price = totalPrice.getText().replace("Total Price: Rs ", "");
+
+		// Remove id from the insert as it is auto-incremented
+		String sql = "INSERT INTO booking (Name, Event, NumGuest, Location, ReservationDate, AdditionalInfo, PaymentMethod, Price) " +
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+		try (Connection conn = Db_Connect.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, client);
+			pstmt.setString(2, eventType);
+			pstmt.setInt(3, guests);
+			pstmt.setString(4, location);
+			pstmt.setString(5, eventDate);
+			pstmt.setString(6, additional);
+			pstmt.setString(7, paymentMethod);
+			pstmt.setString(8, price);
+
+			int rowsInserted = pstmt.executeUpdate();
+			if (rowsInserted > 0) {
+				LOGGER.log(Level.INFO, "Reservation saved successfully.");
+			}
+
+		} catch (SQLException | ClassNotFoundException ex) {
+			LOGGER.log(Level.SEVERE, "Failed to save the reservation: " + ex.getMessage(), ex);
+			JOptionPane.showMessageDialog(this, "Failed to save the reservation. Please try again.", "Database Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
 }
