@@ -1,6 +1,8 @@
-package gui;
+package utility;
 
 import app.Main;
+import gui.Organizer_profile;
+import gui.User_profile;
 import session.Session;
 
 import javax.swing.JOptionPane;
