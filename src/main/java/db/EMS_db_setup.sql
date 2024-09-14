@@ -29,6 +29,14 @@ CREATE TABLE Booking (
     payment_method VARCHAR(100) NOT NULL
 );
 
+-- Create EventDetails table
+CREATE TABLE EventDetails (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Description VARCHAR(500) NOT NULL,
+    Pricing INT NOT NULL
+);
+
 -- Insert test data into Users table
 -- 4 Organisers
 INSERT INTO Users (username, email, password, role, name, address, phone)
@@ -53,3 +61,7 @@ VALUES ('John01', 'john@gmail.com', 'john2024', 'User', 'John Doe', '12, Netflix
        ('epicvenues', 'venues@epicvenues.com', 'epic7890', 'User', 'Epic Venues', '11, Venue St, Arenatown', '5678 9109'),
        ('festivityplus', 'contact@festivityplus.com', 'festplus678', 'User', 'Festivity Plus', '55, Festival Ave, Celebratown', '5678 9110');
 
+INSERT INTO EventDetails (Title, Description, Pricing)
+VALUES  ('Wedding','Our wedding event package includes full-service planning, venue setup, catering, decoration, photography, and music. Choose from a variety of themes to create your dream wedding. Additional services include floral arrangements, custom menus, and guest management.',125000),
+        ('Birthday','Our birthday event package provides venue decoration, catering, custom cakes, entertainment, and photography. We offer a variety of party themes for children and adults, including balloon decorations, game setups, and personalized birthday experiences.',1500),
+        ('Conference','Our conference event package includes venue rental, audiovisual equipment, stage setup, catering, and seating arrangements. We also offer support for registration management, guest speakers, and workshop facilitation. High-speed internet access and tech support are included.',3000);
