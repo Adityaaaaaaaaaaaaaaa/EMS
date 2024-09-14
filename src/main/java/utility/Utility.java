@@ -82,23 +82,4 @@ public class Utility {
             return false;
         }
     }
-
-    // Populate combo box with values
-    public static void populateComboBox(JComboBox<String> comboBox, List<String> items) {
-        comboBox.removeAllItems(); // Clear existing items
-        for (String item : items) {
-            comboBox.addItem(item);
-        }
-    }
-
-    // Validate numeric input
-    public static boolean isNumeric(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
 }

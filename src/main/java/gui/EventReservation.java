@@ -25,7 +25,7 @@ public class EventReservation extends JPanel implements MenuInterface {
 	private JMenuBar menuBar;
 
 	private Main mainFrame;
-	private EventPriceCalculator priceCalculator; // Create an instance of the calculator
+	private final EventPriceCalculator priceCalculator; // Create an instance of the calculator
 
 	public EventReservation(Main mainFrame) {
 		this.mainFrame = mainFrame;
@@ -50,7 +50,7 @@ public class EventReservation extends JPanel implements MenuInterface {
 			updateTotalPrice(); // Recalculate price whenever guest number changes
 		});
 
-		// Clear button functionality
+		// Clear button functionality using Utility class
 		BtnClear.addActionListener(e -> clearForm());
 
 		// Pay button functionality
@@ -67,17 +67,20 @@ public class EventReservation extends JPanel implements MenuInterface {
 
 		// Call calculatePrice on the instance of EventPriceCalculator
 		assert selectedEvent != null;
-		int price = priceCalculator.calculatePrice(selectedEvent, guests);
-		totalPrice.setText("Total Price: Rs " + price);
+		if (selectedEvent.equals("Choose Event Type")) {
+			totalPrice.setText(""); // Clear total price if event type is not selected
+		} else {
+			int price = priceCalculator.calculatePrice(selectedEvent, guests);
+			totalPrice.setText("Total Price: Rs " + price);
+		}
 	}
 
 	// Method to clear the form fields
 	private void clearForm() {
-		clientName.setText("");
+		// Use Utility class to clear all fields
+		Utility.clearTextFields(clientName, EventDate, Additional); // Clear the text fields
 		EventType.setSelectedIndex(0); // Reset to "Choose Event Type"
 		EventLocation.setSelectedIndex(0); // Reset to "Choose Location"
-		EventDate.setText("");
-		Additional.setText("");
 		numGuests.setValue(10); // Reset guest number to minimum
 		totalPrice.setText("");
 		PaymentMethod.setSelectedIndex(0); // Reset payment method
@@ -86,18 +89,40 @@ public class EventReservation extends JPanel implements MenuInterface {
 
 	// Method to handle payment (for now, just show a message)
 	private void handlePay() {
-		if (!clientName.getText().isEmpty() && !EventDate.getText().isEmpty() && EventType.getSelectedIndex() != 0) {
-			JOptionPane.showMessageDialog(this, "Congrats! We will get in touch soon.");
-			System.out.println("Client Name: " + clientName.getText());
-			System.out.println("Event Type: " + EventType.getSelectedItem());
-			System.out.println("Number of Guests: " + numGuests.getValue());
-			System.out.println("Event Location: " + EventLocation.getSelectedItem());
-			System.out.println("Event Date: " + EventDate.getText());
-			System.out.println("Additional Info: " + Additional.getText());
-			System.out.println("Total Price: " + totalPrice.getText());
-			mainFrame.getScreenManager().showPanel("Home");
-		} else {
-			JOptionPane.showMessageDialog(this, "Please fill out all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+		// Validate that a proper event type has been selected
+		if (EventType.getSelectedIndex() == 0) {  // "Choose Event Type" is the first option
+			JOptionPane.showMessageDialog(this, "Please select a valid event type.", "Invalid Event", JOptionPane.ERROR_MESSAGE);
+			return;
 		}
+
+		// Validate that a proper payment method has been selected
+		if (PaymentMethod.getSelectedIndex() == 0) {  // "Choose your payment method" is the first option
+			JOptionPane.showMessageDialog(this, "Please select a valid payment method.", "Invalid Payment", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		// Check if the name and date fields are filled
+		if (clientName.getText().isEmpty() || EventDate.getText().isEmpty() || EventLocation.getSelectedIndex() == 0) {
+			JOptionPane.showMessageDialog(this, "Please fill out all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		// Validate the event date
+		if (!Utility.isValidDate(EventDate.getText())) {
+			JOptionPane.showMessageDialog(this, "Please enter a valid date in DD/MM/YY format.", "Invalid Date", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		// Display confirmation
+		JOptionPane.showMessageDialog(this, "Congrats! We will get in touch soon.");
+		System.out.println("Client Name: " + clientName.getText());
+		System.out.println("Event Type: " + EventType.getSelectedItem());
+		System.out.println("Number of Guests: " + numGuests.getValue());
+		System.out.println("Event Location: " + EventLocation.getSelectedItem());
+		System.out.println("Event Date: " + EventDate.getText());
+		System.out.println("Additional Info: " + Additional.getText());
+		System.out.println("Total Price: " + totalPrice.getText());
+		System.out.println("Payment Method: " + PaymentMethod.getSelectedItem());
+		mainFrame.getScreenManager().showPanel("Home");
 	}
 }

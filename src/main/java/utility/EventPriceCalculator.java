@@ -16,13 +16,19 @@ public class EventPriceCalculator implements PriceCalculator {
 		// Calculate guest price modifier based on the number of guests
 		int guestPriceModifier = calculateGuestPriceModifier(numGuests);
 
+		// Check if the event type is the default "Choose Event Type"
+		if (eventType.equals("Choose Event Type")) {
+			JOptionPane.showMessageDialog(null, "Please select a valid event type.", "Invalid Event", JOptionPane.ERROR_MESSAGE);
+			return 0;
+		}
+
 		// Calculate base price based on event type
 		switch (eventType) {
-			case "Choose Event Type" -> JOptionPane.showMessageDialog(null, "Please select an Event below ", "Invalid Event", JOptionPane.ERROR_MESSAGE);
 			case "Wedding" -> basePrice = WEDDING_BASE_PRICE;
 			case "Conference" -> basePrice = CONFERENCE_BASE_PRICE;
 			case "Birthday Party" -> basePrice = BIRTHDAY_BASE_PRICE;
 			default -> {
+				// Just a safeguard in case of an invalid event type
 				JOptionPane.showMessageDialog(null, "Please select a valid event type.", "Invalid Event", JOptionPane.ERROR_MESSAGE);
 				return 0;
 			}
