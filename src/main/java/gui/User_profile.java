@@ -143,7 +143,17 @@ public class User_profile extends JPanel implements MenuInterface {
         btnDelete.addActionListener(e -> {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete your profile?", "Delete Profile", JOptionPane.YES_NO_OPTION);
             if (confirmation == JOptionPane.YES_OPTION) {
-                //deleteUserProfile(username);
+                // Delete the user profile
+                String username = Session.currentUser.getId(); // Get the current user's username from the session
+                deleteUserProfile(username);
+
+                // Log the user out
+                Session.currentUser = null; // Clear the session (assuming Session.currentUser holds the logged-in user)
+
+                // Navigate back to the login form
+                mainFrame.getScreenManager().showPanel("Login_form");
+                mainFrame.revalidate();
+                mainFrame.repaint();
             }
         });
     }
@@ -283,7 +293,6 @@ public class User_profile extends JPanel implements MenuInterface {
             int rowsDeleted = stmt.executeUpdate();
             if (rowsDeleted > 0) {
                 JOptionPane.showMessageDialog(this, "Profile deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                mainFrame.getScreenManager().showPanel("Screen1"); // Navigate back to a different screen after deletion
             } else {
                 JOptionPane.showMessageDialog(this, "Profile deletion failed!", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -291,6 +300,13 @@ public class User_profile extends JPanel implements MenuInterface {
         } catch (SQLException | ClassNotFoundException ex) {
             LOGGER.log(Level.SEVERE, "Database error while deleting user data: " + ex.getMessage(), ex);
             JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                LOGGER.log(Level.SEVERE, "Error closing database resources: " + e.getMessage(), e);
+            }
         }
     }
 }
