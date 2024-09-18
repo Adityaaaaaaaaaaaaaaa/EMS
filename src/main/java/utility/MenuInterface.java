@@ -66,7 +66,7 @@ public interface MenuInterface {
         home.addActionListener(e -> mainFrame.getScreenManager().showPanel("Home"));
         evtDetail.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventDetails"));
         evtLocation.addActionListener(e -> mainFrame.getScreenManager().showPanel("Event_Location"));
-        evtBooking.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
+        evtBooking.addActionListener(e -> mainFrame.getScreenManager().showPanel("Booking"));
         evtRrsv.addActionListener(e -> mainFrame.getScreenManager().showPanel("xxx"));
         profile.addActionListener(e -> handleProfileAccess(mainFrame));
         logout.addActionListener(e -> handleLogout(mainFrame));

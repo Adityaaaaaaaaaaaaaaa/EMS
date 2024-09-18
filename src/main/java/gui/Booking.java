@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EventReservation extends JPanel implements MenuInterface {
+public class Booking extends JPanel implements MenuInterface {
 	private JPanel bookingPanel;
 	private JButton BtnCancel;
 	private JButton BtnClear;
@@ -33,9 +33,9 @@ public class EventReservation extends JPanel implements MenuInterface {
 	private Main mainFrame;
 	private final EventPriceCalculator priceCalculator; // Create an instance of the calculator
 
-	private static final Logger LOGGER = Logger.getLogger(EventReservation.class.getName()); // Create a logger
+	private static final Logger LOGGER = Logger.getLogger(Booking.class.getName()); // Create a logger
 
-	public EventReservation(Main mainFrame) {
+	public Booking(Main mainFrame) {
 		this.mainFrame = mainFrame;
 		this.priceCalculator = new EventPriceCalculator(); // Initialize price calculator
 		Utility.setWindowSize(mainFrame);

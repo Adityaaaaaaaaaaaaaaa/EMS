@@ -14,6 +14,7 @@ public class Main extends JFrame {
         Utility.setWindowSize(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        setResizable(false);
 
         SwingUtilities.invokeLater(() -> screenManager.showPanel("Login_form"));
     }

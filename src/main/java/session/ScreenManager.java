@@ -87,7 +87,7 @@ public class ScreenManager {
 					showPanel("Login_form");
 				}
 			}
-			case "EventReservation" -> panel = new EventReservation(mainFrame);
+			case "Booking" -> panel = new Booking(mainFrame);
 			case "Login_form" -> panel = new Login_form(mainFrame);
 			case "Screen1" -> panel = new Screen1(mainFrame);
 			case "Register_form" -> panel = new Register_form(mainFrame);
