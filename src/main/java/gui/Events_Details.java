@@ -1,12 +1,13 @@
 package gui;
 
 import app.Main;
+import utility.MenuInterface;
 import utility.Utility;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Events_Details extends JPanel implements MenuInterface{
+public class Events_Details extends JPanel implements MenuInterface {
     private JPanel main;
     private JMenuBar menuBar;
 

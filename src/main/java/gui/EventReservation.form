@@ -1,138 +1,352 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.EventReservation">
-  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="11" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="bookingPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="224" y="92" width="638" height="576"/>
+      <xy x="20" y="20" width="500" height="450"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-2041653"/>
+    </properties>
     <border type="none"/>
     <children>
-      <component id="810af" class="javax.swing.JTextField" binding="nameField">
+      <grid id="f6e17" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="10" right="0"/>
         <constraints>
-          <grid row="0" column="1" row-span="2" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-9074580"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="2ac5e" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Calligraphy" size="16" style="2"/>
+              <foreground color="-11773626"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="11"/>
+              <text value="Book your next Event with us !"/>
+            </properties>
+          </component>
+          <component id="773f5" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Broadway" size="28" style="2"/>
+              <foreground color="-1"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="Evenia Event Services"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="da8d0" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="0" bottom="10" right="10"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-11773626"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="96dd4" layout-manager="GridLayoutManager" row-count="8" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="10" bottom="0" right="10"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-11773626"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="b0077" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <foreground color="-1"/>
+                  <text value="Name :"/>
+                </properties>
+              </component>
+              <component id="67cf5" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <foreground color="-1"/>
+                  <text value="Event Type :"/>
+                </properties>
+              </component>
+              <component id="bf9e9" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <foreground color="-1"/>
+                  <text value="Approx. Attendees :"/>
+                </properties>
+              </component>
+              <component id="5f57b" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <foreground color="-1"/>
+                  <text value="Event Location :"/>
+                </properties>
+              </component>
+              <component id="c7cb2" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <foreground color="-1"/>
+                  <text value="Event Date :"/>
+                </properties>
+              </component>
+              <component id="12ee7" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <foreground color="-1"/>
+                  <text value="Specific Add-ons :"/>
+                </properties>
+              </component>
+              <component id="58e2e" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <foreground color="-1"/>
+                  <text value="Total Price :"/>
+                </properties>
+              </component>
+              <component id="49a55" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <foreground color="-1"/>
+                  <text value="Payment Method"/>
+                </properties>
+              </component>
+            </children>
           </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="6e790" class="javax.swing.JComboBox" binding="paymentCombo">
-        <constraints>
-          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="Paypal"/>
-            <item value="Apple pay"/>
-            <item value="Wallet"/>
-          </model>
-        </properties>
-      </component>
-      <component id="6749a" class="javax.swing.JTextField" binding="priceField">
-        <constraints>
-          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+          <grid id="f246b" layout-manager="GridLayoutManager" row-count="8" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-11773626"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="c0447" class="javax.swing.JTextField" binding="clientName">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="16fbb" class="javax.swing.JComboBox" binding="EventType">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Bell MT" size="16" style="1"/>
+                  <model>
+                    <item value="Choose Event Type"/>
+                    <item value="Wedding"/>
+                    <item value="Conference"/>
+                    <item value="Birthday Party"/>
+                  </model>
+                </properties>
+              </component>
+              <grid id="aaab5" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-11773626"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="d0917" class="javax.swing.JSlider" binding="numGuests">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-11773626"/>
+                      <majorTickSpacing value="10"/>
+                      <maximum value="350"/>
+                      <minimum value="10"/>
+                      <toolTipText value="Slide to select num of attendees"/>
+                    </properties>
+                  </component>
+                  <component id="5334e" class="javax.swing.JLabel" binding="numGuestDisplay">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-11773626"/>
+                      <foreground color="-1"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <component id="dbbc9" class="javax.swing.JComboBox" binding="EventLocation">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Bell MT" size="16" style="1"/>
+                  <model>
+                    <item value="Choose Location"/>
+                    <item value="loc 1"/>
+                    <item value="loc 2"/>
+                    <item value="loc 3"/>
+                    <item value="loc 4"/>
+                  </model>
+                </properties>
+              </component>
+              <component id="2d582" class="javax.swing.JTextField" binding="EventDate">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <toolTipText value="Format: DD/MM/YY"/>
+                </properties>
+              </component>
+              <component id="c56e5" class="javax.swing.JTextField" binding="Additional">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <toolTipText value="Any Specific Requests ?"/>
+                </properties>
+              </component>
+              <component id="91a04" class="javax.swing.JComboBox" binding="PaymentMethod">
+                <constraints>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Bell MT" size="16" style="1"/>
+                  <model>
+                    <item value="Choose Payment Mathod"/>
+                    <item value="MCB Juice"/>
+                    <item value="My.t Money"/>
+                    <item value="Blink by Emtel"/>
+                    <item value="Direct Debit"/>
+                    <item value="Credit Card"/>
+                  </model>
+                  <toolTipText value="Click to select payment method"/>
+                </properties>
+              </component>
+              <grid id="147c8" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-11773626"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="75fb0" class="javax.swing.JLabel" binding="totalPrice">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <foreground color="-1"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
           </grid>
+        </children>
+      </grid>
+      <grid id="5e4d3" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="0" bottom="0" right="10"/>
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value=""/>
+          <background color="-2041653"/>
         </properties>
-      </component>
-      <component id="c0196" class="javax.swing.JLabel" binding="Name">
-        <constraints>
-          <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Name"/>
-        </properties>
-      </component>
-      <component id="76ce5" class="javax.swing.JLabel" binding="price">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Total Price"/>
-        </properties>
-      </component>
-      <component id="cea97" class="javax.swing.JLabel" binding="paymentMethod">
-        <constraints>
-          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Payment Method"/>
-        </properties>
-      </component>
-      <component id="ca437" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Label"/>
-        </properties>
-      </component>
-      <component id="2b488" class="javax.swing.JButton" binding="Submitbtn">
-        <constraints>
-          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Reserve"/>
-        </properties>
-      </component>
-      <component id="ca64e" class="javax.swing.JLabel" binding="EventSize">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Event Size"/>
-        </properties>
-      </component>
-      <component id="b23b5" class="javax.swing.JLabel" binding="SelectEvent">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Select Event"/>
-        </properties>
-      </component>
-      <component id="19f69" class="javax.swing.JLabel" binding="date">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Reservation Date"/>
-        </properties>
-      </component>
-      <component id="1ae82" class="javax.swing.JComboBox" binding="eventCombo">
-        <constraints>
-          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="Wedding"/>
-            <item value="Engagement"/>
-            <item value="Conference"/>
-            <item value="Birthday Party"/>
-          </model>
-        </properties>
-      </component>
-      <component id="6ed4b" class="javax.swing.JTextField" binding="dateField">
-        <constraints>
-          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+        <border type="none"/>
+        <children>
+          <grid id="da523" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2041653"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="c882e" class="javax.swing.JButton" binding="BtnCancel">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <text value="Cancel"/>
+                </properties>
+              </component>
+              <component id="66ad" class="javax.swing.JButton" binding="BtnClear">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <text value="Clear"/>
+                </properties>
+              </component>
+              <component id="34f77" class="javax.swing.JButton" binding="BtnPay">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Baskerville Old Face" size="16"/>
+                  <text value="Pay"/>
+                </properties>
+              </component>
+            </children>
           </grid>
-        </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="cf8e6" class="javax.swing.JTextField" binding="sizeField">
-        <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
+          <hspacer id="75e92">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>
