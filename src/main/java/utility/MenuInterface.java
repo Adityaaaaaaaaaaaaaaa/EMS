@@ -20,7 +20,7 @@ public interface MenuInterface {
 
         // Create menu items
         JMenuItem home = new JMenuItem("Home");
-        JMenuItem evtDetail = new JMenuItem("Event Details");
+        JMenuItem evtDetail = new JMenuItem("Events Details");
         JMenuItem evtLocation = new JMenuItem("Event Locations");
         JMenuItem evtBooking = new JMenuItem("Booking");
         JMenuItem evtRrsv = new JMenuItem("Reservation Details");
@@ -64,7 +64,7 @@ public interface MenuInterface {
 
         // Add action listeners for each menu item
         home.addActionListener(e -> mainFrame.getScreenManager().showPanel("Home"));
-        evtDetail.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventDetails"));
+        evtDetail.addActionListener(e -> mainFrame.getScreenManager().showPanel("Events_Details"));
         evtLocation.addActionListener(e -> mainFrame.getScreenManager().showPanel("Event_Location"));
         evtBooking.addActionListener(e -> mainFrame.getScreenManager().showPanel("Booking"));
         evtRrsv.addActionListener(e -> mainFrame.getScreenManager().showPanel("xxx"));

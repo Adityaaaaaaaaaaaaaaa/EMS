@@ -57,7 +57,7 @@ public class User_profile extends JPanel implements MenuInterface {
         this.mainFrame = mainFrame;
         Utility.setWindowSize(mainFrame);
         try {
-            backgroundImage = ImageIO.read(new File("src/main/resources/image/bg4.png"));  // Provide the correct path to your image
+            backgroundImage = ImageIO.read(new File("src/main/resources/image/bg6.jpeg"));  // Provide the correct path to your image
         } catch (IOException ex) {
             Logger.getLogger(User_profile.class.getName()).log(Level.SEVERE, null, ex);
         }

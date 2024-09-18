@@ -25,8 +25,8 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Bookman Old Style" size="16"/>
-              <foreground color="-16777216"/>
+              <font name="Baskerville Old Face" size="16"/>
+              <foreground color="-13347798"/>
               <text value="User Name:"/>
             </properties>
           </component>
@@ -43,8 +43,8 @@
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Bookman Old Style" size="16"/>
-              <foreground color="-16777216"/>
+              <font name="Baskerville Old Face" size="16"/>
+              <foreground color="-13347798"/>
               <text value="Password:"/>
             </properties>
           </component>
@@ -64,7 +64,7 @@
             </constraints>
             <properties>
               <background color="-13279685"/>
-              <font name="Bookman Old Style" size="14"/>
+              <font name="Baskerville Old Face" size="14"/>
               <foreground color="-2041653"/>
               <text value="Login"/>
             </properties>
@@ -74,8 +74,8 @@
               <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Bookman Old Style" size="16"/>
-              <foreground color="-16777216"/>
+              <font name="Baskerville Old Face" size="16"/>
+              <foreground color="-13347798"/>
               <text value="New? Register below!"/>
             </properties>
           </component>
@@ -85,7 +85,7 @@
             </constraints>
             <properties>
               <background color="-13279685"/>
-              <font name="Bookman Old Style" size="14"/>
+              <font name="Baskerville Old Face" size="14"/>
               <foreground color="-2041653"/>
               <text value="Register"/>
             </properties>
