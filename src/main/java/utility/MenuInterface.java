@@ -1,6 +1,8 @@
-package gui;
+package utility;
 
 import app.Main;
+import gui.Organizer_profile;
+import gui.User_profile;
 import session.Session;
 
 import javax.swing.JOptionPane;
@@ -62,7 +64,7 @@ public interface MenuInterface {
 
         // Add action listeners for each menu item
         home.addActionListener(e -> mainFrame.getScreenManager().showPanel("Home"));
-        evtDetail.addActionListener(e -> mainFrame.getScreenManager().showPanel("Events_Details"));
+        evtDetail.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventDetails"));
         evtLocation.addActionListener(e -> mainFrame.getScreenManager().showPanel("Event_Location"));
         evtBooking.addActionListener(e -> mainFrame.getScreenManager().showPanel("EventReservation"));
         evtRrsv.addActionListener(e -> mainFrame.getScreenManager().showPanel("xxx"));

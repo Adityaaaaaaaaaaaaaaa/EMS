@@ -2,132 +2,167 @@ package gui;
 
 import app.Main;
 import db.Db_Connect;
+import utility.MenuInterface;
+import utility.EventPriceCalculator;
 import utility.Utility;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class EventReservation extends JPanel {
+public class EventReservation extends JPanel implements MenuInterface {
+	private JPanel bookingPanel;
+	private JButton BtnCancel;
+	private JButton BtnClear;
+	private JButton BtnPay;
+	private JTextField clientName;
+	private JComboBox<String> EventType;
+	private JSlider numGuests;
+	private JComboBox<String> EventLocation;
+	private JTextField EventDate;
+	private JTextField Additional;
+	private JComboBox<String> PaymentMethod;
+	private JLabel numGuestDisplay;
+	private JLabel totalPrice;
+	private JMenuBar menuBar;
 
-    private JComboBox<String> eventCombo;
-    private JTextField dateField;
-    private JTextField nameField;
-    private JTextField sizeField;
-    private JTextField priceField;
-    private JComboBox<String> paymentCombo;
-    private JPanel panel;
-    private JLabel Name;
-    private JLabel SelectEvent;
-    private JLabel date;
-    private JLabel EventSize;
-    private JLabel price;
-    private JLabel paymentMethod;
-    private JButton Submitbtn;
-    private Main mainFrame;
+	private Main mainFrame;
+	private final EventPriceCalculator priceCalculator; // Create an instance of the calculator
 
-    public EventReservation(Main mainFrame) {
-        this.mainFrame = mainFrame;
-        Utility.setWindowSize(mainFrame);
-        setLayout(new BorderLayout());
-        add(panel);
+	private static final Logger LOGGER = Logger.getLogger(EventReservation.class.getName()); // Create a logger
 
+	public EventReservation(Main mainFrame) {
+		this.mainFrame = mainFrame;
+		this.priceCalculator = new EventPriceCalculator(); // Initialize price calculator
+		Utility.setWindowSize(mainFrame);
+		setLayout(new BorderLayout());
+		add(bookingPanel, BorderLayout.CENTER);
 
-        eventCombo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedEvent = eventCombo.getSelectedItem().toString();
-				switch (selectedEvent) {
-					case "Wedding", "Engagement" -> {
-						try {
-							int size = Integer.parseInt(sizeField.getText());
-							int pricePerPerson = 1000;
-							int totalPrice = pricePerPerson * size;
-							priceField.setText(String.valueOf(totalPrice));
-						} catch (NumberFormatException ex) {
-							//JOptionPane.showMessageDialog(mainFrame, "Please enter a valid number for size then choose event.");
-						}
-					}
-					case "Conference" -> {
-						try {
-							int sizeOfEvent = Integer.parseInt(sizeField.getText());
-							int pricePerPerson = 600;
-							int totalPrice = pricePerPerson * sizeOfEvent;
-							priceField.setText(String.valueOf(totalPrice));
-						} catch (NumberFormatException ex) {
-							//JOptionPane.showMessageDialog(mainFrame, "Please enter a valid number for size then choose event.");
-						}
-					}
-					case "Birthday Party" -> {
-						try {
-							int sizeOfEvent = Integer.parseInt(sizeField.getText());
-							int pricePerPerson = 800;
-							int totalPrice = pricePerPerson * sizeOfEvent;
-							priceField.setText(String.valueOf(totalPrice));
-						} catch (NumberFormatException ex) {
-							//JOptionPane.showMessageDialog(mainFrame, "Please enter a valid number for size then choose event.");
-						}
-					}
-					default -> priceField.setText("");
-				}
-            }
-        });
-        
-        Submitbtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String name = nameField.getText();
-                String event = eventCombo.getSelectedItem().toString();
-                String date = dateField.getText();
-                String size = sizeField.getText();
-                String price = priceField.getText();
-                String paymentMthd = paymentCombo.getSelectedItem().toString();
+		// Create a menu bar and initialize it with the menu items and listeners
+		menuBar = new JMenuBar();
+		initializeMenu(menuBar, mainFrame, bookingPanel.getBackground(), bookingPanel.getForeground());
+		add(menuBar, BorderLayout.NORTH);
 
-                if (!name.isEmpty() && !event.isEmpty() && !date.isEmpty() && !size.isEmpty() && !price.isEmpty()) {
-                    insertValuesIntoDatabase(name, event, date, size, price, paymentMthd);
-                    JOptionPane.showMessageDialog(mainFrame, "Values have been inserted successfully");
+		// Display the initial slider value
+		numGuestDisplay.setText(String.valueOf(numGuests.getValue()));
 
-                    // Clear the fields after successful submission
-                    nameField.setText("");
-                    eventCombo.setSelectedIndex(0);  // Reset to the first item
-                    dateField.setText("");
-                    sizeField.setText("");
-                    priceField.setText("");
-                    paymentCombo.setSelectedIndex(0);  // Reset to the first item
-                } else {
-                    JOptionPane.showMessageDialog(mainFrame, "Please fill all the fields");
-                }
-            }
-        });
-    }
+		// Add listeners for event type, location, and guest number changes to recalculate price
+		EventType.addActionListener(e -> updateTotalPrice());
+		EventLocation.addActionListener(e -> updateTotalPrice());
+		numGuests.addChangeListener(e -> {
+			numGuestDisplay.setText(String.valueOf(numGuests.getValue())); // Display selected number of guests
+			updateTotalPrice(); // Recalculate price whenever guest number changes
+		});
 
-    private void insertValuesIntoDatabase(String name, String event, String date, String size, String price, String paymentMthd) {
+		// Clear button functionality using Utility class
+		BtnClear.addActionListener(e -> clearForm());
 
-        String insertIntoTable = "INSERT INTO Booking (Name, Event, reservationDate, EventSize, Price, payment_method) VALUES (?, ?, ?, ?, ?, ?)";
+		// Pay button functionality
+		BtnPay.addActionListener(e -> handlePay());
 
-        try (Connection conn = Db_Connect.getConnection();
-             PreparedStatement statement = conn.prepareStatement(insertIntoTable)) {
+		// Cancel button functionality (returns to Home)
+		BtnCancel.addActionListener(e -> mainFrame.getScreenManager().showPanel("Home"));
+	}
 
-            statement.setString(1, name);
-            statement.setString(2, event);
-            statement.setString(3, date);
-            statement.setString(4, size);
-            statement.setString(5, price);
-            statement.setString(6, paymentMthd);
+	// Method to update total price
+	private void updateTotalPrice() {
+		String selectedEvent = (String) EventType.getSelectedItem();
+		int guests = numGuests.getValue();
 
-            int rowsInserted = statement.executeUpdate();  // Correct method to use for INSERT, UPDATE, DELETE statements
+		// Call calculatePrice on the instance of EventPriceCalculator
+		assert selectedEvent != null;
+		if (selectedEvent.equals("Choose Event Type")) {
+			totalPrice.setText(""); // Clear total price if event type is not selected
+		} else {
+			int price = priceCalculator.calculatePrice(selectedEvent, guests);
+			totalPrice.setText("Total Price: Rs " + price);
+		}
+	}
 
-            if (rowsInserted > 0) {
-                System.out.println("Insert successful. " + rowsInserted + " row(s) added.");
-            }
+	// Method to clear the form fields
+	private void clearForm() {
+		// Use Utility class to clear all fields
+		Utility.clearTextFields(clientName, EventDate, Additional); // Clear the text fields
+		EventType.setSelectedIndex(0); // Reset to "Choose Event Type"
+		EventLocation.setSelectedIndex(0); // Reset to "Choose Location"
+		numGuests.setValue(10); // Reset guest number to minimum
+		totalPrice.setText("");
+		PaymentMethod.setSelectedIndex(0); // Reset payment method
+		numGuestDisplay.setText("10"); // Reset guest display
+	}
 
-        } catch (SQLException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error inserting data into the database.");
-        }
-    }
+	// Method to handle payment and insert the data into the database
+	private void handlePay() {
+		// Validate that a proper event type has been selected
+		if (EventType.getSelectedIndex() == 0) {  // "Choose Event Type" is the first option
+			JOptionPane.showMessageDialog(this, "Please select a valid event type.", "Invalid Event", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		// Validate that a proper payment method has been selected
+		if (PaymentMethod.getSelectedIndex() == 0) {  // "Choose your payment method" is the first option
+			JOptionPane.showMessageDialog(this, "Please select a valid payment method.", "Invalid Payment", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		// Check if the name and date fields are filled
+		if (clientName.getText().isEmpty() || EventDate.getText().isEmpty() || EventLocation.getSelectedIndex() == 0) {
+			JOptionPane.showMessageDialog(this, "Please fill out all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		// Validate the event date
+		if (!Utility.isValidDate(EventDate.getText())) {
+			JOptionPane.showMessageDialog(this, "Please enter a valid date in DD/MM/YY format.", "Invalid Date", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		// Insert reservation into the database
+		insertReservationIntoDB();
+
+		// Display confirmation
+		JOptionPane.showMessageDialog(this, "Congrats! We will get in touch soon.");
+		mainFrame.getScreenManager().showPanel("Home");
+	}
+
+	// Method to insert the event reservation into the database
+	private void insertReservationIntoDB() {
+		String client = clientName.getText();
+		String eventType = (String) EventType.getSelectedItem();
+		int guests = numGuests.getValue();
+		String location = (String) EventLocation.getSelectedItem();
+		String eventDate = EventDate.getText();
+		String additional = Additional.getText();
+		String paymentMethod = (String) PaymentMethod.getSelectedItem();
+		String price = totalPrice.getText().replace("Total Price: Rs ", "");
+
+		// Remove id from the insert as it is auto-incremented
+		String sql = "INSERT INTO booking (Name, Event, NumGuest, Location, ReservationDate, AdditionalInfo, PaymentMethod, Price) " +
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+		try (Connection conn = Db_Connect.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, client);
+			pstmt.setString(2, eventType);
+			pstmt.setInt(3, guests);
+			pstmt.setString(4, location);
+			pstmt.setString(5, eventDate);
+			pstmt.setString(6, additional);
+			pstmt.setString(7, paymentMethod);
+			pstmt.setString(8, price);
+
+			int rowsInserted = pstmt.executeUpdate();
+			if (rowsInserted > 0) {
+				LOGGER.log(Level.INFO, "Reservation saved successfully.");
+			}
+
+		} catch (SQLException | ClassNotFoundException ex) {
+			LOGGER.log(Level.SEVERE, "Failed to save the reservation: " + ex.getMessage(), ex);
+			JOptionPane.showMessageDialog(this, "Failed to save the reservation. Please try again.", "Database Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
 }

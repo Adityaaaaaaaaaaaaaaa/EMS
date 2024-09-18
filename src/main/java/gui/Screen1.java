@@ -2,6 +2,7 @@ package gui;
 
 import app.Main;
 import session.Session;
+import utility.MenuInterface;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;

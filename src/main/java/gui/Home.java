@@ -2,12 +2,13 @@ package gui;
 
 
 import app.Main;
+import utility.MenuInterface;
 import utility.Utility;
 
 import javax.swing.*;
 import java.awt.BorderLayout;
 
-public class Home extends JPanel implements MenuInterface{
+public class Home extends JPanel implements MenuInterface {
 
     private JPanel homePanel;
     private JPanel aboutus;
