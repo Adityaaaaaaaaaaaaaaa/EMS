@@ -53,8 +53,6 @@ public class Organizer_profile extends JPanel implements MenuInterface {
         // Create a menu bar and initialize it with the menu items and listeners
         menuBar = new JMenuBar();
         initializeMenu(menuBar, mainFrame, main_panel.getBackground(), main_panel.getForeground());
-
-        // Add the menu bar to the panel
         add(menuBar, BorderLayout.NORTH);
 
         // Action listener for the Cancel button
@@ -117,14 +115,6 @@ public class Organizer_profile extends JPanel implements MenuInterface {
         } catch (SQLException | ClassNotFoundException ex) {
             LOGGER.log(Level.SEVERE, "Database error while fetching user data: " + ex.getMessage(), ex);
             JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, "Error closing database resources: " + e.getMessage(), e);
-            }
         }
     }
 
@@ -169,13 +159,6 @@ public class Organizer_profile extends JPanel implements MenuInterface {
             LOGGER.log(Level.SEVERE, "Database error while updating user data: " + ex.getMessage(), ex);
             JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
-        } finally {
-            try {
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, "Error closing database resources: " + e.getMessage(), e);
-            }
         }
     }
 

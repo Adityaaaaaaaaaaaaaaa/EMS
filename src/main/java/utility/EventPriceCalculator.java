@@ -1,6 +1,6 @@
 package utility;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
 public class EventPriceCalculator implements PriceCalculator {
 

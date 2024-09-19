@@ -56,17 +56,21 @@ public class User_profile extends JPanel implements MenuInterface {
     public User_profile(Main mainFrame) {
         this.mainFrame = mainFrame;
         Utility.setWindowSize(mainFrame);
+
         try {
             backgroundImage = ImageIO.read(new File("src/main/resources/image/bg6.jpeg"));  // Provide the correct path to your image
         } catch (IOException ex) {
             Logger.getLogger(User_profile.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
-
         // Set layout and make the panel transparent
         setLayout(new BorderLayout());
         add(mainJpanel, BorderLayout.CENTER);
+
+        // Create a menu bar and initialize it with the menu items and listeners
+        menuBar = new JMenuBar();
+        initializeMenu(menuBar, mainFrame, mainJpanel.getBackground(), mainJpanel.getForeground());
+        add(menuBar, BorderLayout.NORTH);
 
         setOpaque(false);  // Make this JPanel transparent so the background image is visible
 
@@ -81,12 +85,12 @@ public class User_profile extends JPanel implements MenuInterface {
         btnUpdate.setFocusPainted(false);   // Removes the focus border
         btnUpdate.setContentAreaFilled(true); // Set to false if you want the background transparent
 
-// Remove border and focus indicator for the Delete button
+        // Remove border and focus indicator for the Delete button
         btnDelete.setBorderPainted(false);  // Removes the border color
         btnDelete.setFocusPainted(false);   // Removes the focus border
         btnDelete.setContentAreaFilled(true); // Set to false if you want the background transparent
 
-// Remove border and focus indicator for the Cancel button
+        // Remove border and focus indicator for the Cancel button
         btnCancel.setBorderPainted(false);  // Removes the border color
         btnCancel.setFocusPainted(false);   // Removes the focus border
         btnCancel.setContentAreaFilled(true); // Set to false if you want the background transparent
@@ -114,13 +118,6 @@ public class User_profile extends JPanel implements MenuInterface {
             mainFrame.revalidate();
             mainFrame.repaint();
         });
-
-        // Create a menu bar and initialize it with the menu items and listeners
-        menuBar = new JMenuBar();
-        initializeMenu(menuBar, mainFrame, mainJpanel.getBackground(), mainJpanel.getForeground());
-
-        // Add the menu bar to the panel
-        add(menuBar, BorderLayout.NORTH);
 
         btnUpdate.addActionListener(new ActionListener() {
             @Override
@@ -229,13 +226,6 @@ public class User_profile extends JPanel implements MenuInterface {
             LOGGER.log(Level.SEVERE, "Database error while updating user data: " + ex.getMessage(), ex);
             JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
-        } finally {
-            try {
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, "Error closing database resources: " + e.getMessage(), e);
-            }
         }
     }
 
@@ -281,8 +271,8 @@ public class User_profile extends JPanel implements MenuInterface {
 
     // Optional delete profile method
     private void deleteUserProfile(String username) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
+        Connection conn;
+        PreparedStatement stmt;
 
         try {
             conn = Db_Connect.getConnection();
@@ -300,13 +290,6 @@ public class User_profile extends JPanel implements MenuInterface {
         } catch (SQLException | ClassNotFoundException ex) {
             LOGGER.log(Level.SEVERE, "Database error while deleting user data: " + ex.getMessage(), ex);
             JOptionPane.showMessageDialog(this, "Database error. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            try {
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                LOGGER.log(Level.SEVERE, "Error closing database resources: " + e.getMessage(), e);
-            }
         }
     }
 }
