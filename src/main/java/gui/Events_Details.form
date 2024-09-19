@@ -22,7 +22,7 @@
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints/>
             <properties>
-              <background color="-11568830"/>
+              <background color="-2041653"/>
             </properties>
             <border type="none"/>
             <children>
@@ -33,7 +33,7 @@
                 <properties>
                   <background color="-11568830"/>
                   <font name="Lucida Calligraphy" size="20" style="1"/>
-                  <foreground color="-1"/>
+                  <foreground color="-13347798"/>
                   <text value="Events Details"/>
                 </properties>
               </component>

@@ -33,9 +33,9 @@
                 </constraints>
                 <properties>
                   <background color="-1"/>
-                  <enabled value="false"/>
+                  <enabled value="true"/>
                   <font name="Baskerville Old Face" size="22" style="1"/>
-                  <foreground color="-1"/>
+                  <foreground color="-13347798"/>
                   <text value="EVENT LOCATION DETAILS"/>
                 </properties>
               </component>
