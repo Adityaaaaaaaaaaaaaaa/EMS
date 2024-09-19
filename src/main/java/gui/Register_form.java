@@ -144,22 +144,6 @@ public class Register_form extends JPanel {
 			errorMsg.setText("Internal error. Please contact support.");
 			LOGGER.log(Level.SEVERE, "JDBC Driver not found: " + ex.getMessage(), ex);
 
-		} finally {
-			// Ensure resources are properly closed
-			if (statement != null) {
-				try {
-					statement.close();
-				} catch (SQLException ex) {
-					LOGGER.log(Level.SEVERE, "Failed to close statement", ex);
-				}
-			}
-			if (connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException ex) {
-					LOGGER.log(Level.SEVERE, "Failed to close connection", ex);
-				}
-			}
 		}
 	}
 

@@ -25,7 +25,7 @@ public class ScreenManager {
 
 		// Register initial screens
 		registerScreen("Login_form", new Login_form(mainFrame));
-		registerScreen("Screen1", new Screen1(mainFrame));
+		//registerScreen("Screen1", new Screen1(mainFrame));
 		registerScreen("Register_form", new Register_form(mainFrame));
 		// Other screens will be created lazily
 	}

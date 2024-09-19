@@ -39,8 +39,6 @@ public class Event_Location extends JPanel implements MenuInterface {
         // Create a menu bar and initialize it with the menu items and listeners
         menuBar = new JMenuBar();
         initializeMenu(menuBar, mainFrame, mainLocation.getBackground(), mainLocation.getForeground());
-
-        // Add the menu bar to the panel
         add(menuBar, BorderLayout.NORTH);
 
         // Create a scroll pane to fit the window width and height

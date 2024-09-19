@@ -1,6 +1,6 @@
 package utility;
 
-import javax.swing.*;
+import javax.swing.JLabel;
 
 public interface PriceCalculator {
 	// Calculate total price based on event type, location, and number of guests
