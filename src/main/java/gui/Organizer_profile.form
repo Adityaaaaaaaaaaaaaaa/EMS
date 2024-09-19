@@ -28,7 +28,7 @@
             <properties>
               <font name="Baskerville Old Face" size="16" style="2"/>
               <foreground color="-1"/>
-              <text value="Organizer Profile"/>
+              <text value="Organizer Profile 2"/>
             </properties>
           </component>
           <component id="99ee0" class="javax.swing.JLabel">
