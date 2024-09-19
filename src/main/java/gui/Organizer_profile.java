@@ -28,7 +28,6 @@ public class Organizer_profile extends JPanel implements MenuInterface {
     private JTextField OrgAdd;
     private JTextField OrgPhoneNum;
     private JButton btnUpdate;
-    private JButton btnDelete;
     private JButton btnCancel;
     private JMenuBar menuBar;
 
