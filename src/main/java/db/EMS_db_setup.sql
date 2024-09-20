@@ -87,9 +87,9 @@ VALUES  ('Wedding','Our wedding event package includes full-service planning, ve
 
 
 -- Locations
+
 INSERT INTO Location (Name, Description, Address, Attendees)
 VALUES
-    ('Le Chateau Wedding and Birthday Hall (Indoor)', 'A luxurious indoor venue for weddings and birthdays, featuring a grand hall, elegant decor, customizable seating, and modern lighting. Ideal for both intimate and large events with dedicated staff.', 'Chateau Mon Desir, Balaclava, Mauritius', '500'),
-    ('Pamplemousses Event Garden (Outdoor)', 'A scenic outdoor venue in the Pamplemousses Botanical Garden, ideal for weddings and birthday parties. With ample guest space and a picturesque setting among tropical plants, it offers a natural, open-air environment for any celebration.', 'Pamplemousses Botanical Garden, Pamplemousses, Mauritius', '400'),
-    ('Caudan Conference Centre (Indoor)', 'A modern conference hall at Caudan Arts Centre, Port Louis. Perfect for corporate events with seating for 500, advanced AV systems, and a stage for presentations. Support staff and catering available.', 'Caudan Arts Centre, Port Louis, Mauritius', '200');
-
+    ('Le Chateau Wedding and Birthday Hall', 'Luxurious indoor venue with elegant decor, customizable seating, and modern lighting.', 'Chateau Mon Desir, Balaclava, Mauritius', 500),
+    ('Pamplemousses Event Garden', 'Scenic outdoor venue with tropical plants, perfect for weddings and parties.', 'Pamplemousses Botanical Garden, Pamplemousses, Mauritius', 400),
+    ('Caudan Art Centre', 'Modern conference hall with AV systems, ideal for corporate events.', 'Caudan Arts Centre, Port Louis, Mauritius', 200);

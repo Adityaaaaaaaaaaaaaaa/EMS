@@ -112,40 +112,115 @@ public class Event_Location extends JPanel implements MenuInterface {
         }
     }
 
-    // Method to dynamically create and display data in the respective panel using absolute positioning
+
     private void displayDataInPanel(ResultSet rs, JPanel panel) throws SQLException {
         panel.removeAll();  // Clear the panel before adding new data
 
-        // Fetch the window width from the mainFrame
-        int windowWidth = mainFrame.getWidth() - 40; // Keep a margin
+        // Width for each component (considering the image on the left)
+        int componentWidth = 220;
+        int componentHeight = 20;
+        int verticalSpacing = 5;  // Small space between components
 
-        // Create and position JLabels and JTextArea
-        JLabel nameLabel = new JLabel("Name: " + rs.getString("Name"));
-        JLabel addressLabel = new JLabel("Address: " + rs.getString("Address"));
-        JLabel attendeesLabel = new JLabel("Attendees: " + rs.getString("Attendees"));
+        // Color for the text (name, description, address, attendees)
+        Color textColor = Color.decode("#34542A");
 
-        // Create JTextArea for wrapping the description
-        JTextArea descriptionArea = new JTextArea("Description: " + rs.getString("Description"));
-        descriptionArea.setWrapStyleWord(true);
-        descriptionArea.setLineWrap(true);
-        descriptionArea.setOpaque(false);
-        descriptionArea.setEditable(false);
-        descriptionArea.setFocusable(false);
+        JTextArea nameArea;
+        JTextArea descriptionArea;
+        JTextArea addressArea;
+        JLabel attendeesLabel;  // Declare attendeesLabel here
 
-        // Set bounds (position and size) for each component to ensure left alignment and no overflow
-        nameLabel.setBounds(10, 10, windowWidth, 25);
-        descriptionArea.setBounds(10, 40, windowWidth, 100);
-        addressLabel.setBounds(10, 150, windowWidth, 25);
-        attendeesLabel.setBounds(10, 180, windowWidth, 25);
+        // If it's indoor1 or outdoor1, allow the name to wrap on two lines and set it to bold
+        if (panel == indoor1 || panel == outdoor1) {
+            nameArea = new JTextArea("Name: " + rs.getString("Name"));
+            nameArea.setWrapStyleWord(true);
+            nameArea.setLineWrap(true);
+            nameArea.setOpaque(false);
+            nameArea.setEditable(false);
+            nameArea.setFocusable(false);
+            nameArea.setFont(new Font("Arial", Font.BOLD, 14));  // Set bold font
+            nameArea.setForeground(textColor);  // Set text color
+            nameArea.setBounds(10, 10, componentWidth, 40);  // Allow for 2-line name
+        } else {
+            // Default JTextArea for other panels, bold font for name
+            nameArea = new JTextArea("Name: " + rs.getString("Name"));
+            nameArea.setWrapStyleWord(false);
+            nameArea.setLineWrap(false);
+            nameArea.setOpaque(false);
+            nameArea.setEditable(false);
+            nameArea.setFocusable(false);
+            nameArea.setFont(new Font("Arial", Font.BOLD, 14));  // Set bold font
+            nameArea.setForeground(textColor);  // Set text color
+            nameArea.setBounds(10, 10, componentWidth, componentHeight);
+        }
 
-        // Add the components to the panel
-        panel.add(nameLabel);
+        // Handle description wrapping in 2 lines for outdoor1 and conference1
+        if (panel == outdoor1 || panel == conference1) {
+            descriptionArea = new JTextArea("Description: " + rs.getString("Description"));
+            descriptionArea.setWrapStyleWord(true);
+            descriptionArea.setLineWrap(true);
+            descriptionArea.setOpaque(false);
+            descriptionArea.setEditable(false);
+            descriptionArea.setFocusable(false);
+            descriptionArea.setFont(new Font("Arial", Font.PLAIN, 12));  // Set font
+            descriptionArea.setForeground(textColor);  // Set text color
+            descriptionArea.setBounds(10, 55, componentWidth, 40);  // Allow for 2-line description
+        } else {
+            descriptionArea = new JTextArea("Description: " + rs.getString("Description"));
+            descriptionArea.setWrapStyleWord(true);
+            descriptionArea.setLineWrap(true);
+            descriptionArea.setOpaque(false);
+            descriptionArea.setEditable(false);
+            descriptionArea.setFocusable(false);
+            descriptionArea.setFont(new Font("Arial", Font.PLAIN, 12));  // Set font
+            descriptionArea.setForeground(textColor);  // Set text color
+            descriptionArea.setBounds(10, 55, componentWidth, 60);  // Regular description height
+        }
+
+        // Handle address wrapping in 2 lines for outdoor1 and conference1
+        if (panel == outdoor1 || panel == conference1) {
+            addressArea = new JTextArea("Address: " + rs.getString("Address"));
+            addressArea.setWrapStyleWord(true);
+            addressArea.setLineWrap(true);
+            addressArea.setOpaque(false);
+            addressArea.setEditable(false);
+            addressArea.setFocusable(false);
+            addressArea.setFont(new Font("Arial", Font.PLAIN, 12));  // Set font
+            addressArea.setForeground(textColor);  // Set text color
+            addressArea.setBounds(10, 100, componentWidth, 40);  // Allow for 2-line address
+        } else {
+            addressArea = new JTextArea("Address: " + rs.getString("Address"));
+            addressArea.setWrapStyleWord(true);
+            addressArea.setLineWrap(true);
+            addressArea.setOpaque(false);
+            addressArea.setEditable(false);
+            addressArea.setFocusable(false);
+            addressArea.setFont(new Font("Arial", Font.PLAIN, 12));  // Set font
+            addressArea.setForeground(textColor);  // Set text color
+            addressArea.setBounds(10, 120, componentWidth, 50);     // Regular height for address
+        }
+
+        // Create and position attendees label (non-bold)
+        attendeesLabel = new JLabel("Attendees: " + rs.getString("Attendees"));
+        attendeesLabel.setFont(new Font("Arial", Font.PLAIN, 12));  // Set non-bold font
+        attendeesLabel.setForeground(textColor);  // Set text color
+
+        // Set the bounds for attendeesLabel (remove space between description and attendees for outdoor1 and conference1)
+        if (panel == outdoor1 || panel == conference1) {
+            attendeesLabel.setBounds(10, 100 + 40 + verticalSpacing, componentWidth, componentHeight);  // Right below the address
+        } else {
+            attendeesLabel.setBounds(10, 165, componentWidth, componentHeight);  // Default positioning
+        }
+
+        // Add components to the panel
+        panel.add(nameArea);
         panel.add(descriptionArea);
-        panel.add(addressLabel);
+        panel.add(addressArea);
         panel.add(attendeesLabel);
 
-        // Refresh the panel to display the data
+        // Repaint and revalidate to refresh the UI
         panel.revalidate();
         panel.repaint();
     }
+
+
 }
