@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.Event_detail">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="20" y="20" width="697" height="1782"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <scrollpane id="54111">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="bfadb" binding="subJpanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="3" left="3" bottom="3" right="3"/>
+            <constraints/>
+            <properties>
+              <background color="-2041653"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="b8338" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Lucida Calligraphy" size="20" style="1"/>
+                  <foreground color="-13279685"/>
+                  <text value="Event Details"/>
+                </properties>
+              </component>
+              <grid id="dac95" binding="details" layout-manager="GridLayoutManager" row-count="13" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="2" left="2" bottom="2" right="2"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-13279685"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="9a8f9" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-2071"/>
+                      <font name="Book Antiqua" size="18" style="1"/>
+                      <foreground color="-2041653"/>
+                      <text value="Conference"/>
+                    </properties>
+                  </component>
+                  <grid id="f13b4" binding="conference" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="5" left="5" bottom="5" right="5"/>
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-13279685"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="92065" binding="confImg" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="10" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-13279685"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="d112b" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <icon value="image/conferenceindoor (2).jpeg"/>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="6d204" binding="conferenceInfo" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="3" left="3" bottom="3" right="3"/>
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-13279685"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="e0422" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Bell MT" size="16" style="1"/>
+                              <foreground color="-2041653"/>
+                              <text value="Corporate Indoor Conference   "/>
+                            </properties>
+                          </component>
+                          <grid id="9936a" layout-manager="GridLayoutManager" row-count="10" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="3" left="3" bottom="3" right="3"/>
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-2041653"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="2493c" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="An indoor conference with seating, "/>
+                                </properties>
+                              </component>
+                              <component id="de2b8" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="AV equipment, and catering."/>
+                                </properties>
+                              </component>
+                              <component id="3d949" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font style="1"/>
+                                  <foreground color="-13279685"/>
+                                  <text value="Package Includes:"/>
+                                </properties>
+                              </component>
+                              <component id="b470c" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="Conference venue, Seating, Audiovisual"/>
+                                </properties>
+                              </component>
+                              <component id="c806e" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="setup, Wi-Fi, Stage setup, Catering,"/>
+                                </properties>
+                              </component>
+                              <component id="b7933" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="Tech support, Branding, Breakout rooms,Registration management."/>
+                                </properties>
+                              </component>
+                              <component id="95cda" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font style="1"/>
+                                  <foreground color="-13279685"/>
+                                  <text value="Location:"/>
+                                </properties>
+                              </component>
+                              <component id="2ea9a" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="Caudan Arts Centre, Port Louis"/>
+                                </properties>
+                              </component>
+                              <component id="cd620" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font style="1"/>
+                                  <foreground color="-13279685"/>
+                                  <text value="Capacity:"/>
+                                </properties>
+                              </component>
+                              <component id="9b44a" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="200"/>
+                                </properties>
+                              </component>
+                              <component id="b45e8" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font style="1"/>
+                                  <foreground color="-13279685"/>
+                                  <text value="End Time:"/>
+                                </properties>
+                              </component>
+                              <component id="17f48" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="21:00"/>
+                                </properties>
+                              </component>
+                              <component id="ddf09" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font style="1"/>
+                                  <foreground color="-13279685"/>
+                                  <text value="Rate:"/>
+                                </properties>
+                              </component>
+                              <component id="428e3" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="150000"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="dfeb" binding="wedding" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="5" left="5" bottom="5" right="5"/>
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-13279685"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="28416" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="10" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-13279685"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="b0c0a" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <icon value="image/outdoorWedding_.jpeg"/>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="4762" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="3" left="3" bottom="3" right="3"/>
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-13279685"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="5456" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-2041653"/>
+                              <font name="Bell MT" size="16" style="1"/>
+                              <foreground color="-2041653"/>
+                              <text value="Breathtaking Outdoor Wedding"/>
+                            </properties>
+                          </component>
+                          <grid id="f0b93" layout-manager="GridLayoutManager" row-count="11" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="3" left="3" bottom="3" right="3"/>
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-2041653"/>
+                              <foreground color="-13279685"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="d3888" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="An outdoor wedding with custom seating "/>
+                                </properties>
+                              </component>
+                              <component id="7d036" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="and decorations in a scenic setting."/>
+                                </properties>
+                              </component>
+                              <component id="f0222" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font style="1"/>
+                                  <foreground color="-13279685"/>
+                                  <text value="Package Includes:"/>
+                                </properties>
+                              </component>
+                              <component id="b6b70" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="Full-service planning, Venue setup, Catering,"/>
+                                </properties>
+                              </component>
+                              <component id="e191" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="Decoration, Photography, Music,"/>
+                                </properties>
+                              </component>
+                              <component id="77f0a" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="Floral arrangements, Custom menus."/>
+                                </properties>
+                              </component>
+                              <component id="39c9e" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font style="1"/>
+                                  <foreground color="-13279685"/>
+                                  <text value="Location:"/>
+                                </properties>
+                              </component>
+                              <component id="3c271" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="Chateau Mon Desir,"/>
+                                </properties>
+                              </component>
+                              <component id="34445" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="Pamplemousses Botanical Garden, Pamplemousses"/>
+                                </properties>
+                              </component>
+                              <component id="51e2c" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font style="1"/>
+                                  <foreground color="-13279685"/>
+                                  <text value="Capacity:"/>
+                                </properties>
+                              </component>
+                              <component id="2bab9" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="350"/>
+                                </properties>
+                              </component>
+                              <component id="de6d3" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font style="1"/>
+                                  <foreground color="-13279685"/>
+                                  <text value="End Time:"/>
+                                </properties>
+                              </component>
+                              <component id="32c0d" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="17:00"/>
+                                </properties>
+                              </component>
+                              <component id="c2ea4" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font style="1"/>
+                                  <foreground color="-13279685"/>
+                                  <text value="Rate:"/>
+                                </properties>
+                              </component>
+                              <component id="5ecd0" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <foreground color="-13279685"/>
+                                  <text value="100000"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <component id="c6787" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-2041653"/>
+                      <font name="Book Antiqua" size="18" style="1"/>
+                      <foreground color="-2041653"/>
+                      <text value="Wedding Celebration"/>
+                    </properties>
+                  </component>
+                  <grid id="9ad3f" binding="indoorWedding" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="5" left="5" bottom="5" right="5"/>
+                    <constraints>
+                      <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-13279685"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="8e7a9" binding="indoorwedImg" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="10" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-13279685"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="a6f20" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <icon value="image/indoor(2).jpeg"/>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="61618" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <grid id="9eed4" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="3" left="3" bottom="3" right="3"/>
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-13279685"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="24de0" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-2041653"/>
+                                  <font name="Bell MT" size="16" style="1"/>
+                                  <foreground color="-2041653"/>
+                                  <text value="Timeless Indoor wedding"/>
+                                </properties>
+                              </component>
+                              <grid id="555ca" layout-manager="GridLayoutManager" row-count="11" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                <margin top="3" left="3" bottom="3" right="3"/>
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-2041653"/>
+                                  <foreground color="-13279685"/>
+                                </properties>
+                                <border type="none"/>
+                                <children>
+                                  <component id="70b4d" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="A classic indoor wedding with elegant décor "/>
+                                    </properties>
+                                  </component>
+                                  <component id="eaf60" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="and comfortable seating."/>
+                                    </properties>
+                                  </component>
+                                  <component id="92442" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Package Includes:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="22bb6" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Full-service planning, Venue setup, Catering,"/>
+                                    </properties>
+                                  </component>
+                                  <component id="b16a5" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Decoration, Photography, Music,"/>
+                                    </properties>
+                                  </component>
+                                  <component id="536cc" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Floral arrangements, Custom menus."/>
+                                    </properties>
+                                  </component>
+                                  <component id="24bb6" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Location:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="78757" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Chateau Mon Desir,"/>
+                                    </properties>
+                                  </component>
+                                  <component id="e558d" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Pamplemousses Botanical Garden, Pamplemousses"/>
+                                    </properties>
+                                  </component>
+                                  <component id="5f7eb" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Capacity:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="8e585" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="350"/>
+                                    </properties>
+                                  </component>
+                                  <component id="bc23c" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="End Time:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="ea3fb" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="17:00"/>
+                                    </properties>
+                                  </component>
+                                  <component id="f3eb1" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Rate:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="1bcec" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="80000"/>
+                                    </properties>
+                                  </component>
+                                </children>
+                              </grid>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <component id="8cc1a" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="9" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-2071"/>
+                      <font name="Book Antiqua" size="18" style="1"/>
+                      <foreground color="-2041653"/>
+                      <text value="Birthday Celebration"/>
+                    </properties>
+                  </component>
+                  <grid id="e5b05" binding="outdoorBirthday" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="5" left="5" bottom="5" right="5"/>
+                    <constraints>
+                      <grid row="11" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-13279685"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="f3a4c" binding="outdoorBirthdayImg" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="10" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-13279685"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="69776" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <icon value="image/birthdayOutdoor-190.jpeg"/>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="37fca" binding="outdoorBirthdayDetails" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <grid id="8ce85" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="3" left="3" bottom="3" right="3"/>
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-13279685"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="7e48d" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-2041653"/>
+                                  <font name="Bell MT" size="16" style="1"/>
+                                  <foreground color="-2041653"/>
+                                  <text value="Outdoor Birthday Bash         "/>
+                                </properties>
+                              </component>
+                              <grid id="7a316" layout-manager="GridLayoutManager" row-count="10" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                <margin top="3" left="3" bottom="3" right="3"/>
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-2041653"/>
+                                  <foreground color="-13279685"/>
+                                </properties>
+                                <border type="none"/>
+                                <children>
+                                  <component id="30f20" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="An exciting outdoor birthday celebration with"/>
+                                    </properties>
+                                  </component>
+                                  <component id="c92b2" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="themed decorations and activities."/>
+                                    </properties>
+                                  </component>
+                                  <component id="58387" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Package Includes:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="438f0" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Themed Decorations, Catering, Custom Cake, "/>
+                                    </properties>
+                                  </component>
+                                  <component id="aedcd" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Photography, Party Favors, Games, Live Performances,"/>
+                                    </properties>
+                                  </component>
+                                  <component id="4cc58" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Sound &amp; Lighting, Event Planning."/>
+                                    </properties>
+                                  </component>
+                                  <component id="e7737" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Location:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="d1385" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Pamplemousses Botanical Garden, Pamplemousses"/>
+                                    </properties>
+                                  </component>
+                                  <component id="593d4" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Capacity:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="7ff7e" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="100"/>
+                                    </properties>
+                                  </component>
+                                  <component id="64009" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="End Time:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="4e6d7" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="16:00"/>
+                                    </properties>
+                                  </component>
+                                  <component id="74cdc" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Rate:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="3ac9b" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="100000"/>
+                                    </properties>
+                                  </component>
+                                </children>
+                              </grid>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <vspacer id="94210">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <vspacer id="3287c">
+                    <constraints>
+                      <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <vspacer id="d233f">
+                    <constraints>
+                      <grid row="10" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <vspacer id="3fbfd">
+                    <constraints>
+                      <grid row="8" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <grid id="b7c7a" binding="indoorBirthday" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="12" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-13279685"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="6e194" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="15" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-13279685"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="94b3f" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-11568830"/>
+                              <icon value="image/birthdayindoor-300.jpeg.jpg"/>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="37a4e" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <grid id="33fdf" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="3" left="3" bottom="3" right="3"/>
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-13279685"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="4ce8f" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-2041653"/>
+                                  <font name="Bell MT" size="16" style="1"/>
+                                  <foreground color="-2041653"/>
+                                  <text value="Indoor Birthday Party       "/>
+                                </properties>
+                              </component>
+                              <grid id="28ac0" layout-manager="GridLayoutManager" row-count="8" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                <margin top="3" left="3" bottom="3" right="3"/>
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-2041653"/>
+                                  <foreground color="-13279685"/>
+                                </properties>
+                                <border type="none"/>
+                                <children>
+                                  <component id="e5598" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="A fun indoor birthday with decorations, entertainment, and catering."/>
+                                    </properties>
+                                  </component>
+                                  <component id="faf7e" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Package Includes:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="a81d3" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Party Favors, Games, Live Performances,"/>
+                                    </properties>
+                                  </component>
+                                  <component id="8495d" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value=" Sound &amp; Lighting, Event Planning"/>
+                                    </properties>
+                                  </component>
+                                  <component id="ed854" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Location:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="1b901" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="Chateau Mon Desir, Balaclava"/>
+                                    </properties>
+                                  </component>
+                                  <component id="ecc85" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Capacity:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="67065" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="150"/>
+                                    </properties>
+                                  </component>
+                                  <component id="6f08a" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="End Time:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="64626" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="23:00"/>
+                                    </properties>
+                                  </component>
+                                  <component id="b1f6" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <font style="1"/>
+                                      <foreground color="-13279685"/>
+                                      <text value="Rate:"/>
+                                    </properties>
+                                  </component>
+                                  <component id="ed39a" class="javax.swing.JLabel">
+                                    <constraints>
+                                      <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties>
+                                      <foreground color="-13279685"/>
+                                      <text value="150000"/>
+                                    </properties>
+                                  </component>
+                                </children>
+                              </grid>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <vspacer id="c6d6c">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>

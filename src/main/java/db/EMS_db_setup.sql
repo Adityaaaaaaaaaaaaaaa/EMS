@@ -32,11 +32,15 @@ CREATE TABLE Booking (
 );
 
 -- Create EventDetails table
-CREATE TABLE EventDetails (
+CREATE TABLE WeddingAndEventPackages (
     id INT AUTO_INCREMENT PRIMARY KEY,
     Title VARCHAR(255) NOT NULL,
-    Description VARCHAR(500) NOT NULL,
-    Pricing INT NOT NULL
+    Description TEXT NOT NULL,
+    PackageIncludes TEXT NOT NULL,
+    Location VARCHAR(255) NOT NULL,
+    Capacity INT NOT NULL,
+    EndTime TIME NOT NULL,
+    Rate DECIMAL(10,2) NOT NULL
 );
 
 -- Create Location table
@@ -80,11 +84,40 @@ VALUES  ('John Doe', 'Wedding', 150, 'Beach Resort', '2024-09-20', 'Vegan Menu R
         ('Samantha Lee', 'Engagement', 100, 'Hotel Ballroom', '2024-11-15', 'Special Decoration Required', 'MCB Juice', 90000.75),
         ('Michael Brown', 'Conference', 200, 'Convention Center', '2024-12-05', 'Extra Audio Equipment', 'Credit Card', 145000.00);
 
-INSERT INTO EventDetails (Title, Description, Pricing)
-VALUES  ('Wedding','Our wedding event package includes full-service planning, venue setup, catering, decoration, photography, and music. Choose from a variety of themes to create your dream wedding. Additional services include floral arrangements, custom menus, and guest management.',125000),
-        ('Birthday','Our birthday event package provides venue decoration, catering, custom cakes, entertainment, and photography. We offer a variety of party themes for children and adults, including balloon decorations, game setups, and personalized birthday experiences.',1500),
-        ('Conference','Our conference event package includes venue rental, audiovisual equipment, stage setup, catering, and seating arrangements. We also offer support for registration management, guest speakers, and workshop facilitation. High-speed internet access and tech support are included.',3000);
+-- Inserting records with even shorter descriptions
 
+INSERT INTO WeddingAndEventPackages
+(Title, Description, PackageIncludes, Location, Capacity, EndTime, Rate)
+VALUES
+    ('Breathtaking Outdoor Wedding',
+     'An outdoor wedding with custom seating and decorations in a scenic setting.',
+     'Full-service planning, Venue setup, Catering, Decoration, Photography, Music, Floral arrangements, Custom menus',
+     'Chateau Mon Desir, Balaclava; Pamplemousses Botanical Garden, Pamplemousses',
+     350, '17:00', 100000),
+
+    ('Timeless Indoor Wedding',
+     'A classic indoor wedding with elegant décor and comfortable seating.',
+     'Full-service planning, Venue setup, Catering, Decoration, Photography, Music, Floral arrangements, Custom menus',
+     'Chateau Mon Desir, Balaclava',
+     350, '17:00', 80000),
+
+    ('Outdoor Birthday Extravaganza',
+     'An exciting outdoor birthday celebration with themed decorations and activities.',
+     'Themed Decorations, Catering, Custom Cake, Photography, Party Favors, Games, Live Performances, Sound & Lighting, Event Planning',
+     'Pamplemousses Botanical Garden, Pamplemousses',
+     100, '16:00', 100000),
+
+    ('Indoor Birthday Party',
+     'A fun indoor birthday with decorations, entertainment, and catering.',
+     'Themed Decorations, Catering, Custom Cake, Photography, Party Favors, Games, Live Performances, Sound & Lighting, Event Planning',
+     'Chateau Mon Desir, Balaclava',
+     150, '23:00', 150000),
+
+    ('Corporate Indoor Conference',
+     'An indoor conference with seating, AV equipment, and catering.',
+     'Conference venue, Seating, Audiovisual setup, Wi-Fi, Stage setup, Catering, Tech support, Branding, Breakout rooms, Registration management',
+     'Caudan Arts Centre, Port Louis',
+     200, '21:00', 150000);
 
 -- Locations
 

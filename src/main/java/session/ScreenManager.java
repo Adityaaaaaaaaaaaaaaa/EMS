@@ -92,7 +92,7 @@ public class ScreenManager {
 			case "Screen1" -> panel = new Screen1(mainFrame);
 			case "Register_form" -> panel = new Register_form(mainFrame);
 			case "Home" -> panel = new Home(mainFrame);
-			case "Events_Details" -> panel = new Events_Details(mainFrame);
+			case "Event_detail" -> panel = new Event_detail(mainFrame);
 			case "Event_Location" -> panel = new Event_Location(mainFrame);
 			default -> {
 				JOptionPane.showMessageDialog(mainFrame, "Unknown screen requested.");
