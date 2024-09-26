@@ -94,6 +94,7 @@ public class ScreenManager {
 			case "Home" -> panel = new Home(mainFrame);
 			case "Events_Details" -> panel = new Events_Details(mainFrame);
 			case "Event_Location" -> panel = new Event_Location(mainFrame);
+			case "Booking_Details" -> panel = new Booking_Details(mainFrame);
 			default -> {
 				JOptionPane.showMessageDialog(mainFrame, "Unknown screen requested.");
 				showPanel("Login_form"); // Default to log in on unknown screen
