@@ -25,7 +25,6 @@ public class ScreenManager {
 
 		// Register initial screens
 		registerScreen("Login_form", new Login_form(mainFrame));
-		//registerScreen("Screen1", new Screen1(mainFrame));
 		registerScreen("Register_form", new Register_form(mainFrame));
 		// Other screens will be created lazily
 	}
@@ -89,7 +88,6 @@ public class ScreenManager {
 			}
 			case "Booking" -> panel = new Booking(mainFrame);
 			case "Login_form" -> panel = new Login_form(mainFrame);
-			case "Screen1" -> panel = new Screen1(mainFrame);
 			case "Register_form" -> panel = new Register_form(mainFrame);
 			case "Home" -> panel = new Home(mainFrame);
 			case "Event_detail" -> panel = new Event_detail(mainFrame);

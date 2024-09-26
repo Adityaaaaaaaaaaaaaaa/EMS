@@ -114,7 +114,7 @@ public class User_profile extends JPanel implements MenuInterface {
         });
 
         btnCancel.addActionListener(e -> {
-            mainFrame.getScreenManager().showPanel("Screen1");
+            mainFrame.getScreenManager().showPanel("Home");
             mainFrame.revalidate();
             mainFrame.repaint();
         });

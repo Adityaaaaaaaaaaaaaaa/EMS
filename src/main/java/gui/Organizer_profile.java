@@ -56,7 +56,7 @@ public class Organizer_profile extends JPanel implements MenuInterface {
 
         // Action listener for the Cancel button
         btnCancel.addActionListener(e -> {
-            mainFrame.getScreenManager().showPanel("Screen1");
+            mainFrame.getScreenManager().showPanel("Home");
             mainFrame.revalidate();
             mainFrame.repaint();
         });

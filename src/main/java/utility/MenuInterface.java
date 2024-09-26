@@ -23,10 +23,9 @@ public interface MenuInterface {
         JMenuItem evtDetail = new JMenuItem("Event Details");
         JMenuItem evtLocation = new JMenuItem("Event Locations");
         JMenuItem evtBooking = new JMenuItem("Booking");
-        JMenuItem evtRrsv = new JMenuItem("Reservation Details");
+        JMenuItem evtRrsv = new JMenuItem("Booking Details");
         JMenuItem profile = new JMenuItem("Profile");
         JMenuItem logout = new JMenuItem("Log out");
-        JMenuItem screen1 = new JMenuItem("Screen1");
 
         // Add items to the menu
         menu.add(home);
@@ -36,7 +35,6 @@ public interface MenuInterface {
         menu.add(evtRrsv);
         menu.add(profile);
         menu.add(logout);
-        menu.add(screen1);
 
         menuBar.add(menu);
 
@@ -59,18 +57,15 @@ public interface MenuInterface {
         profile.setForeground(foregroundColor);
         logout.setBackground(backgroundColor);
         logout.setForeground(foregroundColor);
-        screen1.setBackground(backgroundColor);
-        screen1.setForeground(foregroundColor);
 
         // Add action listeners for each menu item
         home.addActionListener(e -> mainFrame.getScreenManager().showPanel("Home"));
         evtDetail.addActionListener(e -> mainFrame.getScreenManager().showPanel("Event_detail"));
         evtLocation.addActionListener(e -> mainFrame.getScreenManager().showPanel("Event_Location"));
         evtBooking.addActionListener(e -> mainFrame.getScreenManager().showPanel("Booking"));
-        evtRrsv.addActionListener(e -> mainFrame.getScreenManager().showPanel("xxx"));
+        evtRrsv.addActionListener(e -> mainFrame.getScreenManager().showPanel("Booking_Details"));
         profile.addActionListener(e -> handleProfileAccess(mainFrame));
         logout.addActionListener(e -> handleLogout(mainFrame));
-        screen1.addActionListener(e -> mainFrame.getScreenManager().showPanel("Screen1"));
     }
 
     // Method to handle profile access
