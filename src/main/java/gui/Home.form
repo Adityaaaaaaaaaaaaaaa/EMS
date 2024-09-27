@@ -190,7 +190,7 @@
                     </constraints>
                     <properties>
                       <font name="Bell MT" size="11"/>
-                      <foreground color="-12491213"/>
+                      <foreground color="-13347798"/>
                       <text value="covered. Our service packages include everything from elegant decorations to live bands,"/>
                     </properties>
                   </component>
@@ -201,7 +201,7 @@
                     <properties>
                       <font name="Bell MT" size="11"/>
                       <foreground color="-13347798"/>
-                      <text value=" ensuring a seamless and memorable event. Our team, including Adeety, Aqsaa, Jahanvi,"/>
+                      <text value=" ensuring a seamless and memorable event. Our team, including Adeetya, Aqsaa, Jahanvi,"/>
                     </properties>
                   </component>
                   <component id="2c766" class="javax.swing.JLabel">
@@ -211,7 +211,7 @@
                     <properties>
                       <font name="Bell MT" size="11"/>
                       <foreground color="-13347798"/>
-                      <text value="and myself, is dedicated to bringing your vision to life with customized solutions and "/>
+                      <text value="and Aliyah, is dedicated to bringing your vision to life with customized solutions and "/>
                     </properties>
                   </component>
                   <component id="d89bf" class="javax.swing.JLabel">

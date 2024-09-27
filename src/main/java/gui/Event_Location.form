@@ -34,7 +34,7 @@
                 <properties>
                   <background color="-1"/>
                   <enabled value="true"/>
-                  <font name="Baskerville Old Face" size="22" style="1"/>
+                  <font name="Lucida Calligraphy" size="20" style="1"/>
                   <foreground color="-13347798"/>
                   <text value="EVENT LOCATION DETAILS"/>
                 </properties>
