@@ -56,7 +56,7 @@ public class Booking_Details extends JPanel implements MenuInterface {
         // Use JSplitPane to divide space between the screenInfo and stats panels
         splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, screenInfo, stats);
         splitPane.setResizeWeight(0.5); // Split the space equally
-        splitPane.setDividerLocation(250); // Initially divide the panels equally (frame is 500px tall)
+        splitPane.setDividerLocation(150); // Initially divide the panels equally (frame is 500px tall)
 
         // Add the split pane to the layout
         add(splitPane, BorderLayout.CENTER);

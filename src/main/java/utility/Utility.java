@@ -11,8 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Utility {
-    private static final int WINDOW_WIDTH = 500;
-    private static final int WINDOW_HEIGHT = 500;
+    private static final int WINDOW_WIDTH = 550;
+    private static final int WINDOW_HEIGHT = 550;
 
     // Set window size and center it
     public static void setWindowSize(JFrame frame) {

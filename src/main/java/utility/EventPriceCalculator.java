@@ -9,8 +9,10 @@ public class EventPriceCalculator implements PriceCalculator {
 		int basePrice = 0;
 
 		// Define realistic base prices for different events (in Mauritian rupees)
-		int WEDDING_BASE_PRICE = 50000; // Base price for a wedding
-		int BIRTHDAY_BASE_PRICE = 20000; // Base price for a birthday party
+		int O_WEDDING_BASE_PRICE = 50000; // Base price for a wedding
+		int I_WEDDING_BASE_PRICE = 40000; // Base price for a wedding
+		int O_BIRTHDAY_BASE_PRICE = 20000; // Base price for a birthday party
+		int I_BIRTHDAY_BASE_PRICE = 15000; // Base price for a birthday party
 		int CONFERENCE_BASE_PRICE = 80000; // Base price for a conference
 
 		// Calculate guest price modifier based on the number of guests
@@ -24,9 +26,11 @@ public class EventPriceCalculator implements PriceCalculator {
 
 		// Calculate base price based on event type
 		switch (eventType) {
-			case "Wedding" -> basePrice = WEDDING_BASE_PRICE;
-			case "Conference" -> basePrice = CONFERENCE_BASE_PRICE;
-			case "Birthday Party" -> basePrice = BIRTHDAY_BASE_PRICE;
+			case "Wedding (Outdoor)" -> basePrice = O_WEDDING_BASE_PRICE;
+			case "Wedding (Indoor)" -> basePrice = I_WEDDING_BASE_PRICE;
+			case "Birthday Party (Outdoor)" -> basePrice = O_BIRTHDAY_BASE_PRICE;
+			case "Birthday Party (Indoor)" -> basePrice = I_BIRTHDAY_BASE_PRICE;
+			case "Conference (Indoor)" -> basePrice = CONFERENCE_BASE_PRICE;
 			default -> {
 				// Just a safeguard in case of an invalid event type
 				JOptionPane.showMessageDialog(null, "Please select a valid event type.", "Invalid Event", JOptionPane.ERROR_MESSAGE);
