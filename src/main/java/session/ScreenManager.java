@@ -2,18 +2,20 @@ package session;
 
 import app.Main;
 import gui.*;
+import utility.MenuInterface;
 
 import javax.swing.JPanel;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
-import java.awt.CardLayout;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ScreenManager {
-	private Main mainFrame;
-	private CardLayout cardLayout;
-	private JPanel mainPanel;
-	private Map<String, JPanel> screens;
+	private final Main mainFrame;  // Reference to Main
+	private final CardLayout cardLayout;
+	private final JPanel mainPanel;
+	private final Map<String, JPanel> screens;
 
 	public ScreenManager(Main mainFrame) {
 		this.mainFrame = mainFrame;
@@ -36,7 +38,6 @@ public class ScreenManager {
 	public Organizer_profile getOrganizerProfile() {
 		return (Organizer_profile) screens.get("Organizer_profile");
 	}
-
 
 	public JPanel getScreen(String name) {
 		return screens.get(name);
@@ -63,6 +64,16 @@ public class ScreenManager {
 				return; // Prevents showing an invalid or uninitialized panel
 			}
 		}
+
+		// Handle menu based on the session and panel type
+		JPanel panel = screens.get(name);
+		if (panel instanceof MenuInterface) {
+			// Only if the panel implements MenuInterface, we will update the menu
+			JMenuBar menuBar = mainFrame.getAppMenuBar();  // Get the menu bar from the Main class
+			((MenuInterface) panel).initializeMenu(menuBar, mainFrame, panel.getBackground(), panel.getForeground());
+		}
+
+		// Show the selected panel
 		cardLayout.show(mainPanel, name);
 	}
 
@@ -92,7 +103,14 @@ public class ScreenManager {
 			case "Home" -> panel = new Home(mainFrame);
 			case "Event_detail" -> panel = new Event_detail(mainFrame);
 			case "Event_Location" -> panel = new Event_Location(mainFrame);
-			case "Booking_Details" -> panel = new Booking_Details(mainFrame);
+			case "Booking_Details" -> {
+				if (Session.currentUser != null && "Organizer".equals(Session.currentUser.getRole())) {
+					panel = new Booking_Details(mainFrame);  // Ensure only organizer can access
+				} else {
+					JOptionPane.showMessageDialog(mainFrame, "Access restricted to organizers.");
+					showPanel("Home");
+				}
+			}
 			default -> {
 				JOptionPane.showMessageDialog(mainFrame, "Unknown screen requested.");
 				showPanel("Login_form"); // Default to log in on unknown screen

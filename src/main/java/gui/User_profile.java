@@ -70,6 +70,7 @@ public class User_profile extends JPanel implements MenuInterface {
         // Create a menu bar and initialize it with the menu items and listeners
         menuBar = new JMenuBar();
         initializeMenu(menuBar, mainFrame, mainJpanel.getBackground(), mainJpanel.getForeground());
+        menuBar.setVisible(false);
         add(menuBar, BorderLayout.NORTH);
 
         setOpaque(false);  // Make this JPanel transparent so the background image is visible

@@ -36,6 +36,7 @@ public class Event_detail extends JPanel implements MenuInterface {
         // Create a menu bar and initialize it with the menu items and listeners
         menuBar = new JMenuBar();
         initializeMenu(menuBar, mainFrame, panel1.getBackground(), panel1.getForeground());
+        menuBar.setVisible(false);
         add(menuBar, BorderLayout.NORTH);
 
     }

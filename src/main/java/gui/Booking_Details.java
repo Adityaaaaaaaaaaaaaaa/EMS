@@ -41,7 +41,9 @@ public class Booking_Details extends JPanel implements MenuInterface {
         // Create a menu bar and initialize it with the menu items and listeners
         menuBar = new JMenuBar();
         initializeMenu(menuBar, mainFrame, main.getBackground(), main.getForeground());
+        menuBar.setVisible(false);
         add(menuBar, BorderLayout.NORTH);
+
         setPreferredSize(new Dimension(500, 500));
 
         // Initialize the screenInfo panel (for the table)
