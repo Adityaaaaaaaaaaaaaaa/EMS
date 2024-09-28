@@ -3,9 +3,9 @@ package app;
 import session.ScreenManager;
 import utility.Utility;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.JMenuBar;
+import javax.swing.*;
+import java.awt.*;
+import java.util.Objects;
 
 public class Main extends JFrame {
     private final ScreenManager screenManager;
@@ -17,6 +17,10 @@ public class Main extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setResizable(false);
+        setTitle("Evenia Event Management System");
+        // Load the image icon using the class loader
+        Image icon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("image/logo_icon.png"))).getImage();
+        setIconImage(icon);
 
         // Initialize the menu bar and attach to the frame
         menuBar = new JMenuBar();
