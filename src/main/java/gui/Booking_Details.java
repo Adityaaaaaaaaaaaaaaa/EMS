@@ -8,6 +8,8 @@ import utility.Utility;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,7 +56,6 @@ public class Booking_Details extends JPanel implements MenuInterface {
         tableScrollPane = new JScrollPane(bookingTable);
         screenInfo.add(tableScrollPane, BorderLayout.CENTER);
 
-
         // Use JSplitPane to divide space between the screenInfo and stats panels
         splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, screenInfo, stats);
         splitPane.setResizeWeight(0.5); // Split the space equally
@@ -63,10 +64,18 @@ public class Booking_Details extends JPanel implements MenuInterface {
         // Add the split pane to the layout
         add(splitPane, BorderLayout.CENTER);
 
-        // Fetch and display booking data in the table
-        fetchAndDisplayBookingData();
+        // Component listener to refresh the table and statistics whenever the panel is shown
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentShown(ComponentEvent e) {
+                // Refresh data when the panel is shown
+                fetchAndDisplayBookingData();
+                fetchAndDisplayStatistics();
+            }
+        });
 
-        // Fetch and display statistics in the stats panel
+        // Initial fetch and display of booking data and statistics
+        fetchAndDisplayBookingData();
         fetchAndDisplayStatistics();
 
         // Ensure both panels are revalidated and repainted
@@ -74,6 +83,7 @@ public class Booking_Details extends JPanel implements MenuInterface {
         repaint();
     }
 
+    // Fetch and display booking data from the database
     private void fetchAndDisplayBookingData() {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -127,7 +137,7 @@ public class Booking_Details extends JPanel implements MenuInterface {
         }
     }
 
-
+    // Fetch and display statistics
     private void fetchAndDisplayStatistics() {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -192,5 +202,4 @@ public class Booking_Details extends JPanel implements MenuInterface {
             }
         }
     }
-
 }
