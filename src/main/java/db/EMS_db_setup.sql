@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS Event_Management_System;
 USE Event_Management_System;
 
 -- Drop existing tables (optional, for a fresh start)
-DROP TABLE IF EXISTS Booking, Users, EventDetails, Location;
+DROP TABLE IF EXISTS Booking, Users, WeddingAndEventPackages, Location;
 
 -- Create Users table
 CREATE TABLE Users
