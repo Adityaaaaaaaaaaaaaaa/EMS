@@ -43,6 +43,7 @@ public class Register_form extends JPanel {
 
 		// Clear error message when user starts typing in the fields
 		Utility.addFieldListeners(errorMsg, regName, regEmail, regUserName, regAddress, regPhone, regPwd);
+		Utility.setCursorToPointer(btnBack, btnRegister);
 
 		// Action listeners
 		btnRegister.addActionListener(e -> {

@@ -56,6 +56,8 @@ public class Booking_Details extends JPanel implements MenuInterface {
         menuBar.setVisible(false);
         add(menuBar, BorderLayout.NORTH);
 
+        Utility.setCursorToPointer(printReport, screenInfo);
+
         setPreferredSize(new Dimension(500, 500));
 
         // Initialize the screenInfo panel (for the table)

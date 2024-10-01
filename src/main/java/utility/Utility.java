@@ -1,11 +1,9 @@
 package utility;
 
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JLabel;
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -84,4 +82,11 @@ public class Utility {
             return false;
         }
     }
+
+    public static void setCursorToPointer(JComponent... components) {
+        for (JComponent component : components) {
+            component.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+    }
+
 }

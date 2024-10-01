@@ -56,6 +56,8 @@ public class Booking extends JPanel implements MenuInterface {
 		menuBar.setVisible(false);
 		add(menuBar, BorderLayout.NORTH);
 
+		Utility.setCursorToPointer(menuBar, EventType, numGuests, EventLocation, PaymentMethod);
+
 		// Display the initial slider value
 		numGuestDisplay.setText(String.valueOf(numGuests.getValue()));
 
