@@ -127,18 +127,26 @@ public class Booking_Details extends JPanel implements MenuInterface {
                 }
             };
 
+            // Date formatter to format the SQL date into dd/MM/yyyy
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
             // Iterate through the result set and add rows to the table model
             while (rs.next()) {
                 String name = rs.getString("Name");
                 String event = rs.getString("Event");
                 int numGuests = rs.getInt("NumGuest");
                 String location = rs.getString("Location");
-                String reservationDate = rs.getDate("ReservationDate").toString();
+
+                // Retrieve and format the date properly
+                Date reservationDate = rs.getDate("ReservationDate");
+                String formattedDate = dateFormat.format(reservationDate);
+
                 String additionalInfo = rs.getString("AdditionalInfo");
                 String paymentMethod = rs.getString("PaymentMethod");
                 int price = rs.getInt("Price");
 
-                tableModel.addRow(new Object[]{name, event, numGuests, location, reservationDate, additionalInfo, paymentMethod, price});
+                // Add row to the table with formatted date
+                tableModel.addRow(new Object[]{name, event, numGuests, location, formattedDate, additionalInfo, paymentMethod, price});
             }
 
             // Set the non-editable model to the table

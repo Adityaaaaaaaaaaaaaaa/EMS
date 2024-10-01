@@ -13,6 +13,8 @@ import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.itextpdf.text.*;
@@ -140,7 +142,7 @@ public class Booking extends JPanel implements MenuInterface {
 		}
 
 		// Display confirmation
-		JOptionPane.showMessageDialog(this, "Check your receipt /nCongrats! We will get in touch soon.");
+		JOptionPane.showMessageDialog(this, "Receipt generated successfully.\nThank you for booking with us!\nWe will get in touch soon.");
 		mainFrame.getScreenManager().showPanel("Home");
 	}
 
@@ -201,6 +203,16 @@ public class Booking extends JPanel implements MenuInterface {
 
 		document.add(new Paragraph(" ")); // Blank line
 
+		// Add date and time
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		String generatedOn = dateFormat.format(new Date());
+		Font dateFont = FontFactory.getFont(FontFactory.HELVETICA, 10, BaseColor.GRAY);
+		Paragraph dateParagraph = new Paragraph("Generated on: " + generatedOn, dateFont);
+		dateParagraph.setAlignment(Element.ALIGN_RIGHT);
+		document.add(dateParagraph);
+
+		document.add(new Paragraph(" ")); // Blank line
+
 		// Add booking details to the receipt
 		Font normalFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
 
@@ -215,14 +227,16 @@ public class Booking extends JPanel implements MenuInterface {
 
 		document.add(new Paragraph(" ")); // Blank line
 
-		// Add a thank you message
+		// Add a thank you message and cancellation policy
 		Font thankYouFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK);
 		Paragraph thankYouMessage = new Paragraph("Thank you for booking with us!", thankYouFont);
-		Paragraph canceltext = new Paragraph("For any cancellation, please contact us 48 hrs in adavnce on Eveneia@gmail.com", thankYouFont);
-		thankYouMessage.setAlignment(Element.ALIGN_LEFT);
-		canceltext.setAlignment(Element.ALIGN_LEFT);
+		thankYouMessage.setAlignment(Element.ALIGN_CENTER);
 		document.add(thankYouMessage);
-		document.add(canceltext);
+
+		Font cancelFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
+		Paragraph cancelText = new Paragraph("For any cancellation, please contact us 48 hours in advance at Evenia@gmail.com.", cancelFont);
+		cancelText.setAlignment(Element.ALIGN_CENTER);
+		document.add(cancelText);
 
 		// Close the document
 		document.close();
