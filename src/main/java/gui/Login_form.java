@@ -6,12 +6,8 @@ import session.Session;
 import session.User;
 import utility.Utility;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,6 +24,7 @@ public class Login_form extends JPanel {
     private JButton btnLogin;
     private JButton btnRegister;
     private JLabel errorMsg;
+    private JCheckBox showPwd;
 
     private Main mainFrame;
 
@@ -43,7 +40,10 @@ public class Login_form extends JPanel {
         // Clear error message when user starts typing in the fields
         Utility.addFieldListeners(errorMsg, user_id, pwd);
 
-        // Action listeners
+        // Show Password functionality
+        showPwd.addActionListener(e -> toggleShowPassword());
+
+        // Action listeners for login and register buttons
         btnLogin.addActionListener(e -> {
             String userID = user_id.getText().trim();
             String password = new String(pwd.getPassword()).trim();
@@ -97,6 +97,15 @@ public class Login_form extends JPanel {
         btnRegister.addActionListener(e -> mainFrame.getScreenManager().showPanel("Register_form"));
     }
 
+    // Method to toggle show/hide password
+    private void toggleShowPassword() {
+        if (showPwd.isSelected()) {
+            pwd.setEchoChar((char) 0); // Show password
+        } else {
+            pwd.setEchoChar('•'); // Hide password (default to bullet character)
+        }
+    }
+
     private User authenticateUser(String userID, String password) {
         User user = null;
 
@@ -109,14 +118,12 @@ public class Login_form extends JPanel {
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    // Fetch user data from the database
                     String id = resultSet.getString("username");
                     String role = resultSet.getString("role");
                     String name = resultSet.getString("name");
                     String email = resultSet.getString("email");
                     String phone = resultSet.getString("phone");
 
-                    // Create a User object with the fetched data
                     user = new User(id, role, name, email, phone);
                 } else {
                     errorMsg.setText("Username or Password is incorrect.");
@@ -136,5 +143,4 @@ public class Login_form extends JPanel {
 
         return user;
     }
-
 }
