@@ -122,6 +122,7 @@
                                   <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="An outdoor wedding with custom seating "/>
                                 </properties>
@@ -131,6 +132,7 @@
                                   <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="and decorations in a scenic setting."/>
                                 </properties>
@@ -140,7 +142,7 @@
                                   <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <font style="1"/>
+                                  <font name="Bell MT" size="14" style="1"/>
                                   <foreground color="-13808859"/>
                                   <text value="Package Includes:"/>
                                 </properties>
@@ -150,6 +152,7 @@
                                   <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="Full-service planning, Venue setup, Catering,"/>
                                 </properties>
@@ -159,6 +162,7 @@
                                   <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="Decoration, Photography, Music,"/>
                                 </properties>
@@ -168,6 +172,7 @@
                                   <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="Floral arrangements, Custom menus."/>
                                 </properties>
@@ -177,7 +182,7 @@
                                   <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <font style="1"/>
+                                  <font name="Bell MT" size="14" style="1"/>
                                   <foreground color="-13808859"/>
                                   <text value="Location:"/>
                                 </properties>
@@ -187,6 +192,7 @@
                                   <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="14"/>
                                   <foreground color="-12491213"/>
                                   <text value="Chateau Mon Desir,"/>
                                 </properties>
@@ -196,6 +202,7 @@
                                   <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="14"/>
                                   <foreground color="-12491213"/>
                                   <text value="Pamplemousses Botanical Garden, Pamplemousses"/>
                                 </properties>
@@ -205,7 +212,7 @@
                                   <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <font style="1"/>
+                                  <font name="Bell MT" size="14" style="1"/>
                                   <foreground color="-13808859"/>
                                   <text value="Capacity:"/>
                                 </properties>
@@ -215,6 +222,7 @@
                                   <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="14"/>
                                   <foreground color="-12491213"/>
                                   <text value="350"/>
                                 </properties>
@@ -224,7 +232,7 @@
                                   <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <font style="1"/>
+                                  <font name="Bell MT" size="14" style="1"/>
                                   <foreground color="-13808859"/>
                                   <text value="End Time:"/>
                                 </properties>
@@ -234,6 +242,7 @@
                                   <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="14"/>
                                   <foreground color="-12491213"/>
                                   <text value="17:00"/>
                                 </properties>
@@ -243,7 +252,7 @@
                                   <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <font style="1"/>
+                                  <font name="Bell MT" size="14" style="1"/>
                                   <foreground color="-13808859"/>
                                   <text value="Rate:"/>
                                 </properties>
@@ -253,6 +262,7 @@
                                   <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="14"/>
                                   <foreground color="-12491213"/>
                                   <text value="100000"/>
                                 </properties>
@@ -350,6 +360,7 @@
                                       <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="A classic indoor wedding with elegant décor "/>
                                     </properties>
@@ -359,6 +370,7 @@
                                       <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="and comfortable seating."/>
                                     </properties>
@@ -368,7 +380,7 @@
                                       <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Package Includes:"/>
                                     </properties>
@@ -378,6 +390,7 @@
                                       <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Full-service planning, Venue setup, Catering,"/>
                                     </properties>
@@ -387,6 +400,7 @@
                                       <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Decoration, Photography, Music,"/>
                                     </properties>
@@ -396,6 +410,7 @@
                                       <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Floral arrangements, Custom menus."/>
                                     </properties>
@@ -405,7 +420,7 @@
                                       <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Location:"/>
                                     </properties>
@@ -415,6 +430,7 @@
                                       <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Chateau Mon Desir,"/>
                                     </properties>
@@ -424,6 +440,7 @@
                                       <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Pamplemousses Botanical Garden, Pamplemousses"/>
                                     </properties>
@@ -433,7 +450,7 @@
                                       <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Capacity:"/>
                                     </properties>
@@ -443,6 +460,7 @@
                                       <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="350"/>
                                     </properties>
@@ -452,7 +470,7 @@
                                       <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="End Time:"/>
                                     </properties>
@@ -462,6 +480,7 @@
                                       <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="17:00"/>
                                     </properties>
@@ -471,7 +490,7 @@
                                       <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Rate:"/>
                                     </properties>
@@ -481,6 +500,7 @@
                                       <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="80000"/>
                                     </properties>
@@ -580,6 +600,7 @@
                                       <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="An exciting outdoor birthday celebration with"/>
                                     </properties>
@@ -589,6 +610,7 @@
                                       <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="themed decorations and activities."/>
                                     </properties>
@@ -598,7 +620,7 @@
                                       <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Package Includes:"/>
                                     </properties>
@@ -608,6 +630,7 @@
                                       <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Themed Decorations, Catering, Custom Cake, "/>
                                     </properties>
@@ -617,6 +640,7 @@
                                       <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Photography, Party Favors, Games, Live Performances,"/>
                                     </properties>
@@ -626,6 +650,7 @@
                                       <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Sound &amp; Lighting, Event Planning."/>
                                     </properties>
@@ -635,7 +660,7 @@
                                       <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Location:"/>
                                     </properties>
@@ -645,6 +670,7 @@
                                       <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Pamplemousses Botanical Garden, Pamplemousses"/>
                                     </properties>
@@ -654,7 +680,7 @@
                                       <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Capacity:"/>
                                     </properties>
@@ -664,6 +690,7 @@
                                       <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="100"/>
                                     </properties>
@@ -673,7 +700,7 @@
                                       <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="End Time:"/>
                                     </properties>
@@ -683,6 +710,7 @@
                                       <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="16:00"/>
                                     </properties>
@@ -692,7 +720,7 @@
                                       <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Rate:"/>
                                     </properties>
@@ -702,6 +730,7 @@
                                       <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="100000"/>
                                     </properties>
@@ -811,6 +840,7 @@
                                       <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="A fun indoor birthday with decorations, entertainment, and catering."/>
                                     </properties>
@@ -820,7 +850,7 @@
                                       <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Package Includes:"/>
                                     </properties>
@@ -830,6 +860,7 @@
                                       <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Party Favors, Games, Live Performances,"/>
                                     </properties>
@@ -839,6 +870,7 @@
                                       <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Sound &amp; Lighting, Event Planning"/>
                                     </properties>
@@ -848,7 +880,7 @@
                                       <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Location:"/>
                                     </properties>
@@ -858,6 +890,7 @@
                                       <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="Chateau Mon Desir, Balaclava"/>
                                     </properties>
@@ -867,7 +900,7 @@
                                       <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Capacity:"/>
                                     </properties>
@@ -877,6 +910,7 @@
                                       <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="150"/>
                                     </properties>
@@ -886,7 +920,7 @@
                                       <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="End Time:"/>
                                     </properties>
@@ -896,6 +930,7 @@
                                       <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="23:00"/>
                                     </properties>
@@ -905,7 +940,7 @@
                                       <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
-                                      <font style="1"/>
+                                      <font name="Bell MT" size="14" style="1"/>
                                       <foreground color="-13808859"/>
                                       <text value="Rate:"/>
                                     </properties>
@@ -915,6 +950,7 @@
                                       <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties>
+                                      <font name="Bell MT" size="12"/>
                                       <foreground color="-12491213"/>
                                       <text value="150000"/>
                                     </properties>
@@ -998,6 +1034,7 @@
                                   <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="An indoor conference with seating, "/>
                                 </properties>
@@ -1007,6 +1044,7 @@
                                   <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="AV equipment, and catering."/>
                                 </properties>
@@ -1016,7 +1054,7 @@
                                   <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <font style="1"/>
+                                  <font name="Bell MT" size="14" style="1"/>
                                   <foreground color="-13808859"/>
                                   <text value="Package Includes:"/>
                                 </properties>
@@ -1026,6 +1064,7 @@
                                   <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="Conference venue, Seating, Audiovisual"/>
                                 </properties>
@@ -1035,6 +1074,7 @@
                                   <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="setup, Wi-Fi, Stage setup, Catering,"/>
                                 </properties>
@@ -1044,6 +1084,7 @@
                                   <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="Tech support, Branding, Breakout rooms,Registration management."/>
                                 </properties>
@@ -1053,7 +1094,7 @@
                                   <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <font style="1"/>
+                                  <font name="Bell MT" size="14" style="1"/>
                                   <foreground color="-13808859"/>
                                   <text value="Location:"/>
                                 </properties>
@@ -1063,6 +1104,7 @@
                                   <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="Caudan Arts Centre, Port Louis"/>
                                 </properties>
@@ -1072,7 +1114,7 @@
                                   <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <font style="1"/>
+                                  <font name="Bell MT" size="14" style="1"/>
                                   <foreground color="-13808859"/>
                                   <text value="Capacity:"/>
                                 </properties>
@@ -1082,6 +1124,7 @@
                                   <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="200"/>
                                 </properties>
@@ -1091,7 +1134,7 @@
                                   <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <font style="1"/>
+                                  <font name="Bell MT" size="14" style="1"/>
                                   <foreground color="-13808859"/>
                                   <text value="End Time:"/>
                                 </properties>
@@ -1101,6 +1144,7 @@
                                   <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="21:00"/>
                                 </properties>
@@ -1110,7 +1154,7 @@
                                   <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
-                                  <font style="1"/>
+                                  <font name="Bell MT" size="14" style="1"/>
                                   <foreground color="-13808859"/>
                                   <text value="Rate:"/>
                                 </properties>
@@ -1120,6 +1164,7 @@
                                   <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
+                                  <font name="Bell MT" size="12"/>
                                   <foreground color="-12491213"/>
                                   <text value="150000"/>
                                 </properties>

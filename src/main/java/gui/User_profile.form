@@ -47,7 +47,7 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Baskerville Old Face" size="20"/>
+                  <font name="Bell MT" size="20"/>
                   <foreground color="-1"/>
                   <text value="Name:"/>
                 </properties>
@@ -70,7 +70,7 @@
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Baskerville Old Face" size="18"/>
+                  <font name="Bell MT" size="18"/>
                   <foreground color="-1"/>
                   <text value="Username:"/>
                 </properties>
@@ -92,7 +92,7 @@
                   <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Baskerville Old Face" size="18"/>
+                  <font name="Bell MT" size="18"/>
                   <foreground color="-1"/>
                   <text value="Email:"/>
                 </properties>
@@ -114,7 +114,7 @@
                   <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Baskerville Old Face" size="18"/>
+                  <font name="Bell MT" size="18"/>
                   <foreground color="-1"/>
                   <text value="Address:"/>
                 </properties>
@@ -136,7 +136,7 @@
                   <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Baskerville Old Face" size="18"/>
+                  <font name="Bell MT" size="18"/>
                   <foreground color="-1"/>
                   <text value="Phone Number:"/>
                 </properties>
@@ -167,7 +167,7 @@
                     </constraints>
                     <properties>
                       <background color="-11568830"/>
-                      <font name="Baskerville Old Face" size="16"/>
+                      <font name="Bell MT" size="16"/>
                       <foreground color="-2041653"/>
                       <text value="Update"/>
                     </properties>
@@ -178,7 +178,7 @@
                     </constraints>
                     <properties>
                       <background color="-2041653"/>
-                      <font name="Baskerville Old Face" size="16"/>
+                      <font name="Bell MT" size="16"/>
                       <foreground color="-11174074"/>
                       <text value="Delete"/>
                     </properties>
@@ -189,7 +189,7 @@
                     </constraints>
                     <properties>
                       <background color="-11568830"/>
-                      <font name="Baskerville Old Face" size="16"/>
+                      <font name="Bell MT" size="16"/>
                       <foreground color="-2041653"/>
                       <text value="Cancel"/>
                     </properties>
