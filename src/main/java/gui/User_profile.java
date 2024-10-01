@@ -2,6 +2,7 @@ package gui;
 
 import app.Main;
 import db.Db_Connect;
+import jdk.jshell.execution.Util;
 import session.Session;
 import utility.MenuInterface;
 import utility.Utility;
@@ -72,6 +73,8 @@ public class User_profile extends JPanel implements MenuInterface {
         initializeMenu(menuBar, mainFrame, mainJpanel.getBackground(), mainJpanel.getForeground());
         menuBar.setVisible(false);
         add(menuBar, BorderLayout.NORTH);
+
+        Utility.setCursorToPointer(btnCancel, btnDelete, btnUpdate);
 
         setOpaque(false);  // Make this JPanel transparent so the background image is visible
 

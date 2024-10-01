@@ -6,12 +6,8 @@ import session.Session;
 import session.User;
 import utility.Utility;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,6 +24,7 @@ public class Login_form extends JPanel {
     private JButton btnLogin;
     private JButton btnRegister;
     private JLabel errorMsg;
+    private JCheckBox showPwd;
 
     private Main mainFrame;
 
@@ -40,10 +37,11 @@ public class Login_form extends JPanel {
         // Clear any previous session
         Session.currentUser = null;
 
-        // Clear error message when user starts typing in the fields
         Utility.addFieldListeners(errorMsg, user_id, pwd);
+        Utility.addShowPasswordListener(pwd, showPwd);
+        Utility.setCursorToPointer(btnLogin, btnRegister, showPwd);
 
-        // Action listeners
+        // Action listeners for login and register buttons
         btnLogin.addActionListener(e -> {
             String userID = user_id.getText().trim();
             String password = new String(pwd.getPassword()).trim();
@@ -65,26 +63,23 @@ public class Login_form extends JPanel {
                 System.out.println("ID: " + user.getId());
                 System.out.println("Role: " + user.getRole());
 
-                // Check session assignment
                 if (Session.currentUser != null) {
                     System.out.println("login Session Set for: " + Session.currentUser.getId());
                 } else {
                     System.out.println("Failed to set session.");
                 }
 
-                // After login, fetch and display user data in profiles
                 User_profile userProfile = mainFrame.getScreenManager().getUserProfile();
                 Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();
 
                 if (userProfile != null) {
-                    userProfile.fetchAndDisplayUserData(Session.currentUser.getId()); // Fetch new data for user profile
+                    userProfile.fetchAndDisplayUserData(Session.currentUser.getId());
                 }
 
                 if (organizerProfile != null) {
-                    organizerProfile.fetchAndDisplayUserData(Session.currentUser.getId()); // Fetch new data for organizer profile
+                    organizerProfile.fetchAndDisplayUserData(Session.currentUser.getId());
                 }
 
-                // Clear form and proceed
                 Utility.clearForm(new JTextField[]{user_id}, pwd, errorMsg);
                 mainFrame.getScreenManager().showPanel("Home");
                 mainFrame.revalidate();
@@ -109,14 +104,12 @@ public class Login_form extends JPanel {
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    // Fetch user data from the database
                     String id = resultSet.getString("username");
                     String role = resultSet.getString("role");
                     String name = resultSet.getString("name");
                     String email = resultSet.getString("email");
                     String phone = resultSet.getString("phone");
 
-                    // Create a User object with the fetched data
                     user = new User(id, role, name, email, phone);
                 } else {
                     errorMsg.setText("Username or Password is incorrect.");
@@ -136,5 +129,4 @@ public class Login_form extends JPanel {
 
         return user;
     }
-
 }

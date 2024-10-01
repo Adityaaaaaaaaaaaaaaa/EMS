@@ -1,7 +1,10 @@
 package gui;
 
 import app.Main;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 import db.Db_Connect;
+import session.Session;
 import utility.MenuInterface;
 import utility.Utility;
 
@@ -14,8 +17,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class Booking_Details extends JPanel implements MenuInterface {
     private JPanel screenInfo; // JPanel for displaying booking table
@@ -30,6 +39,7 @@ public class Booking_Details extends JPanel implements MenuInterface {
     private JSplitPane splitPane;
     private JMenuBar menuBar;
     private JPanel main;
+    private JButton printReport;
 
     private Main mainFrame;
     private static final Logger LOGGER = Logger.getLogger(Booking_Details.class.getName());
@@ -45,6 +55,8 @@ public class Booking_Details extends JPanel implements MenuInterface {
         initializeMenu(menuBar, mainFrame, main.getBackground(), main.getForeground());
         menuBar.setVisible(false);
         add(menuBar, BorderLayout.NORTH);
+
+        Utility.setCursorToPointer(printReport, screenInfo);
 
         setPreferredSize(new Dimension(500, 500));
 
@@ -81,6 +93,17 @@ public class Booking_Details extends JPanel implements MenuInterface {
         // Ensure both panels are revalidated and repainted
         revalidate();
         repaint();
+
+        // Add action listener to the printReport button
+        printReport.addActionListener(e -> {
+            try {
+                saveReportToPDF();
+            } catch (Exception ex) {
+                LOGGER.log(Level.SEVERE, "Error generating PDF report: " + ex.getMessage(), ex);
+                JOptionPane.showMessageDialog(this, "Error generating PDF. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
     }
 
     // Fetch and display booking data from the database
@@ -106,18 +129,26 @@ public class Booking_Details extends JPanel implements MenuInterface {
                 }
             };
 
+            // Date formatter to format the SQL date into dd/MM/yyyy
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
             // Iterate through the result set and add rows to the table model
             while (rs.next()) {
                 String name = rs.getString("Name");
                 String event = rs.getString("Event");
                 int numGuests = rs.getInt("NumGuest");
                 String location = rs.getString("Location");
-                String reservationDate = rs.getDate("ReservationDate").toString();
+
+                // Retrieve and format the date properly
+                Date reservationDate = rs.getDate("ReservationDate");
+                String formattedDate = dateFormat.format(reservationDate);
+
                 String additionalInfo = rs.getString("AdditionalInfo");
                 String paymentMethod = rs.getString("PaymentMethod");
                 int price = rs.getInt("Price");
 
-                tableModel.addRow(new Object[]{name, event, numGuests, location, reservationDate, additionalInfo, paymentMethod, price});
+                // Add row to the table with formatted date
+                tableModel.addRow(new Object[]{name, event, numGuests, location, formattedDate, additionalInfo, paymentMethod, price});
             }
 
             // Set the non-editable model to the table
@@ -202,4 +233,95 @@ public class Booking_Details extends JPanel implements MenuInterface {
             }
         }
     }
+
+    private void saveReportToPDF() throws DocumentException, IOException {
+        // Get the logged-in user's name from the session
+        String generatedBy = Session.currentUser.getName(); // Assuming Session class has this method
+
+        // Set up the document with A4 size and landscape orientation
+        Document document = new Document(PageSize.A4.rotate());
+        PdfWriter.getInstance(document, new FileOutputStream("Report.pdf"));
+        document.open();
+
+        // Add the logo to the document (adjust the file path to your logo image)
+        Image logo = Image.getInstance("src/main/resources/image/logo_icon.png"); // Replace with actual path to your logo
+        logo.scaleToFit(50, 50); // Resize the logo if needed (width, height)
+        logo.setAlignment(Element.ALIGN_CENTER); // Align the logo to the center
+        document.add(logo);
+
+        document.add(new Paragraph(" ")); // Blank line after the logo
+
+        // Add a title with styling
+        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK);
+        Paragraph title = new Paragraph("Booking Details Report", titleFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+        document.add(title);
+
+        document.add(new Paragraph(" ")); // Blank line
+
+        // Add the date, time, and user who generated the report
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String generatedOn = dateFormat.format(new Date());
+        Font dateFont = FontFactory.getFont(FontFactory.HELVETICA, 10, BaseColor.GRAY);
+        Paragraph generatedInfo = new Paragraph("Generated by: " + generatedBy + " on: " + generatedOn, dateFont);
+        generatedInfo.setAlignment(Element.ALIGN_RIGHT);
+        document.add(generatedInfo);
+
+        document.add(new Paragraph(" ")); // Blank line
+
+        // Add an acknowledgment section
+        Font ackFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
+        Paragraph acknowledgment = new Paragraph("This report is the property of Evenia Event Management System. Unauthorized sharing or distribution is prohibited.", ackFont);
+        acknowledgment.setAlignment(Element.ALIGN_CENTER);
+        document.add(acknowledgment);
+
+        document.add(new Paragraph(" ")); // Blank line
+
+        // Add the booking data (from JTable)
+        PdfPTable pdfTable = new PdfPTable(bookingTable.getColumnCount());
+        pdfTable.setWidthPercentage(100); // Set the table to take full width of the page
+        pdfTable.setSpacingBefore(10f);   // Space before the table
+        pdfTable.setSpacingAfter(10f);    // Space after the table
+
+        // Add table headers with custom styling
+        Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
+        for (int i = 0; i < bookingTable.getColumnCount(); i++) {
+            PdfPCell headerCell = new PdfPCell(new Phrase(bookingTable.getColumnName(i), headerFont));
+            headerCell.setBackgroundColor(BaseColor.DARK_GRAY); // Background color for headers
+            headerCell.setPadding(8); // Add some padding
+            headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            pdfTable.addCell(headerCell);
+        }
+
+        // Add table rows with data
+        Font cellFont = FontFactory.getFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
+        for (int rows = 0; rows < bookingTable.getRowCount(); rows++) {
+            for (int cols = 0; cols < bookingTable.getColumnCount(); cols++) {
+                PdfPCell cell = new PdfPCell(new Phrase(bookingTable.getValueAt(rows, cols).toString(), cellFont));
+                cell.setPadding(5); // Add some padding to the cell
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER); // Center align the text
+                pdfTable.addCell(cell);
+            }
+        }
+
+        document.add(pdfTable); // Add the table to the document
+        document.add(new Paragraph(" ")); // Blank line
+
+        // Add the statistics section with some styling
+        Font statFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK);
+        document.add(new Paragraph("Statistics", statFont));
+
+        Font statDataFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
+        document.add(new Paragraph("Total Bookings: " + numBooking.getText(), statDataFont));
+        document.add(new Paragraph("Total Guests: " + numGuest.getText(), statDataFont));
+        document.add(new Paragraph("Average Guests: " + avgGuest.getText(), statDataFont));
+        document.add(new Paragraph("Most Popular Event: " + event.getText(), statDataFont));
+        document.add(new Paragraph("Total Revenue: Rs " + totalRev.getText(), statDataFont));
+
+        // Close the document
+        document.close();
+
+        JOptionPane.showMessageDialog(this, "PDF report saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 }

@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ScreenManager {
-	private final Main mainFrame;  // Reference to Main
+	private final Main mainFrame;
 	private final CardLayout cardLayout;
 	private final JPanel mainPanel;
 	private final Map<String, JPanel> screens;
@@ -28,7 +28,6 @@ public class ScreenManager {
 		// Register initial screens
 		registerScreen("Login_form", new Login_form(mainFrame));
 		registerScreen("Register_form", new Register_form(mainFrame));
-		// Other screens will be created lazily
 	}
 
 	public User_profile getUserProfile() {
@@ -52,7 +51,7 @@ public class ScreenManager {
 		// Validate session before showing certain panels
 		if ((name.equals("Organizer_profile") || name.equals("User_profile")) && Session.currentUser == null) {
 			JOptionPane.showMessageDialog(mainFrame, "Please log in to access this feature.", "Session Error", JOptionPane.ERROR_MESSAGE);
-			name = "Login_form"; // Redirect to login form
+			name = "Login_form";
 		}
 
 		// Create screen lazily if it doesn't exist
@@ -103,17 +102,10 @@ public class ScreenManager {
 			case "Home" -> panel = new Home(mainFrame);
 			case "Event_detail" -> panel = new Event_detail(mainFrame);
 			case "Event_Location" -> panel = new Event_Location(mainFrame);
-			case "Booking_Details" -> {
-				if (Session.currentUser != null && "Organizer".equals(Session.currentUser.getRole())) {
-					panel = new Booking_Details(mainFrame);  // Ensure only organizer can access
-				} else {
-					JOptionPane.showMessageDialog(mainFrame, "Access restricted to organizers.");
-					showPanel("Home");
-				}
-			}
+			case "Booking_Details" -> panel = new Booking_Details(mainFrame);
 			default -> {
 				JOptionPane.showMessageDialog(mainFrame, "Unknown screen requested.");
-				showPanel("Login_form"); // Default to log in on unknown screen
+				showPanel("Login_form");
 			}
 		}
 		return panel;

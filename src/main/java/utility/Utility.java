@@ -1,11 +1,9 @@
 package utility;
 
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JLabel;
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,10 +12,9 @@ public class Utility {
     private static final int WINDOW_WIDTH = 550;
     private static final int WINDOW_HEIGHT = 550;
 
-    // Set window size and center it
     public static void setWindowSize(JFrame frame) {
         frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        frame.setLocationRelativeTo(null); // Center the window
+        frame.setLocationRelativeTo(null);
     }
 
     // Clear form fields and reset to default state
@@ -84,4 +81,24 @@ public class Utility {
             return false;
         }
     }
+
+    public static void setCursorToPointer(JComponent... components) {
+        for (JComponent component : components) {
+            component.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+    }
+
+    public static void toggleShowPassword(JPasswordField passwordField, JCheckBox showPwdCheckBox) {
+        if (showPwdCheckBox.isSelected()) {
+            passwordField.setEchoChar((char) 0); // Show password
+        } else {
+            passwordField.setEchoChar('•'); // Hide password
+        }
+    }
+
+    public static void addShowPasswordListener(JPasswordField passwordField, JCheckBox showPwdCheckBox) {
+        showPwdCheckBox.addActionListener(e -> toggleShowPassword(passwordField, showPwdCheckBox));
+    }
+
+
 }

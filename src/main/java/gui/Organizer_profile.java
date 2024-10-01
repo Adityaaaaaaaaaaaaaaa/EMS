@@ -55,6 +55,8 @@ public class Organizer_profile extends JPanel implements MenuInterface {
         menuBar.setVisible(false);
         add(menuBar, BorderLayout.NORTH);
 
+        Utility.setCursorToPointer(btnCancel, btnUpdate);
+
         // Action listener for the Cancel button
         btnCancel.addActionListener(e -> {
             mainFrame.getScreenManager().showPanel("Home");

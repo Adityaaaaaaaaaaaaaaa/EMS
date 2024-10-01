@@ -1,6 +1,8 @@
 package gui;
 
 import app.Main;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 import db.Db_Connect;
 import utility.MenuInterface;
 import utility.EventPriceCalculator;
@@ -11,8 +13,14 @@ import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class Booking extends JPanel implements MenuInterface {
 	private JPanel bookingPanel;
@@ -47,6 +55,8 @@ public class Booking extends JPanel implements MenuInterface {
 		initializeMenu(menuBar, mainFrame, bookingPanel.getBackground(), bookingPanel.getForeground());
 		menuBar.setVisible(false);
 		add(menuBar, BorderLayout.NORTH);
+
+		Utility.setCursorToPointer(menuBar, EventType, numGuests, EventLocation, PaymentMethod);
 
 		// Display the initial slider value
 		numGuestDisplay.setText(String.valueOf(numGuests.getValue()));
@@ -125,8 +135,16 @@ public class Booking extends JPanel implements MenuInterface {
 		// Insert reservation into the database
 		insertReservationIntoDB();
 
+		// Generate receipt
+		try {
+			generateReceiptPDF();
+		} catch (Exception ex) {
+			LOGGER.log(Level.SEVERE, "Failed to generate receipt: " + ex.getMessage(), ex);
+			JOptionPane.showMessageDialog(this, "Failed to generate receipt. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+
 		// Display confirmation
-		JOptionPane.showMessageDialog(this, "Congrats! We will get in touch soon.");
+		JOptionPane.showMessageDialog(this, "Receipt generated successfully.\nThank you for booking with us!\nWe will get in touch soon.");
 		mainFrame.getScreenManager().showPanel("Home");
 	}
 
@@ -164,6 +182,66 @@ public class Booking extends JPanel implements MenuInterface {
 			LOGGER.log(Level.SEVERE, "Failed to save the reservation: " + ex.getMessage(), ex);
 			JOptionPane.showMessageDialog(this, "Failed to save the reservation. Please try again.", "Database Error", JOptionPane.ERROR_MESSAGE);
 		}
+	}
+
+	// Method to generate receipt as a PDF
+	private void generateReceiptPDF() throws DocumentException, IOException {
+		// Create a document object
+		Document document = new Document();
+		PdfWriter.getInstance(document, new FileOutputStream("Receipt.pdf"));
+		document.open();
+
+		// Add logo to the PDF
+		Image logo = Image.getInstance("src/main/resources/image/logo_icon.png"); // Replace with actual logo path
+		logo.scaleToFit(50, 50); // Scale logo if needed
+		logo.setAlignment(Element.ALIGN_LEFT);
+		document.add(logo);
+
+		// Add a title to the receipt
+		Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK);
+		Paragraph title = new Paragraph("Booking Confirmation Receipt", titleFont);
+		title.setAlignment(Element.ALIGN_CENTER);
+		document.add(title);
+
+		document.add(new Paragraph(" ")); // Blank line
+
+		// Add date and time
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		String generatedOn = dateFormat.format(new Date());
+		Font dateFont = FontFactory.getFont(FontFactory.HELVETICA, 10, BaseColor.GRAY);
+		Paragraph dateParagraph = new Paragraph("Generated on: " + generatedOn, dateFont);
+		dateParagraph.setAlignment(Element.ALIGN_RIGHT);
+		document.add(dateParagraph);
+
+		document.add(new Paragraph(" ")); // Blank line
+
+		// Add booking details to the receipt
+		Font normalFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
+
+		document.add(new Paragraph("Client Name: " + clientName.getText(), normalFont));
+		document.add(new Paragraph("Event Type: " + (String) EventType.getSelectedItem(), normalFont));
+		document.add(new Paragraph("Number of Guests: " + numGuests.getValue(), normalFont));
+		document.add(new Paragraph("Event Location: " + (String) EventLocation.getSelectedItem(), normalFont));
+		document.add(new Paragraph("Event Date: " + EventDate.getText(), normalFont));
+		document.add(new Paragraph("Payment Method: " + (String) PaymentMethod.getSelectedItem(), normalFont));
+		document.add(new Paragraph("Additional Information: " + Additional.getText(), normalFont));
+		document.add(new Paragraph("Total Price: Rs " + totalPrice.getText().replace("Total Price: Rs ", ""), normalFont));
+
+		document.add(new Paragraph(" ")); // Blank line
+
+		// Add a thank you message and cancellation policy
+		Font thankYouFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK);
+		Paragraph thankYouMessage = new Paragraph("Thank you for booking with us!", thankYouFont);
+		thankYouMessage.setAlignment(Element.ALIGN_CENTER);
+		document.add(thankYouMessage);
+
+		Font cancelFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
+		Paragraph cancelText = new Paragraph("For any cancellation, please contact us 48 hours in advance at Evenia@gmail.com.", cancelFont);
+		cancelText.setAlignment(Element.ALIGN_CENTER);
+		document.add(cancelText);
+
+		// Close the document
+		document.close();
 	}
 
 }
