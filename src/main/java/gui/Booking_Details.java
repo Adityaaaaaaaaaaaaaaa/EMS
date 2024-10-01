@@ -1,6 +1,7 @@
 package gui;
 
 import app.Main;
+import com.itextpdf.text.Font;
 import db.Db_Connect;
 import utility.MenuInterface;
 import utility.Utility;
@@ -16,6 +17,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class Booking_Details extends JPanel implements MenuInterface {
     private JPanel screenInfo; // JPanel for displaying booking table
@@ -30,6 +35,7 @@ public class Booking_Details extends JPanel implements MenuInterface {
     private JSplitPane splitPane;
     private JMenuBar menuBar;
     private JPanel main;
+    private JButton printReport;
 
     private Main mainFrame;
     private static final Logger LOGGER = Logger.getLogger(Booking_Details.class.getName());
@@ -81,6 +87,17 @@ public class Booking_Details extends JPanel implements MenuInterface {
         // Ensure both panels are revalidated and repainted
         revalidate();
         repaint();
+
+        // Add action listener to the printReport button
+        printReport.addActionListener(e -> {
+            try {
+                saveReportToPDF();
+            } catch (Exception ex) {
+                LOGGER.log(Level.SEVERE, "Error generating PDF report: " + ex.getMessage(), ex);
+                JOptionPane.showMessageDialog(this, "Error generating PDF. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
     }
 
     // Fetch and display booking data from the database
@@ -202,4 +219,65 @@ public class Booking_Details extends JPanel implements MenuInterface {
             }
         }
     }
+
+    private void saveReportToPDF() throws DocumentException, IOException {
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream("Report.pdf"));
+        document.open();
+
+        // Add a title with styling
+        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK);
+        Paragraph title = new Paragraph("Booking Details Report", titleFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+        document.add(title);
+
+        document.add(new Paragraph(" ")); // Blank line
+
+        // Add the booking data (from JTable)
+        PdfPTable pdfTable = new PdfPTable(bookingTable.getColumnCount());
+        pdfTable.setWidthPercentage(100); // Set the table to take full width of the page
+        pdfTable.setSpacingBefore(10f);   // Space before the table
+        pdfTable.setSpacingAfter(10f);    // Space after the table
+
+        // Add table headers with custom styling
+        Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
+        for (int i = 0; i < bookingTable.getColumnCount(); i++) {
+            PdfPCell headerCell = new PdfPCell(new Phrase(bookingTable.getColumnName(i), headerFont));
+            headerCell.setBackgroundColor(BaseColor.DARK_GRAY); // Background color for headers
+            headerCell.setPadding(8); // Add some padding
+            headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            pdfTable.addCell(headerCell);
+        }
+
+        // Add table rows with data
+        Font cellFont = FontFactory.getFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
+        for (int rows = 0; rows < bookingTable.getRowCount(); rows++) {
+            for (int cols = 0; cols < bookingTable.getColumnCount(); cols++) {
+                PdfPCell cell = new PdfPCell(new Phrase(bookingTable.getValueAt(rows, cols).toString(), cellFont));
+                cell.setPadding(5); // Add some padding to the cell
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER); // Center align the text
+                pdfTable.addCell(cell);
+            }
+        }
+
+        document.add(pdfTable); // Add the table to the document
+        document.add(new Paragraph(" ")); // Blank line
+
+        // Add the statistics section with some styling
+        Font statFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK);
+        document.add(new Paragraph("Statistics", statFont));
+
+        Font statDataFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
+        document.add(new Paragraph("Total Bookings: " + numBooking.getText(), statDataFont));
+        document.add(new Paragraph("Total Guests: " + numGuest.getText(), statDataFont));
+        document.add(new Paragraph("Average Guests: " + avgGuest.getText(), statDataFont));
+        document.add(new Paragraph("Most Popular Event: " + event.getText(), statDataFont));
+        document.add(new Paragraph("Total Revenue: Rs " + totalRev.getText(), statDataFont));
+
+        // Close the document
+        document.close();
+
+        JOptionPane.showMessageDialog(this, "PDF report saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 }
