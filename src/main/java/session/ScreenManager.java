@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ScreenManager {
-	private final Main mainFrame;  // Reference to Main
+	private final Main mainFrame;
 	private final CardLayout cardLayout;
 	private final JPanel mainPanel;
 	private final Map<String, JPanel> screens;
