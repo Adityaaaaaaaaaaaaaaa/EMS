@@ -2,6 +2,7 @@ package gui;
 
 import app.Main;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 import db.Db_Connect;
 import utility.MenuInterface;
 import utility.Utility;
@@ -221,9 +222,18 @@ public class Booking_Details extends JPanel implements MenuInterface {
     }
 
     private void saveReportToPDF() throws DocumentException, IOException {
-        Document document = new Document();
+        // Set up the document with A4 size and landscape orientation
+        Document document = new Document(PageSize.A4.rotate());
         PdfWriter.getInstance(document, new FileOutputStream("Report.pdf"));
         document.open();
+
+        // Add the logo to the document (adjust the file path to your logo image)
+        Image logo = Image.getInstance("src/main/resources/image/logo_icon.png"); // Replace with actual path to your logo
+        logo.scaleToFit(50, 50); // Resize the logo if needed (width, height)
+        logo.setAlignment(Element.ALIGN_CENTER); // Align the logo to the center
+        document.add(logo);
+
+        document.add(new Paragraph(" ")); // Blank line after the logo
 
         // Add a title with styling
         Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK);
