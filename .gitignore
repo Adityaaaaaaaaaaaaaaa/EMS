@@ -36,6 +36,8 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### file to ignore
 /.idea/vcs.xml
 /Report.pdf
 /Receipt.pdf
