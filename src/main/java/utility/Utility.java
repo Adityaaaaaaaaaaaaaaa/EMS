@@ -89,4 +89,19 @@ public class Utility {
         }
     }
 
+    // Method to toggle show/hide password functionality
+    public static void toggleShowPassword(JPasswordField passwordField, JCheckBox showPwdCheckBox) {
+        if (showPwdCheckBox.isSelected()) {
+            passwordField.setEchoChar((char) 0); // Show password
+        } else {
+            passwordField.setEchoChar('•'); // Hide password
+        }
+    }
+
+    // Add listener for the checkbox to toggle password visibility
+    public static void addShowPasswordListener(JPasswordField passwordField, JCheckBox showPwdCheckBox) {
+        showPwdCheckBox.addActionListener(e -> toggleShowPassword(passwordField, showPwdCheckBox));
+    }
+
+
 }

@@ -41,7 +41,7 @@ public class Login_form extends JPanel {
         Utility.addFieldListeners(errorMsg, user_id, pwd);
 
         // Show Password functionality
-        showPwd.addActionListener(e -> toggleShowPassword());
+        Utility.addShowPasswordListener(pwd, showPwd); // Reusable method for show password
 
         // Set cursor to pointer for checkbox and buttons
         Utility.setCursorToPointer(btnLogin, btnRegister, showPwd);

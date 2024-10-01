@@ -6,12 +6,7 @@ import session.Session;
 import session.User;
 import utility.Utility;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,6 +25,7 @@ public class Register_form extends JPanel {
 	private JButton btnBack;
 	private JButton btnRegister;
 	private JLabel errorMsg;
+	private JCheckBox showPwd;
 
 	private static final Logger LOGGER = Logger.getLogger(Register_form.class.getName());
 
@@ -44,6 +40,9 @@ public class Register_form extends JPanel {
 		// Clear error message when user starts typing in the fields
 		Utility.addFieldListeners(errorMsg, regName, regEmail, regUserName, regAddress, regPhone, regPwd);
 		Utility.setCursorToPointer(btnBack, btnRegister);
+
+		// Show Password functionality for registration
+		Utility.addShowPasswordListener(regPwd, showPwd); // Reusable method for show password
 
 		// Action listeners
 		btnRegister.addActionListener(e -> {
