@@ -37,14 +37,10 @@ public class Register_form extends JPanel {
 		setLayout(new BorderLayout());
 		add(Register_Panel);
 
-		// Clear error message when user starts typing in the fields
 		Utility.addFieldListeners(errorMsg, regName, regEmail, regUserName, regAddress, regPhone, regPwd);
 		Utility.setCursorToPointer(btnBack, btnRegister);
+		Utility.addShowPasswordListener(regPwd, showPwd);
 
-		// Show Password functionality for registration
-		Utility.addShowPasswordListener(regPwd, showPwd); // Reusable method for show password
-
-		// Action listeners
 		btnRegister.addActionListener(e -> {
 			if (validateInput()) {
 				registerUser();
@@ -75,11 +71,9 @@ public class Register_form extends JPanel {
 		PreparedStatement statement = null;
 
 		try {
-			// Establish a connection
 			connection = Db_Connect.getConnection();
 			connection.setAutoCommit(false);  // Disable auto-commit for manual transaction control
 
-			// Prepare the SQL statement
 			statement = connection.prepareStatement(
 					"INSERT INTO Users (name, email, username, address, phone, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
@@ -90,7 +84,6 @@ public class Register_form extends JPanel {
 			String phone = regPhone.getText().trim();
 			String password = new String(regPwd.getPassword()).trim();
 
-			// Set parameters for the prepared statement
 			statement.setString(1, name);
 			statement.setString(2, email);
 			statement.setString(3, username);
@@ -112,27 +105,26 @@ public class Register_form extends JPanel {
 				Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();
 
 				if (userProfile != null) {
-					userProfile.fetchAndDisplayUserData(Session.currentUser.getId());  // Fetch new data for user profile
+					userProfile.fetchAndDisplayUserData(Session.currentUser.getId());
 				}
 
 				if (organizerProfile != null) {
-					organizerProfile.fetchAndDisplayUserData(Session.currentUser.getId());  // Fetch new data for organizer profile
+					organizerProfile.fetchAndDisplayUserData(Session.currentUser.getId());
 				}
 
-				// Redirect to Screen1
 				mainFrame.getScreenManager().showPanel("Home");
 				mainFrame.revalidate();
 				mainFrame.repaint();
 
 			} else {
-				connection.rollback();  // Rollback in case of failure
+				connection.rollback();
 				JOptionPane.showMessageDialog(this, "Registration failed!", "Error", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 		} catch (SQLException ex) {
 			if (connection != null) {
 				try {
-					connection.rollback();  // Rollback in case of error
+					connection.rollback();
 				} catch (SQLException rollbackEx) {
 					LOGGER.log(Level.SEVERE, "Failed to rollback transaction", rollbackEx);
 				}

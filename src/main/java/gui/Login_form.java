@@ -37,13 +37,8 @@ public class Login_form extends JPanel {
         // Clear any previous session
         Session.currentUser = null;
 
-        // Clear error message when user starts typing in the fields
         Utility.addFieldListeners(errorMsg, user_id, pwd);
-
-        // Show Password functionality
-        Utility.addShowPasswordListener(pwd, showPwd); // Reusable method for show password
-
-        // Set cursor to pointer for checkbox and buttons
+        Utility.addShowPasswordListener(pwd, showPwd);
         Utility.setCursorToPointer(btnLogin, btnRegister, showPwd);
 
         // Action listeners for login and register buttons
@@ -68,26 +63,23 @@ public class Login_form extends JPanel {
                 System.out.println("ID: " + user.getId());
                 System.out.println("Role: " + user.getRole());
 
-                // Check session assignment
                 if (Session.currentUser != null) {
                     System.out.println("login Session Set for: " + Session.currentUser.getId());
                 } else {
                     System.out.println("Failed to set session.");
                 }
 
-                // After login, fetch and display user data in profiles
                 User_profile userProfile = mainFrame.getScreenManager().getUserProfile();
                 Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();
 
                 if (userProfile != null) {
-                    userProfile.fetchAndDisplayUserData(Session.currentUser.getId()); // Fetch new data for user profile
+                    userProfile.fetchAndDisplayUserData(Session.currentUser.getId());
                 }
 
                 if (organizerProfile != null) {
-                    organizerProfile.fetchAndDisplayUserData(Session.currentUser.getId()); // Fetch new data for organizer profile
+                    organizerProfile.fetchAndDisplayUserData(Session.currentUser.getId());
                 }
 
-                // Clear form and proceed
                 Utility.clearForm(new JTextField[]{user_id}, pwd, errorMsg);
                 mainFrame.getScreenManager().showPanel("Home");
                 mainFrame.revalidate();
@@ -98,15 +90,6 @@ public class Login_form extends JPanel {
         });
 
         btnRegister.addActionListener(e -> mainFrame.getScreenManager().showPanel("Register_form"));
-    }
-
-    // Method to toggle show/hide password
-    private void toggleShowPassword() {
-        if (showPwd.isSelected()) {
-            pwd.setEchoChar((char) 0); // Show password
-        } else {
-            pwd.setEchoChar('•'); // Hide password (default to bullet character)
-        }
     }
 
     private User authenticateUser(String userID, String password) {

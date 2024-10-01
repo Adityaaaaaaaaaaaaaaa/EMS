@@ -12,10 +12,9 @@ public class Utility {
     private static final int WINDOW_WIDTH = 550;
     private static final int WINDOW_HEIGHT = 550;
 
-    // Set window size and center it
     public static void setWindowSize(JFrame frame) {
         frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        frame.setLocationRelativeTo(null); // Center the window
+        frame.setLocationRelativeTo(null);
     }
 
     // Clear form fields and reset to default state
@@ -89,7 +88,6 @@ public class Utility {
         }
     }
 
-    // Method to toggle show/hide password functionality
     public static void toggleShowPassword(JPasswordField passwordField, JCheckBox showPwdCheckBox) {
         if (showPwdCheckBox.isSelected()) {
             passwordField.setEchoChar((char) 0); // Show password
@@ -98,7 +96,6 @@ public class Utility {
         }
     }
 
-    // Add listener for the checkbox to toggle password visibility
     public static void addShowPasswordListener(JPasswordField passwordField, JCheckBox showPwdCheckBox) {
         showPwdCheckBox.addActionListener(e -> toggleShowPassword(passwordField, showPwdCheckBox));
     }
