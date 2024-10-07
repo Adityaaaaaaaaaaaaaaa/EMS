@@ -9,12 +9,6 @@ import java.awt.BorderLayout;
 
 public class Home extends JPanel implements MenuInterface {
     private JPanel main;
-    private JPanel welcomeMsg;
-    private JPanel photos;
-    private JPanel aboutUs;
-    private JPanel fto1;
-    private JPanel fto2;
-    private JPanel fto3;
     private JMenuBar menuBar;
 
     private Main mainFrame;
@@ -25,7 +19,6 @@ public class Home extends JPanel implements MenuInterface {
         setLayout(new BorderLayout());
         add(main, BorderLayout.CENTER);
 
-        // Create a menu bar and initialize it with the menu items and listeners
         menuBar = new JMenuBar();
         initializeMenu(menuBar, mainFrame, main.getBackground(), main.getForeground());
         menuBar.setVisible(false);

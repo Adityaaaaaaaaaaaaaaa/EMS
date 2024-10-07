@@ -26,7 +26,7 @@ public class Main extends JFrame {
         menuBar = new JMenuBar();
         setJMenuBar(menuBar);  // Attach the menu bar to the frame
 
-        setCursorToPointer(menuBar);
+        Utility.setCursorToPointer(menuBar);
 
         // Start with the Login form
         SwingUtilities.invokeLater(() -> screenManager.showPanel("Login_form"));
@@ -40,13 +40,7 @@ public class Main extends JFrame {
     public ScreenManager getScreenManager() {
         return screenManager;
     }
-
-    private void setCursorToPointer(JComponent... components) {
-        for (JComponent component : components) {
-            component.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        }
-    }
-
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Main::new);
     }

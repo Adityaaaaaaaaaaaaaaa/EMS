@@ -48,6 +48,8 @@ public interface MenuInterface {
 
         menuBar.add(menu);
 
+        Utility.setCursorToPointer(menu, home, evtDetail, evtLocation, evtBooking, evtRrsv, profile, logout);
+
         // Set background and foreground colors for the menu and menu items
         menuBar.setBackground(backgroundColor);
         menuBar.setForeground(foregroundColor);
