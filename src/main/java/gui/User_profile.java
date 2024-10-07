@@ -2,7 +2,6 @@ package gui;
 
 import app.Main;
 import db.Db_Connect;
-import jdk.jshell.execution.Util;
 import session.Session;
 import utility.MenuInterface;
 import utility.Utility;
@@ -45,13 +44,9 @@ public class User_profile extends JPanel implements MenuInterface {
     private JButton btnCancel;
     private JMenuBar menuBar;
 
-
     private static final Logger LOGGER = Logger.getLogger(User_profile.class.getName());
-
     private Main mainFrame;
-
-    private boolean isEditing = false; // Track whether the user is editing the profile
-
+    private boolean isEditing = false;
     private BufferedImage backgroundImage;
 
     public User_profile(Main mainFrame) {
@@ -59,16 +54,14 @@ public class User_profile extends JPanel implements MenuInterface {
         Utility.setWindowSize(mainFrame);
 
         try {
-            backgroundImage = ImageIO.read(new File("src/main/resources/image/bg6.jpeg"));  // Provide the correct path to your image
+            backgroundImage = ImageIO.read(new File("src/main/resources/image/bg6.jpeg"));
         } catch (IOException ex) {
             Logger.getLogger(User_profile.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        // Set layout and make the panel transparent
         setLayout(new BorderLayout());
         add(mainJpanel, BorderLayout.CENTER);
 
-        // Create a menu bar and initialize it with the menu items and listeners
         menuBar = new JMenuBar();
         initializeMenu(menuBar, mainFrame, mainJpanel.getBackground(), mainJpanel.getForeground());
         menuBar.setVisible(false);
@@ -78,11 +71,11 @@ public class User_profile extends JPanel implements MenuInterface {
 
         setOpaque(false);  // Make this JPanel transparent so the background image is visible
 
-        details.setBackground(new Color(0, 0, 0, 150));  // Semi-transparent black background
-        details.setOpaque(true);  // Ensure the 'details' panel is opaque to show the background
+        details.setBackground(new Color(0, 0, 0, 150));
+        details.setOpaque(true);
 
-        buttons.setBackground(new Color(0, 0, 0, 90));  // Semi-transparent black background for the buttons panel
-        buttons.setOpaque(true);  // Ensure the 'buttons' panel is opaque to show the background
+        buttons.setBackground(new Color(0, 0, 0, 90));
+        buttons.setOpaque(true);
 
         // Remove border and focus indicator for the Update button
         btnUpdate.setBorderPainted(false);  // Removes the border color
@@ -100,17 +93,12 @@ public class User_profile extends JPanel implements MenuInterface {
         btnCancel.setContentAreaFilled(true); // Set to false if you want the background transparent
 
 
-        // Disable background painting for components
         makeComponentsTransparent(mainJpanel);
-
-        // Add the main JPanel containing your user profile components
         add(mainJpanel);
 
-        // Defer session checks until after initialization
         SwingUtilities.invokeLater(() -> {
             if (Session.currentUser != null) {
                 String username = Session.currentUser.getId();
-                //fetchAndDisplayUserData(Session.currentUser.getId());
                 fetchAndDisplayUserData(username);
             } else {
                 mainFrame.getScreenManager().showPanel("Login_form");
@@ -140,16 +128,13 @@ public class User_profile extends JPanel implements MenuInterface {
             }
         });
 
-        // Action listener for Delete button (optional functionality)
         btnDelete.addActionListener(e -> {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete your profile?", "Delete Profile", JOptionPane.YES_NO_OPTION);
             if (confirmation == JOptionPane.YES_OPTION) {
-                // Delete the user profile
-                String username = Session.currentUser.getId(); // Get the current user's username from the session
+                String username = Session.currentUser.getId();
                 deleteUserProfile(username);
 
-                // Log the user out
-                Session.currentUser = null; // Clear the session (assuming Session.currentUser holds the logged-in user)
+                Session.currentUser = null;
 
                 // Navigate back to the login form
                 mainFrame.getScreenManager().showPanel("Login_form");
@@ -159,7 +144,6 @@ public class User_profile extends JPanel implements MenuInterface {
         });
     }
 
-    // Helper method to make all components inside the panel transparent
     private void makeComponentsTransparent(JPanel panel) {
         panel.setOpaque(false);  // Set the panel itself to transparent
         Component[] components = panel.getComponents();  // Get all child components
@@ -217,11 +201,9 @@ public class User_profile extends JPanel implements MenuInterface {
 
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {
-                // No need to manually commit when autoCommit is true
                 JOptionPane.showMessageDialog(this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
-                // No need to rollback, just handle it as an error
                 JOptionPane.showMessageDialog(this, "Profile update failed!", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
@@ -252,7 +234,6 @@ public class User_profile extends JPanel implements MenuInterface {
                 addressField.setText(rs.getString("address"));
                 phoneNumberField.setText(rs.getString("phone"));
 
-                // Make fields non-editable initially
                 enableEditing(false);
             } else {
                 JOptionPane.showMessageDialog(this, "User not found!", "Error", JOptionPane.INFORMATION_MESSAGE);
@@ -264,16 +245,6 @@ public class User_profile extends JPanel implements MenuInterface {
         }
     }
 
-    public void clearFields() {
-        nameField.setText("");
-        usernameField.setText("");
-        emailField.setText("");
-        addressField.setText("");
-        phoneNumberField.setText("");
-    }
-
-
-    // Optional delete profile method
     private void deleteUserProfile(String username) {
         Connection conn;
         PreparedStatement stmt;

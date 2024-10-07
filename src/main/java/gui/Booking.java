@@ -8,8 +8,15 @@ import utility.MenuInterface;
 import utility.EventPriceCalculator;
 import utility.Utility;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JSlider;
+import javax.swing.JLabel;
+import javax.swing.JMenuBar;
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -39,18 +46,17 @@ public class Booking extends JPanel implements MenuInterface {
 	private JMenuBar menuBar;
 
 	private Main mainFrame;
-	private final EventPriceCalculator priceCalculator; // Create an instance of the calculator
+	private final EventPriceCalculator priceCalculator;
 
 	private static final Logger LOGGER = Logger.getLogger(Booking.class.getName()); // Create a logger
 
 	public Booking(Main mainFrame) {
 		this.mainFrame = mainFrame;
-		this.priceCalculator = new EventPriceCalculator(); // Initialize price calculator
+		this.priceCalculator = new EventPriceCalculator();
 		Utility.setWindowSize(mainFrame);
 		setLayout(new BorderLayout());
 		add(bookingPanel, BorderLayout.CENTER);
 
-		// Create a menu bar and initialize it with the menu items and listeners
 		menuBar = new JMenuBar();
 		initializeMenu(menuBar, mainFrame, bookingPanel.getBackground(), bookingPanel.getForeground());
 		menuBar.setVisible(false);
@@ -58,84 +64,68 @@ public class Booking extends JPanel implements MenuInterface {
 
 		Utility.setCursorToPointer(menuBar, EventType, numGuests, EventLocation, PaymentMethod);
 
-		// Display the initial slider value
 		numGuestDisplay.setText(String.valueOf(numGuests.getValue()));
 
-		// Add listeners for event type, location, and guest number changes to recalculate price
 		EventType.addActionListener(e -> updateTotalPrice());
 		EventLocation.addActionListener(e -> updateTotalPrice());
 		numGuests.addChangeListener(e -> {
-			numGuestDisplay.setText(String.valueOf(numGuests.getValue())); // Display selected number of guests
-			updateTotalPrice(); // Recalculate price whenever guest number changes
+			numGuestDisplay.setText(String.valueOf(numGuests.getValue()));
+			updateTotalPrice();
 		});
 
-		// Clear button functionality using Utility class
 		BtnClear.addActionListener(e -> clearForm());
 
-		// Pay button functionality
 		BtnPay.addActionListener(e -> handlePay());
 
-		// Cancel button functionality (returns to Home)
 		BtnCancel.addActionListener(e -> mainFrame.getScreenManager().showPanel("Home"));
 	}
 
-	// Method to update total price
 	private void updateTotalPrice() {
 		String selectedEvent = (String) EventType.getSelectedItem();
 		int guests = numGuests.getValue();
 
-		// Call calculatePrice on the instance of EventPriceCalculator
 		assert selectedEvent != null;
 		if (selectedEvent.equals("Choose Event Type")) {
-			totalPrice.setText(""); // Clear total price if event type is not selected
+			totalPrice.setText("");
 		} else {
 			int price = priceCalculator.calculatePrice(selectedEvent, guests);
 			totalPrice.setText("Total Price: Rs " + price);
 		}
 	}
 
-	// Method to clear the form fields
 	private void clearForm() {
-		// Use Utility class to clear all fields
-		Utility.clearTextFields(clientName, EventDate, Additional); // Clear the text fields
-		EventType.setSelectedIndex(0); // Reset to "Choose Event Type"
-		EventLocation.setSelectedIndex(0); // Reset to "Choose Location"
-		numGuests.setValue(10); // Reset guest number to minimum
+		Utility.clearTextFields(clientName, EventDate, Additional);
+		EventType.setSelectedIndex(0);
+		EventLocation.setSelectedIndex(0);
+		numGuests.setValue(10);
 		totalPrice.setText("");
-		PaymentMethod.setSelectedIndex(0); // Reset payment method
-		numGuestDisplay.setText("10"); // Reset guest display
+		PaymentMethod.setSelectedIndex(0);
+		numGuestDisplay.setText("10");
 	}
 
-	// Method to handle payment and insert the data into the database
 	private void handlePay() {
-		// Validate that a proper event type has been selected
-		if (EventType.getSelectedIndex() == 0) {  // "Choose Event Type" is the first option
+		if (EventType.getSelectedIndex() == 0) {
 			JOptionPane.showMessageDialog(this, "Please select a valid event type.", "Invalid Event", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
-		// Validate that a proper payment method has been selected
-		if (PaymentMethod.getSelectedIndex() == 0) {  // "Choose your payment method" is the first option
+		if (PaymentMethod.getSelectedIndex() == 0) {
 			JOptionPane.showMessageDialog(this, "Please select a valid payment method.", "Invalid Payment", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
-		// Check if the name and date fields are filled
 		if (clientName.getText().isEmpty() || EventDate.getText().isEmpty() || EventLocation.getSelectedIndex() == 0) {
 			JOptionPane.showMessageDialog(this, "Please fill out all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
-		// Validate the event date
 		if (!Utility.isValidDate(EventDate.getText())) {
 			JOptionPane.showMessageDialog(this, "Please enter a valid date in DD/MM/YY format.", "Invalid Date", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
-		// Insert reservation into the database
 		insertReservationIntoDB();
 
-		// Generate receipt
 		try {
 			generateReceiptPDF();
 		} catch (Exception ex) {
@@ -143,12 +133,10 @@ public class Booking extends JPanel implements MenuInterface {
 			JOptionPane.showMessageDialog(this, "Failed to generate receipt. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
-		// Display confirmation
 		JOptionPane.showMessageDialog(this, "Receipt generated successfully.\nThank you for booking with us!\nWe will get in touch soon.");
 		mainFrame.getScreenManager().showPanel("Home");
 	}
 
-	// Method to insert the event reservation into the database
 	private void insertReservationIntoDB() {
 		String client = clientName.getText();
 		String eventType = (String) EventType.getSelectedItem();
@@ -159,7 +147,6 @@ public class Booking extends JPanel implements MenuInterface {
 		String paymentMethod = (String) PaymentMethod.getSelectedItem();
 		String price = totalPrice.getText().replace("Total Price: Rs ", "");
 
-		// Remove id from the insert as it is auto-incremented
 		String sql = "INSERT INTO booking (Name, Event, NumGuest, Location, ReservationDate, AdditionalInfo, PaymentMethod, Price) " +
 				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -184,26 +171,22 @@ public class Booking extends JPanel implements MenuInterface {
 		}
 	}
 
-	// Method to generate receipt as a PDF
 	private void generateReceiptPDF() throws DocumentException, IOException {
-		// Create a document object
 		Document document = new Document();
 		PdfWriter.getInstance(document, new FileOutputStream("Receipt.pdf"));
 		document.open();
 
-		// Add logo to the PDF
 		Image logo = Image.getInstance("src/main/resources/image/logo_icon.png"); // Replace with actual logo path
 		logo.scaleToFit(50, 50); // Scale logo if needed
 		logo.setAlignment(Element.ALIGN_LEFT);
 		document.add(logo);
 
-		// Add a title to the receipt
 		Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK);
 		Paragraph title = new Paragraph("Booking Confirmation Receipt", titleFont);
 		title.setAlignment(Element.ALIGN_CENTER);
 		document.add(title);
 
-		document.add(new Paragraph(" ")); // Blank line
+		document.add(new Paragraph(" "));
 
 		// Add date and time
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -213,9 +196,8 @@ public class Booking extends JPanel implements MenuInterface {
 		dateParagraph.setAlignment(Element.ALIGN_RIGHT);
 		document.add(dateParagraph);
 
-		document.add(new Paragraph(" ")); // Blank line
+		document.add(new Paragraph(" "));
 
-		// Add booking details to the receipt
 		Font normalFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
 
 		document.add(new Paragraph("Client Name: " + clientName.getText(), normalFont));
@@ -227,9 +209,8 @@ public class Booking extends JPanel implements MenuInterface {
 		document.add(new Paragraph("Additional Information: " + Additional.getText(), normalFont));
 		document.add(new Paragraph("Total Price: Rs " + totalPrice.getText().replace("Total Price: Rs ", ""), normalFont));
 
-		document.add(new Paragraph(" ")); // Blank line
+		document.add(new Paragraph(" "));
 
-		// Add a thank you message and cancellation policy
 		Font thankYouFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK);
 		Paragraph thankYouMessage = new Paragraph("Thank you for booking with us!", thankYouFont);
 		thankYouMessage.setAlignment(Element.ALIGN_CENTER);
@@ -240,7 +221,6 @@ public class Booking extends JPanel implements MenuInterface {
 		cancelText.setAlignment(Element.ALIGN_CENTER);
 		document.add(cancelText);
 
-		// Close the document
 		document.close();
 	}
 

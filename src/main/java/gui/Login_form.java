@@ -6,8 +6,13 @@ import session.Session;
 import session.User;
 import utility.Utility;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JCheckBox;
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,32 +39,26 @@ public class Login_form extends JPanel {
         setLayout(new BorderLayout());
         add(Login_Panel);
 
-        // Clear any previous session
         Session.currentUser = null;
 
         Utility.addFieldListeners(errorMsg, user_id, pwd);
         Utility.addShowPasswordListener(pwd, showPwd);
         Utility.setCursorToPointer(btnLogin, btnRegister, showPwd);
 
-        // Action listeners for login and register buttons
         btnLogin.addActionListener(e -> {
             String userID = user_id.getText().trim();
             String password = new String(pwd.getPassword()).trim();
 
-            // Validate input
             if (userID.isEmpty() || password.isEmpty()) {
                 errorMsg.setText("Please enter both Username and Password.");
                 return;
             }
 
-            // Authenticate user
             User user = authenticateUser(userID, password);
             if (user != null) {
-                // Assign session after successful authentication
                 Session.currentUser = user;
 
-                // Logging session details immediately
-                System.out.println("\nUser Authenticated:");
+                /*System.out.println("\nUser Authenticated:");
                 System.out.println("ID: " + user.getId());
                 System.out.println("Role: " + user.getRole());
 
@@ -67,7 +66,7 @@ public class Login_form extends JPanel {
                     System.out.println("login Session Set for: " + Session.currentUser.getId());
                 } else {
                     System.out.println("Failed to set session.");
-                }
+                }*/
 
                 User_profile userProfile = mainFrame.getScreenManager().getUserProfile();
                 Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();

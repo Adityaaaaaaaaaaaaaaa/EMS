@@ -1,9 +1,14 @@
 package utility;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JLabel;
+import javax.swing.JComponent;
+import javax.swing.JCheckBox;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import java.awt.*;
+import java.awt.Cursor;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -49,7 +49,6 @@ public class Organizer_profile extends JPanel implements MenuInterface {
             fetchAndDisplayUserData(currentUser);
         });
 
-        // Create a menu bar and initialize it with the menu items and listeners
         menuBar = new JMenuBar();
         initializeMenu(menuBar, mainFrame, main_panel.getBackground(), main_panel.getForeground());
         menuBar.setVisible(false);
@@ -57,14 +56,12 @@ public class Organizer_profile extends JPanel implements MenuInterface {
 
         Utility.setCursorToPointer(btnCancel, btnUpdate);
 
-        // Action listener for the Cancel button
         btnCancel.addActionListener(e -> {
             mainFrame.getScreenManager().showPanel("Home");
             mainFrame.revalidate();
             mainFrame.repaint();
         });
 
-        // Action listener for the Update/Save Profile button
         btnUpdate.addActionListener(e -> {
             if (!isEditing) {
                 enableEditing(true);
@@ -80,7 +77,6 @@ public class Organizer_profile extends JPanel implements MenuInterface {
         });
     }
 
-    // Method to enable or disable editing of text fields
     private void enableEditing(boolean enable) {
         OrgName.setEditable(enable);
         OrgUname.setEditable(false);
@@ -89,7 +85,6 @@ public class Organizer_profile extends JPanel implements MenuInterface {
         OrgPhoneNum.setEditable(enable);
     }
 
-    // Method to fetch and display user data original function
     void fetchAndDisplayUserData(String username) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -130,14 +125,12 @@ public class Organizer_profile extends JPanel implements MenuInterface {
             String sql = "UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE username = ?";
             stmt = conn.prepareStatement(sql);
 
-            // Logging values for debugging
-            System.out.println("Updating user: " + OrgUname.getText().trim());
+            /*System.out.println("Updating user: " + OrgUname.getText().trim());
             System.out.println("New Name: " + OrgName.getText().trim());
             System.out.println("New Email: " + OrgEmail.getText().trim());
             System.out.println("New Address: " + OrgAdd.getText().trim());
-            System.out.println("New Phone: " + OrgPhoneNum.getText().trim());
+            System.out.println("New Phone: " + OrgPhoneNum.getText().trim());*/
 
-            // Set the values in the PreparedStatement
             stmt.setString(1, OrgName.getText().trim());
             stmt.setString(2, OrgEmail.getText().trim());
             stmt.setString(3, OrgAdd.getText().trim());
@@ -146,7 +139,6 @@ public class Organizer_profile extends JPanel implements MenuInterface {
 
             int rowsUpdated = stmt.executeUpdate();
 
-            // Check if rows were updated and log the result
             if (rowsUpdated > 0) {
                 System.out.println("Rows updated: " + rowsUpdated);
                 JOptionPane.showMessageDialog(this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -164,7 +156,6 @@ public class Organizer_profile extends JPanel implements MenuInterface {
         }
     }
 
-    // Method to clear all fields in the profile
     public void clearFields() {
         OrgName.setText("");
         OrgUname.setText("");

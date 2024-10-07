@@ -3,13 +3,16 @@ package app;
 import session.ScreenManager;
 import utility.Utility;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 import java.awt.*;
 import java.util.Objects;
 
 public class Main extends JFrame {
     private final ScreenManager screenManager;
-    private final JMenuBar menuBar; // Centralized menu bar
+    private final JMenuBar menuBar;
 
     public Main() {
         screenManager = new ScreenManager(this);
@@ -18,21 +21,17 @@ public class Main extends JFrame {
         setVisible(true);
         setResizable(false);
         setTitle("Evenia Event Management System");
-        // Load the image icon using the class loader
         Image icon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("image/logo_icon.png"))).getImage();
         setIconImage(icon);
 
-        // Initialize the menu bar and attach to the frame
         menuBar = new JMenuBar();
-        setJMenuBar(menuBar);  // Attach the menu bar to the frame
+        setJMenuBar(menuBar);
 
         Utility.setCursorToPointer(menuBar);
 
-        // Start with the Login form
         SwingUtilities.invokeLater(() -> screenManager.showPanel("Login_form"));
     }
 
-    // Getter method for the menuBar, used by MenuInterface and ScreenManager
     public JMenuBar getAppMenuBar() {
         return menuBar;
     }

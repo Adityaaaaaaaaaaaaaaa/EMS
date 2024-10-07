@@ -6,7 +6,13 @@ import session.Session;
 import session.User;
 import utility.Utility;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JLabel;
+import javax.swing.JCheckBox;
 import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -94,13 +100,10 @@ public class Register_form extends JPanel {
 
 			int rowsInserted = statement.executeUpdate();
 			if (rowsInserted > 0) {
-				// Commit the transaction after successful insertion
 				connection.commit();
 
-				// Create a User object for the session
 				Session.currentUser = new User(username, role, name, email, phone);
 
-				// Fetch data for the profiles after registration, like in login flow
 				User_profile userProfile = mainFrame.getScreenManager().getUserProfile();
 				Organizer_profile organizerProfile = mainFrame.getScreenManager().getOrganizerProfile();
 
@@ -135,11 +138,6 @@ public class Register_form extends JPanel {
 		} catch (ClassNotFoundException ex) {
 			errorMsg.setText("Internal error. Please contact support.");
 			LOGGER.log(Level.SEVERE, "JDBC Driver not found: " + ex.getMessage(), ex);
-
 		}
 	}
-
-
-
-
 }

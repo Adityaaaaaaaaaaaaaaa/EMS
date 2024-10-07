@@ -7,7 +7,7 @@ import utility.MenuInterface;
 import javax.swing.JPanel;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
-import java.awt.*;
+import java.awt.CardLayout;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,7 +48,6 @@ public class ScreenManager {
 	}
 
 	public void showPanel(String name) {
-		// Validate session before showing certain panels
 		if ((name.equals("Organizer_profile") || name.equals("User_profile")) && Session.currentUser == null) {
 			JOptionPane.showMessageDialog(mainFrame, "Please log in to access this feature.", "Session Error", JOptionPane.ERROR_MESSAGE);
 			name = "Login_form";
@@ -60,7 +59,7 @@ public class ScreenManager {
 			if (panel != null) {
 				registerScreen(name, panel);
 			} else {
-				return; // Prevents showing an invalid or uninitialized panel
+				return;
 			}
 		}
 

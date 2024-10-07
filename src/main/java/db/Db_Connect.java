@@ -14,7 +14,6 @@ public class Db_Connect {
     private static final Logger LOGGER = Logger.getLogger(Db_Connect.class.getName());
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
-        // Load the MySQL JDBC driver
         Class.forName("com.mysql.jdbc.Driver");
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
